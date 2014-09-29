@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		2F05367219D9DBB400C14AF5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F05367119D9DBB400C14AF5 /* main.m */; };
+		2F05367519D9DBB400C14AF5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F05367419D9DBB400C14AF5 /* AppDelegate.m */; };
+		2F05367819D9DBB400C14AF5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F05367719D9DBB400C14AF5 /* ViewController.m */; };
+		2F05367B19D9DBB400C14AF5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F05367919D9DBB400C14AF5 /* Main.storyboard */; };
+		2F05367D19D9DBB400C14AF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F05367C19D9DBB400C14AF5 /* Images.xcassets */; };
+		2F05368019D9DBB400C14AF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F05367E19D9DBB400C14AF5 /* LaunchScreen.xib */; };
+		2F05368C19D9DBB400C14AF5 /* BoredRoomBingoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F05368B19D9DBB400C14AF5 /* BoredRoomBingoTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		2F05368619D9DBB400C14AF5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2F05366419D9DBB400C14AF5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F05366B19D9DBB400C14AF5;
+			remoteInfo = BoredRoomBingo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		2F05366C19D9DBB400C14AF5 /* BoredRoomBingo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoredRoomBingo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F05367019D9DBB400C14AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F05367119D9DBB400C14AF5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2F05367319D9DBB400C14AF5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		2F05367419D9DBB400C14AF5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2F05367619D9DBB400C14AF5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		2F05367719D9DBB400C14AF5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		2F05367A19D9DBB400C14AF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		2F05367C19D9DBB400C14AF5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		2F05367F19D9DBB400C14AF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		2F05368519D9DBB400C14AF5 /* BoredRoomBingoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoredRoomBingoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		2F05368A19D9DBB400C14AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F05368B19D9DBB400C14AF5 /* BoredRoomBingoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoredRoomBingoTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2F05366919D9DBB400C14AF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F05368219D9DBB400C14AF5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		2F05366319D9DBB400C14AF5 = {
+			isa = PBXGroup;
+			children = (
+				2F05366E19D9DBB400C14AF5 /* BoredRoomBingo */,
+				2F05368819D9DBB400C14AF5 /* BoredRoomBingoTests */,
+				2F05366D19D9DBB400C14AF5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		2F05366D19D9DBB400C14AF5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2F05366C19D9DBB400C14AF5 /* BoredRoomBingo.app */,
+				2F05368519D9DBB400C14AF5 /* BoredRoomBingoTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2F05366E19D9DBB400C14AF5 /* BoredRoomBingo */ = {
+			isa = PBXGroup;
+			children = (
+				2F05367319D9DBB400C14AF5 /* AppDelegate.h */,
+				2F05367419D9DBB400C14AF5 /* AppDelegate.m */,
+				2F05367619D9DBB400C14AF5 /* ViewController.h */,
+				2F05367719D9DBB400C14AF5 /* ViewController.m */,
+				2F05367919D9DBB400C14AF5 /* Main.storyboard */,
+				2F05367C19D9DBB400C14AF5 /* Images.xcassets */,
+				2F05367E19D9DBB400C14AF5 /* LaunchScreen.xib */,
+				2F05366F19D9DBB400C14AF5 /* Supporting Files */,
+			);
+			path = BoredRoomBingo;
+			sourceTree = "<group>";
+		};
+		2F05366F19D9DBB400C14AF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2F05367019D9DBB400C14AF5 /* Info.plist */,
+				2F05367119D9DBB400C14AF5 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2F05368819D9DBB400C14AF5 /* BoredRoomBingoTests */ = {
+			isa = PBXGroup;
+			children = (
+				2F05368B19D9DBB400C14AF5 /* BoredRoomBingoTests.m */,
+				2F05368919D9DBB400C14AF5 /* Supporting Files */,
+			);
+			path = BoredRoomBingoTests;
+			sourceTree = "<group>";
+		};
+		2F05368919D9DBB400C14AF5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				2F05368A19D9DBB400C14AF5 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2F05366B19D9DBB400C14AF5 /* BoredRoomBingo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F05368F19D9DBB400C14AF5 /* Build configuration list for PBXNativeTarget "BoredRoomBingo" */;
+			buildPhases = (
+				2F05366819D9DBB400C14AF5 /* Sources */,
+				2F05366919D9DBB400C14AF5 /* Frameworks */,
+				2F05366A19D9DBB400C14AF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BoredRoomBingo;
+			productName = BoredRoomBingo;
+			productReference = 2F05366C19D9DBB400C14AF5 /* BoredRoomBingo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2F05368419D9DBB400C14AF5 /* BoredRoomBingoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2F05369219D9DBB400C14AF5 /* Build configuration list for PBXNativeTarget "BoredRoomBingoTests" */;
+			buildPhases = (
+				2F05368119D9DBB400C14AF5 /* Sources */,
+				2F05368219D9DBB400C14AF5 /* Frameworks */,
+				2F05368319D9DBB400C14AF5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				2F05368719D9DBB400C14AF5 /* PBXTargetDependency */,
+			);
+			name = BoredRoomBingoTests;
+			productName = BoredRoomBingoTests;
+			productReference = 2F05368519D9DBB400C14AF5 /* BoredRoomBingoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2F05366419D9DBB400C14AF5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Tom Reinhart";
+				TargetAttributes = {
+					2F05366B19D9DBB400C14AF5 = {
+						CreatedOnToolsVersion = 6.0.1;
+					};
+					2F05368419D9DBB400C14AF5 = {
+						CreatedOnToolsVersion = 6.0.1;
+						TestTargetID = 2F05366B19D9DBB400C14AF5;
+					};
+				};
+			};
+			buildConfigurationList = 2F05366719D9DBB400C14AF5 /* Build configuration list for PBXProject "BoredRoomBingo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2F05366319D9DBB400C14AF5;
+			productRefGroup = 2F05366D19D9DBB400C14AF5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2F05366B19D9DBB400C14AF5 /* BoredRoomBingo */,
+				2F05368419D9DBB400C14AF5 /* BoredRoomBingoTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		2F05366A19D9DBB400C14AF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F05367B19D9DBB400C14AF5 /* Main.storyboard in Resources */,
+				2F05368019D9DBB400C14AF5 /* LaunchScreen.xib in Resources */,
+				2F05367D19D9DBB400C14AF5 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F05368319D9DBB400C14AF5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2F05366819D9DBB400C14AF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F05367819D9DBB400C14AF5 /* ViewController.m in Sources */,
+				2F05367519D9DBB400C14AF5 /* AppDelegate.m in Sources */,
+				2F05367219D9DBB400C14AF5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2F05368119D9DBB400C14AF5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2F05368C19D9DBB400C14AF5 /* BoredRoomBingoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		2F05368719D9DBB400C14AF5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2F05366B19D9DBB400C14AF5 /* BoredRoomBingo */;
+			targetProxy = 2F05368619D9DBB400C14AF5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		2F05367919D9DBB400C14AF5 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F05367A19D9DBB400C14AF5 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2F05367E19D9DBB400C14AF5 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2F05367F19D9DBB400C14AF5 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		2F05368D19D9DBB400C14AF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		2F05368E19D9DBB400C14AF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		2F05369019D9DBB400C14AF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BoredRoomBingo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		2F05369119D9DBB400C14AF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = BoredRoomBingo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2F05369319D9DBB400C14AF5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BoredRoomBingoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoredRoomBingo.app/BoredRoomBingo";
+			};
+			name = Debug;
+		};
+		2F05369419D9DBB400C14AF5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = BoredRoomBingoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BoredRoomBingo.app/BoredRoomBingo";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2F05366719D9DBB400C14AF5 /* Build configuration list for PBXProject "BoredRoomBingo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F05368D19D9DBB400C14AF5 /* Debug */,
+				2F05368E19D9DBB400C14AF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2F05368F19D9DBB400C14AF5 /* Build configuration list for PBXNativeTarget "BoredRoomBingo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F05369019D9DBB400C14AF5 /* Debug */,
+				2F05369119D9DBB400C14AF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		2F05369219D9DBB400C14AF5 /* Build configuration list for PBXNativeTarget "BoredRoomBingoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2F05369319D9DBB400C14AF5 /* Debug */,
+				2F05369419D9DBB400C14AF5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2F05366419D9DBB400C14AF5 /* Project object */;
+}
