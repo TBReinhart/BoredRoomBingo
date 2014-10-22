@@ -1,9 +1,0 @@
-Group 11,
-
-You are doing very well. You have some minor problems with your class diagram, but the rest of your submisison is solid.
-
-In particular, your FriendList class references a non-existent UserList class, and you have properties that could have been replaced by arrows (which tends to make the diagram more readable); also, although you have UI classes, you have no arrows involving them, which suggests that there is something missing.
-
-I look forward to seeing your prototype.
-
-Iteration 2 Grade: 98
