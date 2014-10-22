@@ -7,13 +7,23 @@
 //
 
 #import "AppDelegate.h"
-
+#import <FacebookSDK/FacebookSDK.h>
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
 
+// For Facebook
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    // attempt to extract a token from the url
+    return [FBAppCall handleOpenURL:url sourceApplication:sourceApplication];
+}
+
+// end for facebook
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
