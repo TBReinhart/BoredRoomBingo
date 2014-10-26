@@ -8,7 +8,9 @@
 
 #ifndef BoredRoomBingo_config_h
 #define BoredRoomBingo_config_h
-
+#import <Firebase/Firebase.h>
+#import "ErrorMessage.h"
+#import "MBProgressHUD.h"
 #define FIREBASE_URL @"https://bored-room-bingo.firebaseio.com/"
 
 

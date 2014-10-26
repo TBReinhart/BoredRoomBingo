@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F018DE219F0901B00666586 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F018DE119F0901B00666586 /* FacebookSDK.framework */; };
-		2F018DE519F095B100666586 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F018DE419F095B100666586 /* LoginViewController.m */; };
 		2F018DE719F095D500666586 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F018DE619F095D500666586 /* Firebase.framework */; };
 		2F018DE919F0961800666586 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F018DE819F0961800666586 /* libicucore.dylib */; };
 		2F018DEB19F0962800666586 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F018DEA19F0962800666586 /* libc++.dylib */; };
@@ -21,9 +19,17 @@
 		2F05367D19D9DBB400C14AF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F05367C19D9DBB400C14AF5 /* Images.xcassets */; };
 		2F05368019D9DBB400C14AF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F05367E19D9DBB400C14AF5 /* LaunchScreen.xib */; };
 		2F05368C19D9DBB400C14AF5 /* BoredRoomBingoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F05368B19D9DBB400C14AF5 /* BoredRoomBingoTests.m */; };
-		2FD0D73F19F5804100F19DF6 /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D73E19F5804100F19DF6 /* SignUpViewController.m */; };
-		2FD0D74319F5924100F19DF6 /* BingoBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FD0D74219F5924100F19DF6 /* BingoBoard.png */; };
-		2FD0D74919F75E8500F19DF6 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D74819F75E8500F19DF6 /* ErrorMessage.m */; };
+		2F4C192B19FD7F5600A84C30 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4C192A19FD7F5600A84C30 /* FacebookSDK.framework */; };
+		2F4C192D19FD7F7A00A84C30 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4C192C19FD7F7A00A84C30 /* FacebookSDK.framework */; };
+		2F70F5C719FD81B200542D24 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70F5C619FD81B200542D24 /* ErrorMessage.m */; };
+		2FC383BD19FC84AD00B5B725 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */; };
+		2FD0D76119F9855700F19DF6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76019F9855700F19DF6 /* CoreData.framework */; };
+		2FD0D76419F987C800F19DF6 /* NSStringAdditions.h in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D76319F987C800F19DF6 /* NSStringAdditions.h */; };
+		2FD0D76819F9CCD300F19DF6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D76719F9CCD300F19DF6 /* MBProgressHUD.m */; };
+		2FD0D76B19F9CD6500F19DF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76A19F9CD6500F19DF6 /* Foundation.framework */; };
+		2FD0D76D19F9CD6D00F19DF6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76C19F9CD6D00F19DF6 /* CoreGraphics.framework */; };
+		2FD0D76F19F9CD7500F19DF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76E19F9CD7500F19DF6 /* UIKit.framework */; };
+		2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D77119FAB45200F19DF6 /* LoginSignUp.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,9 +43,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2F018DE119F0901B00666586 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		2F018DE319F095B100666586 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
-		2F018DE419F095B100666586 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		2F018DE619F095D500666586 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		2F018DE819F0961800666586 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		2F018DEA19F0962800666586 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
@@ -57,11 +60,21 @@
 		2F05368519D9DBB400C14AF5 /* BoredRoomBingoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoredRoomBingoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F05368A19D9DBB400C14AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F05368B19D9DBB400C14AF5 /* BoredRoomBingoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoredRoomBingoTests.m; sourceTree = "<group>"; };
-		2FD0D73D19F5804100F19DF6 /* SignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignUpViewController.h; sourceTree = "<group>"; };
-		2FD0D73E19F5804100F19DF6 /* SignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignUpViewController.m; sourceTree = "<group>"; };
-		2FD0D74219F5924100F19DF6 /* BingoBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BingoBoard.png; path = OOSE/BoredRoomBingo/BoredRoomBingo/OOSE/BoredRoomBingo/BoredRoomBingo/OOSE/BoredRoomBingo/BoredRoomBingo/OOSE/BoredRoomBingo/BoredRoomBingo/OOSE/BoredRoomBingo/BoredRoomBingo/OOSE/BoredRoomBingo/BoredRoomBingo/OOSE/BoredRoomBingo/BoredRoomBingo/OOSE/BoredRoomBingo/BoredRoomBingo/OOSE/BoredRoomBingo/BingoBoard.png; sourceTree = "<group>"; };
-		2FD0D74719F75E8500F19DF6 /* ErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ErrorMessage.h; path = ../ErrorMessage.h; sourceTree = "<group>"; };
-		2FD0D74819F75E8500F19DF6 /* ErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ErrorMessage.m; path = ../ErrorMessage.m; sourceTree = "<group>"; };
+		2F4C192A19FD7F5600A84C30 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		2F4C192C19FD7F7A00A84C30 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		2F70F5C519FD81B200542D24 /* ErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorMessage.h; sourceTree = "<group>"; };
+		2F70F5C619FD81B200542D24 /* ErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorMessage.m; sourceTree = "<group>"; };
+		2FC383BB19FC84AD00B5B725 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
+		2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		2FD0D76019F9855700F19DF6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		2FD0D76319F987C800F19DF6 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringAdditions.h; path = ../NSStringAdditions.h; sourceTree = "<group>"; };
+		2FD0D76619F9CCD300F19DF6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../../../../../MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
+		2FD0D76719F9CCD300F19DF6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../../../../../MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
+		2FD0D76A19F9CD6500F19DF6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		2FD0D76C19F9CD6D00F19DF6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2FD0D76E19F9CD7500F19DF6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		2FD0D77019FAB45200F19DF6 /* LoginSignUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSignUp.h; sourceTree = "<group>"; };
+		2FD0D77119FAB45200F19DF6 /* LoginSignUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSignUp.m; sourceTree = "<group>"; };
 		2FE8CE0B19F0B2BA000BDF29 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,12 +83,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FD0D76F19F9CD7500F19DF6 /* UIKit.framework in Frameworks */,
+				2FD0D76D19F9CD6D00F19DF6 /* CoreGraphics.framework in Frameworks */,
+				2FD0D76B19F9CD6500F19DF6 /* Foundation.framework in Frameworks */,
+				2FD0D76119F9855700F19DF6 /* CoreData.framework in Frameworks */,
 				2F018DF119F0964C00666586 /* SystemConfiguration.framework in Frameworks */,
+				2F4C192D19FD7F7A00A84C30 /* FacebookSDK.framework in Frameworks */,
 				2F018DEF19F0963F00666586 /* Security.framework in Frameworks */,
 				2F018DED19F0963400666586 /* CFNetwork.framework in Frameworks */,
 				2F018DEB19F0962800666586 /* libc++.dylib in Frameworks */,
 				2F018DE919F0961800666586 /* libicucore.dylib in Frameworks */,
-				2F018DE219F0901B00666586 /* FacebookSDK.framework in Frameworks */,
+				2F4C192B19FD7F5600A84C30 /* FacebookSDK.framework in Frameworks */,
 				2F018DE719F095D500666586 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -93,9 +111,14 @@
 		2F018DF219F098BC00666586 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2F4C192A19FD7F5600A84C30 /* FacebookSDK.framework */,
+				2FD0D76E19F9CD7500F19DF6 /* UIKit.framework */,
+				2FD0D76C19F9CD6D00F19DF6 /* CoreGraphics.framework */,
+				2FD0D76A19F9CD6500F19DF6 /* Foundation.framework */,
+				2FD0D76019F9855700F19DF6 /* CoreData.framework */,
 				2F018DEA19F0962800666586 /* libc++.dylib */,
 				2F018DE819F0961800666586 /* libicucore.dylib */,
-				2F018DE119F0901B00666586 /* FacebookSDK.framework */,
+				2F4C192C19FD7F7A00A84C30 /* FacebookSDK.framework */,
 				2F018DE619F095D500666586 /* Firebase.framework */,
 				2F018DEC19F0963400666586 /* CFNetwork.framework */,
 				2F018DF019F0964C00666586 /* SystemConfiguration.framework */,
@@ -108,6 +131,9 @@
 			isa = PBXGroup;
 			children = (
 				2F05366E19D9DBB400C14AF5 /* BoredRoomBingo */,
+				2FD0D74A19F7619C00F19DF6 /* ErrorChecking */,
+				2F05366F19D9DBB400C14AF5 /* Supporting Files */,
+				2FD0D76919F9CCDA00F19DF6 /* ProgressHUD */,
 				2F05368819D9DBB400C14AF5 /* BoredRoomBingoTests */,
 				2F05366D19D9DBB400C14AF5 /* Products */,
 				2F018DF219F098BC00666586 /* Frameworks */,
@@ -126,17 +152,11 @@
 		2F05366E19D9DBB400C14AF5 /* BoredRoomBingo */ = {
 			isa = PBXGroup;
 			children = (
-				2F05367319D9DBB400C14AF5 /* AppDelegate.h */,
-				2F05367419D9DBB400C14AF5 /* AppDelegate.m */,
-				2FE8CE0B19F0B2BA000BDF29 /* config.h */,
 				2F05367919D9DBB400C14AF5 /* Main.storyboard */,
-				2FD0D74219F5924100F19DF6 /* BingoBoard.png */,
-				2FD0D74019F58ACC00F19DF6 /* SignUp */,
-				2FD0D74119F58AD600F19DF6 /* LogIn */,
+				2FD0D77319FAB7C300F19DF6 /* Alternate Login */,
+				2FC383BE19FC8E7200B5B725 /* ForgotPassword? */,
 				2F05367C19D9DBB400C14AF5 /* Images.xcassets */,
 				2F05367E19D9DBB400C14AF5 /* LaunchScreen.xib */,
-				2FD0D74A19F7619C00F19DF6 /* ErrorChecking */,
-				2F05366F19D9DBB400C14AF5 /* Supporting Files */,
 			);
 			path = BoredRoomBingo;
 			sourceTree = "<group>";
@@ -144,10 +164,16 @@
 		2F05366F19D9DBB400C14AF5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2FD0D76519F9A5F900F19DF6 /* Photos */,
+				2FE8CE0B19F0B2BA000BDF29 /* config.h */,
+				2FD0D76319F987C800F19DF6 /* NSStringAdditions.h */,
+				2F05367319D9DBB400C14AF5 /* AppDelegate.h */,
+				2F05367419D9DBB400C14AF5 /* AppDelegate.m */,
 				2F05367019D9DBB400C14AF5 /* Info.plist */,
 				2F05367119D9DBB400C14AF5 /* main.m */,
 			);
 			name = "Supporting Files";
+			path = BoredRoomBingo;
 			sourceTree = "<group>";
 		};
 		2F05368819D9DBB400C14AF5 /* BoredRoomBingoTests */ = {
@@ -167,31 +193,50 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2FD0D74019F58ACC00F19DF6 /* SignUp */ = {
+		2FC383BE19FC8E7200B5B725 /* ForgotPassword? */ = {
 			isa = PBXGroup;
 			children = (
-				2FD0D73D19F5804100F19DF6 /* SignUpViewController.h */,
-				2FD0D73E19F5804100F19DF6 /* SignUpViewController.m */,
+				2FC383BB19FC84AD00B5B725 /* ForgotPasswordViewController.h */,
+				2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */,
 			);
-			name = SignUp;
-			sourceTree = "<group>";
-		};
-		2FD0D74119F58AD600F19DF6 /* LogIn */ = {
-			isa = PBXGroup;
-			children = (
-				2F018DE319F095B100666586 /* LoginViewController.h */,
-				2F018DE419F095B100666586 /* LoginViewController.m */,
-			);
-			name = LogIn;
+			name = "ForgotPassword?";
 			sourceTree = "<group>";
 		};
 		2FD0D74A19F7619C00F19DF6 /* ErrorChecking */ = {
 			isa = PBXGroup;
 			children = (
-				2FD0D74719F75E8500F19DF6 /* ErrorMessage.h */,
-				2FD0D74819F75E8500F19DF6 /* ErrorMessage.m */,
+				2F70F5C519FD81B200542D24 /* ErrorMessage.h */,
+				2F70F5C619FD81B200542D24 /* ErrorMessage.m */,
 			);
 			name = ErrorChecking;
+			path = BoredRoomBingo;
+			sourceTree = "<group>";
+		};
+		2FD0D76519F9A5F900F19DF6 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Photos;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		2FD0D76919F9CCDA00F19DF6 /* ProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				2FD0D76619F9CCD300F19DF6 /* MBProgressHUD.h */,
+				2FD0D76719F9CCD300F19DF6 /* MBProgressHUD.m */,
+			);
+			name = ProgressHUD;
+			path = BoredRoomBingo;
+			sourceTree = "<group>";
+		};
+		2FD0D77319FAB7C300F19DF6 /* Alternate Login */ = {
+			isa = PBXGroup;
+			children = (
+				2FD0D77019FAB45200F19DF6 /* LoginSignUp.h */,
+				2FD0D77119FAB45200F19DF6 /* LoginSignUp.m */,
+			);
+			name = "Alternate Login";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,7 +320,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FD0D74319F5924100F19DF6 /* BingoBoard.png in Resources */,
 				2F05367B19D9DBB400C14AF5 /* Main.storyboard in Resources */,
 				2F05368019D9DBB400C14AF5 /* LaunchScreen.xib in Resources */,
 				2F05367D19D9DBB400C14AF5 /* Images.xcassets in Resources */,
@@ -298,9 +342,11 @@
 			files = (
 				2F05367519D9DBB400C14AF5 /* AppDelegate.m in Sources */,
 				2F05367219D9DBB400C14AF5 /* main.m in Sources */,
-				2FD0D74919F75E8500F19DF6 /* ErrorMessage.m in Sources */,
-				2FD0D73F19F5804100F19DF6 /* SignUpViewController.m in Sources */,
-				2F018DE519F095B100666586 /* LoginViewController.m in Sources */,
+				2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */,
+				2FD0D76419F987C800F19DF6 /* NSStringAdditions.h in Sources */,
+				2FC383BD19FC84AD00B5B725 /* ForgotPasswordViewController.m in Sources */,
+				2FD0D76819F9CCD300F19DF6 /* MBProgressHUD.m in Sources */,
+				2F70F5C719FD81B200542D24 /* ErrorMessage.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
