@@ -91,6 +91,7 @@ withCompletionBlock:^(NSError *error) {
     }
 }];
 }
+
 -(void)displayError: (NSError *)error {
     ErrorMessage *errorAlert = [[ErrorMessage alloc]init];
     [errorAlert errorMessages:error];
