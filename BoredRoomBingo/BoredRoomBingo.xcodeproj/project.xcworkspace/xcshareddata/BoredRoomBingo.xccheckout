@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3C4924C1-F8E1-41E0-A83C-999835058E61</string>
+	<key>IDESourceControlProjectName</key>
+	<string>BoredRoomBingo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>8335E9BC9BF084D636FD2A32FA5159FF46763AC0</key>
+		<string>https://pl.cs.jhu.edu:8000/oose-14-group-11/project.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>BoredRoomBingo/BoredRoomBingo.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>8335E9BC9BF084D636FD2A32FA5159FF46763AC0</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://pl.cs.jhu.edu:8000/oose-14-group-11/project.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>8335E9BC9BF084D636FD2A32FA5159FF46763AC0</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>8335E9BC9BF084D636FD2A32FA5159FF46763AC0</string>
+			<key>IDESourceControlWCCName</key>
+			<string>project</string>
+		</dict>
+	</array>
+</dict>
+</plist>
