@@ -17,5 +17,5 @@
 @property (strong, nonatomic) IBOutlet UIView *optionsView; ///< The view for selecting which login/signup
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField; ///< The field where users enter email
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField; ///< The field where users enter his/her password
-
+-(void)standardLogin;
 @end

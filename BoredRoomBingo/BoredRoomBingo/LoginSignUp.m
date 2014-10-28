@@ -9,6 +9,7 @@
 #import "LoginSignUp.h"
 #import <Firebase/Firebase.h>
 #import "config.h"
+
 #import <FacebookSDK/FacebookSDK.h>
 @implementation LoginSignUp
 -(void)viewDidLoad {
@@ -116,7 +117,6 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
 -(void)setUserPrefs: (FAuthData *)authData {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:self.emailTextField.text forKey:@"email"];
-    //NSString *username = [self.emailTextField.text componentsSeparatedByString:@"@"][0];
     NSString *usernameOfID = [NSString stringWithFormat:@"%@",authData.uid];
     [prefs setObject:usernameOfID forKey:@"username"]; // for now username is unique id
     [prefs setObject:authData.token forKey:@"authToken"];

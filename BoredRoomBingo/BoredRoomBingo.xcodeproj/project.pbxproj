@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2F018DE719F095D500666586 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F018DE619F095D500666586 /* Firebase.framework */; };
 		2F018DE919F0961800666586 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F018DE819F0961800666586 /* libicucore.dylib */; };
 		2F018DEB19F0962800666586 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F018DEA19F0962800666586 /* libc++.dylib */; };
 		2F018DED19F0963400666586 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F018DEC19F0963400666586 /* CFNetwork.framework */; };
@@ -19,15 +18,17 @@
 		2F05367D19D9DBB400C14AF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F05367C19D9DBB400C14AF5 /* Images.xcassets */; };
 		2F05368019D9DBB400C14AF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F05367E19D9DBB400C14AF5 /* LaunchScreen.xib */; };
 		2F05368C19D9DBB400C14AF5 /* BoredRoomBingoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F05368B19D9DBB400C14AF5 /* BoredRoomBingoTests.m */; };
-		2F4C192B19FD7F5600A84C30 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4C192A19FD7F5600A84C30 /* FacebookSDK.framework */; };
-		2F4C192D19FD7F7A00A84C30 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F4C192C19FD7F7A00A84C30 /* FacebookSDK.framework */; };
+		2F518A3F19FEC86500A587D0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F518A3D19FEC86500A587D0 /* FacebookSDK.framework */; };
+		2F518A4019FEC86500A587D0 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F518A3E19FEC86500A587D0 /* Firebase.framework */; };
+		2F518A4119FECA4E00A587D0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F518A3D19FEC86500A587D0 /* FacebookSDK.framework */; };
+		2F518A4219FECA4E00A587D0 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F518A3E19FEC86500A587D0 /* Firebase.framework */; };
+		2F518A4719FF2C8200A587D0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F518A4619FF2C8200A587D0 /* MBProgressHUD.m */; };
 		2F70F5C719FD81B200542D24 /* ErrorMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70F5C619FD81B200542D24 /* ErrorMessage.m */; };
 		2F70F5E619FDBD3300542D24 /* LoginSignUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70F5E519FDBD3300542D24 /* LoginSignUpTests.m */; };
 		2F70F5EA19FDFE0A00542D24 /* HomeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70F5E919FDFE0A00542D24 /* HomeScreen.m */; };
 		2FC383BD19FC84AD00B5B725 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */; };
 		2FD0D76119F9855700F19DF6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76019F9855700F19DF6 /* CoreData.framework */; };
 		2FD0D76419F987C800F19DF6 /* NSStringAdditions.h in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D76319F987C800F19DF6 /* NSStringAdditions.h */; };
-		2FD0D76819F9CCD300F19DF6 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D76719F9CCD300F19DF6 /* MBProgressHUD.m */; };
 		2FD0D76B19F9CD6500F19DF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76A19F9CD6500F19DF6 /* Foundation.framework */; };
 		2FD0D76D19F9CD6D00F19DF6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76C19F9CD6D00F19DF6 /* CoreGraphics.framework */; };
 		2FD0D76F19F9CD7500F19DF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76E19F9CD7500F19DF6 /* UIKit.framework */; };
@@ -45,7 +46,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2F018DE619F095D500666586 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Firebase.framework; sourceTree = "<group>"; };
 		2F018DE819F0961800666586 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
 		2F018DEA19F0962800666586 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
 		2F018DEC19F0963400666586 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -62,8 +62,10 @@
 		2F05368519D9DBB400C14AF5 /* BoredRoomBingoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoredRoomBingoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F05368A19D9DBB400C14AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F05368B19D9DBB400C14AF5 /* BoredRoomBingoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoredRoomBingoTests.m; sourceTree = "<group>"; };
-		2F4C192A19FD7F5600A84C30 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		2F4C192C19FD7F7A00A84C30 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		2F518A3D19FEC86500A587D0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = BoredRoomBingo/FacebookSDK.framework; sourceTree = "<group>"; };
+		2F518A3E19FEC86500A587D0 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = BoredRoomBingo/Firebase.framework; sourceTree = "<group>"; };
+		2F518A4519FF2C8200A587D0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		2F518A4619FF2C8200A587D0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		2F70F5C519FD81B200542D24 /* ErrorMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorMessage.h; sourceTree = "<group>"; };
 		2F70F5C619FD81B200542D24 /* ErrorMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorMessage.m; sourceTree = "<group>"; };
 		2F70F5E519FDBD3300542D24 /* LoginSignUpTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginSignUpTests.m; path = BoredRoomBingo/LoginSignUpTests.m; sourceTree = "<group>"; };
@@ -73,8 +75,6 @@
 		2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		2FD0D76019F9855700F19DF6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2FD0D76319F987C800F19DF6 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringAdditions.h; path = ../NSStringAdditions.h; sourceTree = "<group>"; };
-		2FD0D76619F9CCD300F19DF6 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MBProgressHUD.h; path = ../../../../../MBProgressHUD/MBProgressHUD.h; sourceTree = "<group>"; };
-		2FD0D76719F9CCD300F19DF6 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MBProgressHUD.m; path = ../../../../../MBProgressHUD/MBProgressHUD.m; sourceTree = "<group>"; };
 		2FD0D76A19F9CD6500F19DF6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2FD0D76C19F9CD6D00F19DF6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		2FD0D76E19F9CD7500F19DF6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -89,17 +89,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FD0D76F19F9CD7500F19DF6 /* UIKit.framework in Frameworks */,
+				2F518A3F19FEC86500A587D0 /* FacebookSDK.framework in Frameworks */,
 				2FD0D76D19F9CD6D00F19DF6 /* CoreGraphics.framework in Frameworks */,
 				2FD0D76B19F9CD6500F19DF6 /* Foundation.framework in Frameworks */,
+				2F518A4019FEC86500A587D0 /* Firebase.framework in Frameworks */,
 				2FD0D76119F9855700F19DF6 /* CoreData.framework in Frameworks */,
 				2F018DF119F0964C00666586 /* SystemConfiguration.framework in Frameworks */,
-				2F4C192D19FD7F7A00A84C30 /* FacebookSDK.framework in Frameworks */,
 				2F018DEF19F0963F00666586 /* Security.framework in Frameworks */,
 				2F018DED19F0963400666586 /* CFNetwork.framework in Frameworks */,
 				2F018DEB19F0962800666586 /* libc++.dylib in Frameworks */,
 				2F018DE919F0961800666586 /* libicucore.dylib in Frameworks */,
-				2F4C192B19FD7F5600A84C30 /* FacebookSDK.framework in Frameworks */,
-				2F018DE719F095D500666586 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +106,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F518A4119FECA4E00A587D0 /* FacebookSDK.framework in Frameworks */,
+				2F518A4219FECA4E00A587D0 /* Firebase.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,15 +117,14 @@
 		2F018DF219F098BC00666586 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2F4C192A19FD7F5600A84C30 /* FacebookSDK.framework */,
+				2F518A3D19FEC86500A587D0 /* FacebookSDK.framework */,
+				2F518A3E19FEC86500A587D0 /* Firebase.framework */,
 				2FD0D76E19F9CD7500F19DF6 /* UIKit.framework */,
 				2FD0D76C19F9CD6D00F19DF6 /* CoreGraphics.framework */,
 				2FD0D76A19F9CD6500F19DF6 /* Foundation.framework */,
 				2FD0D76019F9855700F19DF6 /* CoreData.framework */,
 				2F018DEA19F0962800666586 /* libc++.dylib */,
 				2F018DE819F0961800666586 /* libicucore.dylib */,
-				2F4C192C19FD7F7A00A84C30 /* FacebookSDK.framework */,
-				2F018DE619F095D500666586 /* Firebase.framework */,
 				2F018DEC19F0963400666586 /* CFNetwork.framework */,
 				2F018DF019F0964C00666586 /* SystemConfiguration.framework */,
 				2F018DEE19F0963F00666586 /* Security.framework */,
@@ -239,8 +239,8 @@
 		2FD0D76919F9CCDA00F19DF6 /* ProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				2FD0D76619F9CCD300F19DF6 /* MBProgressHUD.h */,
-				2FD0D76719F9CCD300F19DF6 /* MBProgressHUD.m */,
+				2F518A4519FF2C8200A587D0 /* MBProgressHUD.h */,
+				2F518A4619FF2C8200A587D0 /* MBProgressHUD.m */,
 			);
 			name = ProgressHUD;
 			path = BoredRoomBingo;
@@ -362,8 +362,8 @@
 				2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */,
 				2FD0D76419F987C800F19DF6 /* NSStringAdditions.h in Sources */,
 				2FC383BD19FC84AD00B5B725 /* ForgotPasswordViewController.m in Sources */,
-				2FD0D76819F9CCD300F19DF6 /* MBProgressHUD.m in Sources */,
 				2F70F5C719FD81B200542D24 /* ErrorMessage.m in Sources */,
+				2F518A4719FF2C8200A587D0 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -489,8 +489,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/TomReinhart/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
+					"./**",
+					"$(PROJECT_DIR)/BoredRoomBingo",
 				);
 				INFOPLIST_FILE = BoredRoomBingo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -506,8 +507,9 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					/Users/TomReinhart/Documents/FacebookSDK,
 					"$(PROJECT_DIR)",
+					"./**",
+					"$(PROJECT_DIR)/BoredRoomBingo",
 				);
 				INFOPLIST_FILE = BoredRoomBingo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -523,6 +525,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/BoredRoomBingo",
+					"/Users/TomReinhart/Desktop/testGits/login-demo-ios/sdk",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -542,6 +546,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(PROJECT_DIR)/BoredRoomBingo",
+					"/Users/TomReinhart/Desktop/testGits/login-demo-ios/sdk",
 				);
 				INFOPLIST_FILE = BoredRoomBingoTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
