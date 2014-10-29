@@ -27,6 +27,8 @@
 		2F70F5E619FDBD3300542D24 /* LoginSignUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70F5E519FDBD3300542D24 /* LoginSignUpTests.m */; };
 		2F70F5EA19FDFE0A00542D24 /* HomeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70F5E919FDFE0A00542D24 /* HomeScreen.m */; };
 		2FC383BD19FC84AD00B5B725 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */; };
+		2FC56FD919FFFFD400BF3EF7 /* CurrentWordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC56FD819FFFFD400BF3EF7 /* CurrentWordsTableViewController.m */; };
+		2FC56FDD1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC56FDC1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m */; };
 		2FD0D76119F9855700F19DF6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76019F9855700F19DF6 /* CoreData.framework */; };
 		2FD0D76419F987C800F19DF6 /* NSStringAdditions.h in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D76319F987C800F19DF6 /* NSStringAdditions.h */; };
 		2FD0D76B19F9CD6500F19DF6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76A19F9CD6500F19DF6 /* Foundation.framework */; };
@@ -73,6 +75,10 @@
 		2F70F5E919FDFE0A00542D24 /* HomeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreen.m; sourceTree = "<group>"; };
 		2FC383BB19FC84AD00B5B725 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		2FC56FD719FFFFD400BF3EF7 /* CurrentWordsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentWordsTableViewController.h; sourceTree = "<group>"; };
+		2FC56FD819FFFFD400BF3EF7 /* CurrentWordsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentWordsTableViewController.m; sourceTree = "<group>"; };
+		2FC56FDB1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentWordsTableViewCell.h; sourceTree = "<group>"; };
+		2FC56FDC1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentWordsTableViewCell.m; sourceTree = "<group>"; };
 		2FD0D76019F9855700F19DF6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		2FD0D76319F987C800F19DF6 /* NSStringAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NSStringAdditions.h; path = ../NSStringAdditions.h; sourceTree = "<group>"; };
 		2FD0D76A19F9CD6500F19DF6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -159,8 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				2F05367919D9DBB400C14AF5 /* Main.storyboard */,
-				2F70F5E819FDFE0A00542D24 /* HomeScreen.h */,
-				2F70F5E919FDFE0A00542D24 /* HomeScreen.m */,
+				2FC56FDE1A000A6B00BF3EF7 /* Current Words Table */,
+				2FC56FDA19FFFFDD00BF3EF7 /* HomeScreen */,
 				2FD0D77319FAB7C300F19DF6 /* Alternate Login */,
 				2FC383BE19FC8E7200B5B725 /* ForgotPassword? */,
 				2F05367C19D9DBB400C14AF5 /* Images.xcassets */,
@@ -216,6 +222,26 @@
 				2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */,
 			);
 			name = "ForgotPassword?";
+			sourceTree = "<group>";
+		};
+		2FC56FDA19FFFFDD00BF3EF7 /* HomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				2F70F5E819FDFE0A00542D24 /* HomeScreen.h */,
+				2F70F5E919FDFE0A00542D24 /* HomeScreen.m */,
+			);
+			name = HomeScreen;
+			sourceTree = "<group>";
+		};
+		2FC56FDE1A000A6B00BF3EF7 /* Current Words Table */ = {
+			isa = PBXGroup;
+			children = (
+				2FC56FDB1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.h */,
+				2FC56FDC1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m */,
+				2FC56FD719FFFFD400BF3EF7 /* CurrentWordsTableViewController.h */,
+				2FC56FD819FFFFD400BF3EF7 /* CurrentWordsTableViewController.m */,
+			);
+			name = "Current Words Table";
 			sourceTree = "<group>";
 		};
 		2FD0D74A19F7619C00F19DF6 /* ErrorChecking */ = {
@@ -357,11 +383,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				2F70F5EA19FDFE0A00542D24 /* HomeScreen.m in Sources */,
+				2FC56FDD1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m in Sources */,
 				2F05367519D9DBB400C14AF5 /* AppDelegate.m in Sources */,
 				2F05367219D9DBB400C14AF5 /* main.m in Sources */,
 				2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */,
 				2FD0D76419F987C800F19DF6 /* NSStringAdditions.h in Sources */,
 				2FC383BD19FC84AD00B5B725 /* ForgotPasswordViewController.m in Sources */,
+				2FC56FD919FFFFD400BF3EF7 /* CurrentWordsTableViewController.m in Sources */,
 				2F70F5C719FD81B200542D24 /* ErrorMessage.m in Sources */,
 				2F518A4719FF2C8200A587D0 /* MBProgressHUD.m in Sources */,
 			);

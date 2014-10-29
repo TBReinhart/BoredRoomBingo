@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HomeScreen : UIViewController
+@interface HomeScreen : UIViewController <UITextFieldDelegate>
+@property (strong, nonatomic) IBOutlet UITextField *groupNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *addNewWordTextField;
+@property (strong, nonatomic) IBOutlet UITextField *listNameTextField;
+@property (strong, nonatomic) IBOutlet UISwitch *privatePublicSwitch;
+@property (nonatomic,strong) NSMutableArray *currentWords;
 
 @end

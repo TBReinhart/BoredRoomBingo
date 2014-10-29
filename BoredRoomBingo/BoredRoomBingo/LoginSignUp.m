@@ -117,10 +117,16 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
 -(void)setUserPrefs: (FAuthData *)authData {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:self.emailTextField.text forKey:@"email"];
-    NSString *usernameOfID = [NSString stringWithFormat:@"%@",authData.uid];
+    NSString *usernameOfID = [self parseString:authData.uid];
     [prefs setObject:usernameOfID forKey:@"username"]; // for now username is unique id
     [prefs setObject:authData.token forKey:@"authToken"];
     [prefs synchronize];
+}
+-(NSString *)parseString:(NSString *)mySimpleLogin {
+    NSArray *myWords = [mySimpleLogin componentsSeparatedByCharactersInSet:
+                        [NSCharacterSet characterSetWithCharactersInString:@":"]
+                        ];
+    return [NSString stringWithFormat:@"user%@",myWords[1]];
 }
 
 // catlan stackOF
