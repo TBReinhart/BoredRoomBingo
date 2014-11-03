@@ -151,26 +151,6 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     Firebase *newUserRef = [usersRef childByAppendingPath:[prefs stringForKey:@"username"]];
     [newUserRef setValue: userData];
 }
-//-(void)facebookLogin {
-//// Open a session showing the user the login UI
-//    [FBSession openActiveSessionWithReadPermissions:@[@"public_profile"] allowLoginUI:YES
-//                                  completionHandler:^(FBSession *session, FBSessionState state, NSError *error) {
-//                                      
-//                                      if (error) {
-//                                          NSLog(@"Facebook login failed. Error: %@", error);
-//                                      } else if (state == FBSessionStateOpen) {
-//                                          NSString *accessToken = session.accessTokenData.accessToken;
-//                                          [self.ref authWithOAuthProvider:@"facebook" token:accessToken
-//                                                      withCompletionBlock:^(NSError *error, FAuthData *authData) {
-//                                                          
-//                                                          if (error) {
-//                                                              NSLog(@"Login failed. %@", error);
-//                                                          } else {
-//                                                              NSLog(@"Logged in! %@", authData);
-//                                                          }
-//                                                      }];
-//                                      }
-//                                  }];
-//}
+
 
 @end

@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CurrentWordsTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UITextView *wordTextView;
+@property (strong, nonatomic) IBOutlet UILabel *aCurrentWordLabel;
+@property (strong, nonatomic) IBOutlet UIButton *xButton;
+
 
 @end

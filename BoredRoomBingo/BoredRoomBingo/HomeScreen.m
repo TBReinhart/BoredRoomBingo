@@ -58,9 +58,9 @@
     [listRef setValue: self.currentWords];
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    NSUInteger newLength = [textField.text length] + [string length] - range.length;
+    return (newLength > 19) ? NO : YES;
 }
 
 -(void)textFieldDidBeginEditing:(UITextField *)textField
@@ -72,18 +72,6 @@
 {
     [self animateTextField:textField up:NO];
 }
-- (void)registerForKeyboardNotifications
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWasShown:)
-                                                 name:UIKeyboardDidShowNotification object:nil];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillBeHidden:)
-                                                 name:UIKeyboardWillHideNotification object:nil];
-    
-}
-
 // Called when the UIKeyboardDidShowNotification is sent.
 - (void)keyboardWasShown:(NSNotification*)aNotification
 {
@@ -92,8 +80,7 @@
     NSLog(@"height is %f", kbSize.height);
     keyboardHeight = kbSize.height;
 }
--(void)animateTextField:(UITextField*)textField up:(BOOL)up
-{
+-(void)animateTextField:(UITextField*)textField up:(BOOL)up {
     const int movementDistance = -130; // tweak as needed
     
     const float movementDuration = 0.3f; // tweak as needed
@@ -106,15 +93,15 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
 }
-- (BOOL)shouldAutorotate
-{
-    return NO;
-}
-
-- (NSUInteger)supportedInterfaceOrientations
-{
-    return UIInterfaceOrientationMaskPortrait;
-}
+//- (BOOL)shouldAutorotate
+//{
+//   // return NO;
+//}
+//
+//- (NSUInteger)supportedInterfaceOrientations
+//{
+//    return UIInterfaceOrientationMaskPortrait;
+//}
 
 
 @end
