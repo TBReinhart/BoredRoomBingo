@@ -10,5 +10,4 @@
 
 @interface CurrentWordsTableViewController : UITableViewController
 -(void)setMyList:(NSMutableArray *)list;
-@property (nonatomic,strong) NSMutableArray *listOfWords;
 @end

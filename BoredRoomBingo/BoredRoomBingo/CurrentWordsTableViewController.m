@@ -19,7 +19,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"view did load %@", myList);
     myList = [[NSMutableArray alloc]init];
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.

@@ -51,10 +51,14 @@
     return YES;
 }
 - (IBAction)submitButtonPressed:(UIButton *)sender {
+
 }
 - (IBAction)saveListPressed:(UIButton *)sender {
-    Firebase *ref = [[Firebase alloc] initWithUrl:FIREBASE_URL];
-    Firebase *listRef = [ref childByAppendingPath: @"wordlists"];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *myUsername = [prefs stringForKey:@"username"];
+    NSString *url = [NSString stringWithFormat:@"%@users/%@/wordlists",FIREBASE_URL,myUsername];
+    Firebase *ref = [[Firebase alloc] initWithUrl:url];
+    Firebase *listRef = [ref childByAppendingPath: self.listNameTextField.text];
     [listRef setValue: self.currentWords];
 }
 
@@ -93,15 +97,7 @@
     self.view.frame = CGRectOffset(self.view.frame, 0, movement);
     [UIView commitAnimations];
 }
-//- (BOOL)shouldAutorotate
-//{
-//   // return NO;
-//}
-//
-//- (NSUInteger)supportedInterfaceOrientations
-//{
-//    return UIInterfaceOrientationMaskPortrait;
-//}
+
 
 
 @end
