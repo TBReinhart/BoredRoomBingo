@@ -9,6 +9,7 @@
 #import "HomeScreen.h"
 #import "config.h"
 #import "CurrentWordsTableViewController.h"
+#import "DetailArchiveWordlistTableViewController.h"
 @interface HomeScreen ()
 
 @end
@@ -17,11 +18,13 @@
 @implementation HomeScreen
 {
     CGFloat keyboardHeight;
+    NSString *selectedList;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.addNewWordTextField.delegate = self;
     self.currentWords = [[NSMutableArray alloc]init];
+    self.backgroundTap.delegate = self;
 
 }
 
@@ -98,6 +101,28 @@
     [UIView commitAnimations];
 }
 
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    if ([touch.view isDescendantOfView:self.view]) {
+        [self backgroundTap:nil];
+        return NO;
+    }
+    return YES;
+}
 
-
+-(void)setList:(NSString *)list {
+    selectedList = list;
+    NSLog(@"selected list is %@", selectedList);
+}
+-(NSString *)getList {
+    return selectedList;
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"selectListSegue"]) {
+        DetailArchiveWordlistTableViewController * childViewController = (DetailArchiveWordlistTableViewController *) [segue destinationViewController];
+        ArchivedWordListsTableViewController *tbc = (ArchivedWordListsTableViewController *)self.childViewControllers[0];
+        NSLog(@"tbc's detail %@", tbc.listToPass);
+        [childViewController setSelectedList:tbc.listToPass];
+    }
+}
 @end

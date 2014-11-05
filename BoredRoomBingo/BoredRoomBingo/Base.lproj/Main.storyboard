@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="E3F-LE-5uJ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nIb-y0-RPf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -247,6 +247,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="i9G-6g-qnd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-413" y="891"/>
+        </scene>
+        <!--Detail Archive Wordlist Table View Controller-->
+        <scene sceneID="tQw-rF-UjV">
+            <objects>
+                <tableViewController id="Nvm-my-yyu" customClass="DetailArchiveWordlistTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="9AR-we-1Kg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="selectWord" rowHeight="60" id="HPR-Vk-dao" customClass="SelectWordTableViewCell">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HPR-Vk-dao" id="w3P-vU-Zg7">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMp-9f-oXm">
+                                            <rect key="frame" x="541" y="15" width="51" height="30"/>
+                                            <state key="normal" title="remove">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RZ4-wO-X3p">
+                                            <rect key="frame" x="8" y="19" width="387" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="387" id="z3b-20-YwS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="RZ4-wO-X3p" secondAttribute="centerY" constant="0.25" id="IUW-iU-uyZ"/>
+                                        <constraint firstItem="RMp-9f-oXm" firstAttribute="centerY" secondItem="RZ4-wO-X3p" secondAttribute="centerY" constant="0.5" id="Zu8-Ru-5WU"/>
+                                        <constraint firstItem="RMp-9f-oXm" firstAttribute="trailing" secondItem="w3P-vU-Zg7" secondAttribute="trailingMargin" id="nYX-Um-WLd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="selectButton" destination="RMp-9f-oXm" id="beA-tG-jRG"/>
+                                    <outlet property="wordLabel" destination="RZ4-wO-X3p" id="naO-F8-8qe"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Nvm-my-yyu" id="Zer-Ir-XUF"/>
+                            <outlet property="delegate" destination="Nvm-my-yyu" id="qwd-PC-fUf"/>
+                        </connections>
+                    </tableView>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="grk-R5-3TZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="351" y="-705"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="DSc-Eb-3Ir">
@@ -550,39 +604,50 @@
                             </mask>
                         </variation>
                         <connections>
-                            <outletCollection property="gestureRecognizers" destination="AaA-9G-W2T" appends="YES" id="9jg-Ca-9jc"/>
+                            <outletCollection property="gestureRecognizers" destination="EKP-JB-eJF" appends="YES" id="4a8-Qc-o2e"/>
                         </connections>
                     </view>
                     <connections>
                         <outlet property="addNewWordTextField" destination="Qfe-l3-CbA" id="tSd-Oe-Hfb"/>
+                        <outlet property="backgroundTap" destination="EKP-JB-eJF" id="wC4-rm-uDO"/>
                         <outlet property="groupNameTextField" destination="jdK-tu-joe" id="WSl-bo-rW4"/>
                         <outlet property="listNameTextField" destination="P27-PQ-2xo" id="sqV-fe-o4f"/>
                         <outlet property="privatePublicSwitch" destination="6sO-R8-K5Z" id="akW-sc-elV"/>
+                        <segue destination="Nvm-my-yyu" kind="show" identifier="selectListSegue" id="0QL-gO-FHv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7x-Rs-yDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="AaA-9G-W2T">
+                <tapGestureRecognizer id="EKP-JB-eJF">
                     <connections>
-                        <action selector="backgroundTap:" destination="E3F-LE-5uJ" id="z2G-C2-gPF"/>
+                        <action selector="backgroundTap:" destination="E3F-LE-5uJ" id="7rR-82-AOd"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="351" y="-24"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Archived Word Lists Table View Controller-->
         <scene sceneID="iN7-xu-1yO">
             <objects>
-                <tableViewController id="tOg-ld-ETv" sceneMemberID="viewController">
+                <tableViewController id="tOg-ld-ETv" customClass="ArchivedWordListsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GtX-pm-0YV">
                         <rect key="frame" x="0.0" y="0.0" width="224" height="213"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rWP-yg-Hfl">
+                            <tableViewCell clearsContextBeforeDrawing="NO" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="wordlistCell" textLabel="gtP-67-FNE" style="IBUITableViewCellStyleDefault" id="rWP-yg-Hfl">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rWP-yg-Hfl" id="1me-Oj-hZB">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="List" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gtP-67-FNE">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="1" green="0.26077588979999999" blue="0.1316656152" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
@@ -716,6 +781,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="1b3-RG-KUo"/>
+        <segue reference="iZV-Rr-cq9"/>
     </inferredMetricsTieBreakers>
 </document>

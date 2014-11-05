@@ -9,6 +9,7 @@
 #import "LoginSignUp.h"
 #import <Firebase/Firebase.h>
 #import "config.h"
+#import "MBProgressHUD.h"
 
 #import <FacebookSDK/FacebookSDK.h>
 @implementation LoginSignUp
@@ -16,6 +17,11 @@
     [super viewDidLoad];
     [self.emailView setHidden:YES];
     [self.optionsView setHidden:NO];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *myUsername = [prefs stringForKey:@"username"];
+    if (myUsername != nil) {
+        [self performSegueWithIdentifier:@"loggedIn" sender:nil];
+    }
     
 }
 - (IBAction)emailPressed:(UIButton *)sender {
@@ -34,10 +40,12 @@
 
 - (IBAction)nextPressed:(UIButton *)sender {
     if (![self checkFields]) { return; }
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     Firebase *ref = [[Firebase alloc] initWithUrl:FIREBASE_URL];
     [ref authUser:self.emailTextField.text password:self.passwordTextField.text
 withCompletionBlock:^(NSError *error, FAuthData *authData) {
     if (error) {
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         // if password was invalid, but email wasn't. user exists but screwed up
         if (error.code == FAuthenticationErrorInvalidPassword) {
             NSLog(@"invalid password"); // password invalid or acct taken
@@ -52,6 +60,7 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
         NSLog(@"AUTH %@", authData);
         [self setUserPrefs:authData];
         [self postInitialUser];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self performSegueWithIdentifier:@"loggedIn" sender:nil];
     }
     }];

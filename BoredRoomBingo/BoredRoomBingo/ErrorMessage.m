@@ -14,6 +14,7 @@
 -(void)errorMessages:(NSError*)error {
     NSString *errorTitle;
     NSString *errorMessage;
+    NSLog(@"error is %@", error);
     switch(error.code) {
         case FAuthenticationErrorEmailTaken:
             errorTitle = @"Email Taken!";

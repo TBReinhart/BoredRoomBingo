@@ -56,8 +56,7 @@
     cell.aCurrentWordLabel.minimumScaleFactor = 8./cell.aCurrentWordLabel.font.pointSize;
     cell.aCurrentWordLabel.numberOfLines = 2;
     cell.aCurrentWordLabel.adjustsFontSizeToFitWidth = YES;
-    //[textViews setObject:cell.textView forKey:indexPath];
-    //[cell.textView setDelegate: self]; // Needed for step 3
+
     [cell.xButton addTarget:self action:@selector(deleteButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
 
     return cell;
