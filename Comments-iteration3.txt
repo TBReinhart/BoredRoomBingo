@@ -1,0 +1,18 @@
+You need a .gitignore, and you should not be committing .DS_Store files.
+
+Your documentation is very sparse. It might be okay for iteration 3 because of how heavily you're leaning on Firebase and Facebook's APIs, but it's definitely not enough for iteration 4.
+
+You have LoginSignUpTests.m in BoredRoomBingo instead of BoredRoomBingoTests, and what appears to be a useless file in BoredRoomBingoTests.
+
+You're going to need a lot more tests for iteration 4.
+
+I already mentioned the OCP violation in ErrorMessage.m, but I'm writing it here for future reference: since Firebase is going to give you an error code result, you have to do a case-out, but you should convert the result into objects as soon as possible in your application. It's not a big deal while your behavior is so simple, but by the next iteration, I hope you have more complicated error handling behavior, which will merit a refactoring.
+
+ErrorMessage.m seems to be duplicated. this is probably in error and should be fixed.
+
+I'd recommend against the horrific regex you use to validate emails.
+  c.f. http://www.mdswanson.com/blog/2013/10/14/how-not-to-validate-email-addresses.html
+
+Even if you do use it, it should not occur more than once in your source code (DRY violation). Consider an Email class to encapsulate and abstract email behavior such as validation and sending.
+
+Total Score: 93/100
