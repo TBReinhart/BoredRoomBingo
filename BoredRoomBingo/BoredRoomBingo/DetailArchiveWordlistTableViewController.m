@@ -138,7 +138,8 @@
     //[self.tableView reloadData];
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"donePressedSegue"]) {
+    if ([segue.identifier isEqualToString:@"unwindToHomeScreenSegue"]) {
+        NSLog(@"prep for seg");
         NSMutableArray *tempToSend = [[NSMutableArray alloc]init];
         for (int i = 0; i < [words count]; i++) {
             if ([[selectedWords objectAtIndex:i] boolValue]) {
@@ -151,9 +152,5 @@
         NSLog(@"segued");
     }
 }
-//- (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue {
-//    NSLog(@"in unwind");
-//    //nothing goes here
-//}
 
 @end
