@@ -31,15 +31,16 @@
     words = [[NSMutableArray alloc]init];
     [self getData];
     selectedWords = [[NSMutableArray alloc]init];
-    UIBarButtonItem *doneItem = [[UIBarButtonItem alloc]initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:self action:@selector(donePressed:)];
-    self.navigationItem.rightBarButtonItem= doneItem;
+    self.doneBarButton = [[UIBarButtonItem alloc]initWithTitle:@"DONE" style:UIBarButtonItemStyleDone target:self action:@selector(donePressed:)];
+    self.navigationItem.rightBarButtonItem= self.doneBarButton;
 }
 /**
  When You press OK/done to finish selecting current words. 
  needs to segue back to a VC with a current word list that includes all previous and new words
  */
 -(void)donePressed:(id)sender {
-    [self performSegueWithIdentifier:@"donePressedSegue" sender:self];
+    NSLog(@"done pressed");
+    [self performSegueWithIdentifier:@"unwindToHomeScreenSegue" sender:self];
 }
 /**
  Sets which VC will be used for use when fetching data and setting nav bar.
@@ -150,8 +151,9 @@
         NSLog(@"segued");
     }
 }
-- (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue {
-    //nothing goes here
-}
+//- (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue {
+//    NSLog(@"in unwind");
+//    //nothing goes here
+//}
 
 @end

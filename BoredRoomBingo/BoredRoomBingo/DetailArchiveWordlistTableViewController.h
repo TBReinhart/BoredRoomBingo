@@ -10,5 +10,5 @@
 
 @interface DetailArchiveWordlistTableViewController : UITableViewController
 -(void)setSelectedList:(NSString *)selectedList;
-- (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 @end

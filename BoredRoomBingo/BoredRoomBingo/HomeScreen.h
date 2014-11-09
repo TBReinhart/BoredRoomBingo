@@ -18,4 +18,5 @@
 -(void)setList:(NSString *)list;
 -(void)addToCurrentWords:(NSMutableArray *)wordsToAdd;
 @property (strong, nonatomic) NSMutableArray *arrayWithWordsToAdd;
+- (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue;
 @end

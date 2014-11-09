@@ -296,9 +296,20 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="mVI-hc-NWc">
+                        <barButtonItem key="rightBarButtonItem" title="DONE" id="W3Z-HV-omY">
+                            <connections>
+                                <segue destination="qIF-sP-LGf" kind="unwind" identifier="unwindToHomeScreenSegue" unwindAction="unwindToHomeScreen:" id="kPs-Y3-dfY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="doneBarButton" destination="W3Z-HV-omY" id="LIN-CS-d9T"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="grk-R5-3TZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="qIF-sP-LGf" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="357" y="-814"/>
         </scene>
