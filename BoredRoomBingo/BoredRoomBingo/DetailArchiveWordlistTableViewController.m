@@ -22,6 +22,9 @@
 
 @implementation DetailArchiveWordlistTableViewController
 
+/**
+ On Load set the nav title, fetch data, and set nav button
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = detailList;
@@ -31,31 +34,51 @@
     UIBarButtonItem *doneItem = [[UIBarButtonItem alloc]initWithTitle:@"OK" style:UIBarButtonItemStyleDone target:self action:@selector(donePressed:)];
     self.navigationItem.rightBarButtonItem= doneItem;
 }
+/**
+ When You press OK/done to finish selecting current words. 
+ needs to segue back to a VC with a current word list that includes all previous and new words
+ */
 -(void)donePressed:(id)sender {
     [self performSegueWithIdentifier:@"donePressedSegue" sender:self];
-    //[self.navigationController popViewControllerAnimated:YES];
 }
+/**
+ Sets which VC will be used for use when fetching data and setting nav bar.
+ */
 -(void)setSelectedList:(NSString *)selectedList {
     detailList = selectedList;
 }
+/**
+ Default
+ */
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+/**
+ Encode String to send to proper hyperlink. Can Refactor
+ */
 - (NSString*)encodeString:(NSString*)string
 {
     NSString *encodedString = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     return encodedString;
 }
+/**
+ Only one section of same things in table set.
+ */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
-
+/**
+ Sets number of rows 1:1 with number of words in list
+ */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return [words count];
 }
+/**
+ Uses Firebase to fetch data. will continually reload data to update real time.
+ */
 -(void)getData {
     // Get a reference to our posts
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -81,7 +104,10 @@
         NSLog(@"Cancel block %@", error.description);
     }];
 }
-
+/**
+ Determines what will be at each cell.
+ Sets row with a remove button and word from list
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"selectWord";
     SelectWordTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -94,6 +120,9 @@
     [cell.selectButton addTarget:self action:@selector(selectPressed:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
+/**
+ When you select or deselect a word to add to your current list
+ */
 -(void)selectPressed:(UIButton*)sender {
     
     BOOL n = NO;
@@ -121,6 +150,8 @@
         NSLog(@"segued");
     }
 }
-
+- (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue {
+    //nothing goes here
+}
 
 @end

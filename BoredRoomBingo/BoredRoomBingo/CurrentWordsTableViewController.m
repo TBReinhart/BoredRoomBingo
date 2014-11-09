@@ -16,7 +16,9 @@
 
 @implementation CurrentWordsTableViewController
 
-
+/**
+ On load do nothing. later need to make sure words stay in list even when going to select from previous list
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
     NSLog(@"view did load called");
@@ -28,7 +30,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/**
+ Set list. if null alloc list adnd set, else add unique words to list.
+ */
 -(void)setMyList:(NSMutableArray *)list {
     if (myList) {
         for (NSString *word in list) {
@@ -42,11 +46,16 @@
     }
    //[self.tableView reloadData];
 }
+/**
+ Only 1 section per cell
+ */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
-
+/** 
+ 1:1 word from list for each cell
+ */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     NSLog(@"count %ld", [myList count]);

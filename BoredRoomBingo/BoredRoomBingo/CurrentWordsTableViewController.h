@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CurrentWordsTableViewController : UITableViewController
--(void)setMyList:(NSMutableArray *)list;
+-(void)setMyList:(NSMutableArray *)list; ///< sets which list to set in current words
 @end

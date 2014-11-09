@@ -16,18 +16,22 @@
 }
 @end
 @implementation ArchivedWordListsTableViewController
-
+/**
+ On load get possible lists and display 
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     archivedLists = [[NSMutableArray alloc]init];
     [self getLists];
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/**
+ Get lists from firebase to select from your stored lists
+ */
 -(void)getLists {
     // Get a reference to our posts
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -47,19 +51,24 @@
     }];
 }
 
-#pragma mark - Table view data source
-
+/**
+ Only 1 section in table view
+ */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
-
+/**
+ Set 1:1 ratio of 1 list per cell
+ */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return [archivedLists count];
 }
 
-
+/**
+ Set row in each cell with a list to select from
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"wordlistCell" forIndexPath:indexPath];
     cell.textLabel.minimumScaleFactor = 8./cell.textLabel.font.pointSize;
@@ -68,12 +77,16 @@
     [[cell textLabel] setText:archivedLists[indexPath.row]];
     return cell;
 }
-
+/**
+ Disable moving rows 
+ */
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.
     return YES;
 }
-
+/** 
+ Select list to segue to list of words within selected list
+ */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HomeScreen *homeScreen = [[HomeScreen alloc]init];

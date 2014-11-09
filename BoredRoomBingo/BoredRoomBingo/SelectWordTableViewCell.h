@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SelectWordTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UILabel *wordLabel;
-@property (strong, nonatomic) IBOutlet UIButton *selectButton;
+@property (strong, nonatomic) IBOutlet UILabel *wordLabel; ///< Label for word from list
+@property (strong, nonatomic) IBOutlet UIButton *selectButton; ///< Button for selecting/deselecting for adding to current words
 
 @end

@@ -297,9 +297,6 @@
                     </tableView>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <segue destination="E3F-LE-5uJ" kind="show" identifier="donePressedSegue" id="AFH-SQ-xv6"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="grk-R5-3TZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -785,6 +782,5 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="iZV-Rr-cq9"/>
-        <segue reference="AFH-SQ-xv6"/>
     </inferredMetricsTieBreakers>
 </document>

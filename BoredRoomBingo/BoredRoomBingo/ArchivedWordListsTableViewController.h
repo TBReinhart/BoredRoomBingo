@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 @interface ArchivedWordListsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
-@property (strong, nonatomic) NSString *listToPass;
+@property (strong, nonatomic) NSString *listToPass; ///< String containing name of string to pass for load from firebase
 
 @end

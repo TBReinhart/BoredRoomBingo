@@ -10,4 +10,5 @@
 
 @interface DetailArchiveWordlistTableViewController : UITableViewController
 -(void)setSelectedList:(NSString *)selectedList;
+- (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue;
 @end
