@@ -34,18 +34,13 @@
     NSString *myUsername = [prefs stringForKey:@"username"];
     NSString *wordlistUrl = [NSString stringWithFormat:@"%@users/%@/wordlists",FIREBASE_URL,myUsername];
     Firebase *postsRef = [[Firebase alloc] initWithUrl: wordlistUrl];
-    // Attach a block to read the data at our posts reference
-
-    NSLog(@"archived list %@", archivedLists);
     [postsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
             [archivedLists removeAllObjects];
-            NSLog(@"keys are %@", [snapshot.value allKeys]);
             for (id list in [snapshot.value allKeys]) {
                 [archivedLists addObject:list];
             }
         }
-        NSLog(@"my list after is %@", archivedLists);
         [self.tableView reloadData];
     } withCancelBlock:^(NSError *error) {
         NSLog(@"Cancel block %@", error.description);
@@ -73,34 +68,6 @@
     [[cell textLabel] setText:archivedLists[indexPath.row]];
     return cell;
 }
-
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the item to be re-orderable.

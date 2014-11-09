@@ -10,6 +10,7 @@
 #import "config.h"
 #import "CurrentWordsTableViewController.h"
 #import "DetailArchiveWordlistTableViewController.h"
+
 @interface HomeScreen ()
 
 @end
@@ -23,9 +24,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.addNewWordTextField.delegate = self;
-    self.currentWords = [[NSMutableArray alloc]init];
+    if (self.currentWords == nil) {
+        self.currentWords = [[NSMutableArray alloc]init];
+    }
+    NSLog(@"array is %@", self.arrayWithWordsToAdd);
     self.backgroundTap.delegate = self;
-
+    [self addToCurrentWords:self.arrayWithWordsToAdd];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,8 +54,18 @@
     
     CurrentWordsTableViewController *tbc = (CurrentWordsTableViewController *)self.childViewControllers[1];
     [tbc setMyList:self.currentWords];
+    NSLog(@"just set list in textfield %@", self.currentWords);
     [tbc.tableView reloadData];
     return YES;
+}
+-(void)addToCurrentWords:(NSMutableArray *)wordsToAdd {
+    NSLog(@"words to add %@", wordsToAdd);
+    NSLog(@"child viewcontroller %@", (CurrentWordsTableViewController *)self.childViewControllers);
+    CurrentWordsTableViewController *tbc = [[CurrentWordsTableViewController alloc] init];
+    [tbc setMyList:wordsToAdd];
+    NSLog(@"refresh in add to current words");
+    
+    [tbc.tableView reloadData];
 }
 - (IBAction)submitButtonPressed:(UIButton *)sender {
 
@@ -123,6 +137,6 @@
         ArchivedWordListsTableViewController *tbc = (ArchivedWordListsTableViewController *)self.childViewControllers[0];
         NSLog(@"tbc's detail %@", tbc.listToPass);
         [childViewController setSelectedList:tbc.listToPass];
-    }
+    } 
 }
 @end

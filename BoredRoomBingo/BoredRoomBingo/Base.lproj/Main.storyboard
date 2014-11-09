@@ -297,10 +297,13 @@
                     </tableView>
                     <toolbarItems/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="E3F-LE-5uJ" kind="show" identifier="donePressedSegue" id="AFH-SQ-xv6"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="grk-R5-3TZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="351" y="-705"/>
+            <point key="canvasLocation" x="357" y="-814"/>
         </scene>
         <!--Item 1-->
         <scene sceneID="DSc-Eb-3Ir">
@@ -782,5 +785,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="iZV-Rr-cq9"/>
+        <segue reference="AFH-SQ-xv6"/>
     </inferredMetricsTieBreakers>
 </document>

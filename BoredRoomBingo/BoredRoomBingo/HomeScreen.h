@@ -17,4 +17,5 @@
 @property (strong, nonatomic) IBOutlet UITapGestureRecognizer *backgroundTap;
 -(void)setList:(NSString *)list;
 -(void)addToCurrentWords:(NSMutableArray *)wordsToAdd;
+@property (strong, nonatomic) NSMutableArray *arrayWithWordsToAdd;
 @end

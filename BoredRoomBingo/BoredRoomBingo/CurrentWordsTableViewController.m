@@ -19,8 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    myList = [[NSMutableArray alloc]init];
-    
+    NSLog(@"view did load called");
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -31,7 +30,17 @@
 }
 
 -(void)setMyList:(NSMutableArray *)list {
-    myList = list;
+    if (myList) {
+        for (NSString *word in list) {
+            if (![myList containsObject:word]) {
+                [myList addObject:word];
+            }
+        }
+    } else {
+        myList = [[NSMutableArray alloc]init];
+        myList = list;
+    }
+   //[self.tableView reloadData];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
@@ -40,6 +49,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
+    NSLog(@"count %ld", [myList count]);
     return [myList count];
 }
 /**
@@ -66,7 +76,6 @@
  */
 -(void)deleteButtonPressed:(UIButton*)sender {
     [myList removeObjectAtIndex:myList.count - sender.tag - 1];
-    NSLog(@"my array currently %@", myList);
     [self.tableView reloadData];
 }
 

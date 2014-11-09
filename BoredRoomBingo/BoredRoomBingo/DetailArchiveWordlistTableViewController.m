@@ -9,6 +9,7 @@
 #import "DetailArchiveWordlistTableViewController.h"
 #import "SelectWordTableViewCell.h"
 #import "CurrentWordsTableViewController.h"
+#import "HomeScreen.h"
 #import "config.h"
 #import <Firebase/Firebase.h>
 @interface DetailArchiveWordlistTableViewController ()
@@ -31,8 +32,8 @@
     self.navigationItem.rightBarButtonItem= doneItem;
 }
 -(void)donePressed:(id)sender {
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    [self performSegueWithIdentifier:@"donePressedSegue" sender:self];
+    //[self.navigationController popViewControllerAnimated:YES];
 }
 -(void)setSelectedList:(NSString *)selectedList {
     detailList = selectedList;
@@ -44,11 +45,8 @@
 - (NSString*)encodeString:(NSString*)string
 {
     NSString *encodedString = [string stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
     return encodedString;
 }
-#pragma mark - Table view data source
-
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
@@ -78,7 +76,6 @@
                 [selectedWords addObject:[NSNumber numberWithBool:b]];
             }
         }
-        
         [self.tableView reloadData];
     } withCancelBlock:^(NSError *error) {
         NSLog(@"Cancel block %@", error.description);
@@ -111,7 +108,18 @@
     //[self.tableView reloadData];
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+    if ([segue.identifier isEqualToString:@"donePressedSegue"]) {
+        NSMutableArray *tempToSend = [[NSMutableArray alloc]init];
+        for (int i = 0; i < [words count]; i++) {
+            if ([[selectedWords objectAtIndex:i] boolValue]) {
+                [tempToSend addObject:words[i]];
+            }
+        }
+        HomeScreen *controller = (HomeScreen *)segue.destinationViewController;
+        controller.arrayWithWordsToAdd = tempToSend;
+       // [controller addToCurrentWords:tempToSend];
+        NSLog(@"segued");
+    }
 }
 
 
