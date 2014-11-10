@@ -148,6 +148,7 @@
         }
         HomeScreen *controller = (HomeScreen *)segue.destinationViewController;
         controller.arrayWithWordsToAdd = tempToSend;
+        NSLog(@"temp %@", tempToSend);
        // [controller addToCurrentWords:tempToSend];
         NSLog(@"segued");
     }

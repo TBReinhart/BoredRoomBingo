@@ -24,7 +24,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.addNewWordTextField.delegate = self;
-    if (self.currentWords == nil) {
+    if (self.currentWords
+        == nil) {
         self.currentWords = [[NSMutableArray alloc]init];
     }
     NSLog(@"array is %@", self.arrayWithWordsToAdd);
@@ -51,7 +52,6 @@
     
     [self.currentWords addObject:self.addNewWordTextField.text];
     [self.addNewWordTextField setText:@""];
-    
     CurrentWordsTableViewController *tbc = (CurrentWordsTableViewController *)self.childViewControllers[1];
     [tbc setMyList:self.currentWords];
     NSLog(@"just set list in textfield %@", self.currentWords);
@@ -142,6 +142,14 @@
 // testing here
 - (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue {
     NSLog(@"in unwind");
+    NSLog(@"array %@",self.arrayWithWordsToAdd);
+    for (NSString *word in self.arrayWithWordsToAdd) {
+        [self.currentWords addObject:word];
+
+    }
+    CurrentWordsTableViewController *tbc = (CurrentWordsTableViewController *)self.childViewControllers[1];
+    [tbc setMyList:self.currentWords];
+    [tbc.tableView reloadData];
     //nothing goes here
 }
 @end
