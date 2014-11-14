@@ -14,7 +14,7 @@
     if ([wordList count] < 24) {
         // Error
     } else {
-        
+         
     }
 }
 
