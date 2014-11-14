@@ -10,7 +10,7 @@
 #import "config.h"
 #import "CurrentWordsTableViewController.h"
 #import "DetailArchiveWordlistTableViewController.h"
-
+#import "BingoBoardViewController.h"
 @interface HomeScreen ()
 
 @end
@@ -20,6 +20,7 @@
 {
     CGFloat keyboardHeight;
     NSString *selectedList;
+    NSString *uniqueID;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -68,7 +69,14 @@
     [tbc.tableView reloadData];
 }
 - (IBAction)submitButtonPressed:(UIButton *)sender {
-
+    NSString *url = [NSString stringWithFormat:@"%@game",FIREBASE_URL];
+    Firebase *ref = [[Firebase alloc] initWithUrl:url];
+    Firebase *post1Ref = [ref childByAutoId];
+    uniqueID = [NSString stringWithFormat:@"%@",post1Ref];
+    NSDictionary *gameName = @{@"gameName":self.groupNameTextField.text,
+                               @"list":self.currentWords};
+    [post1Ref setValue:gameName];
+    [self performSegueWithIdentifier:@"goToBoardSegue" sender:nil];
 }
 - (IBAction)saveListPressed:(UIButton *)sender {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -137,7 +145,13 @@
         ArchivedWordListsTableViewController *tbc = (ArchivedWordListsTableViewController *)self.childViewControllers[0];
         NSLog(@"tbc's detail %@", tbc.listToPass);
         [childViewController setSelectedList:tbc.listToPass];
-    } 
+    }
+    if ([segue.identifier isEqualToString:@"goToBoardSegue"]) {
+        BingoBoardViewController * bingoBoard = (BingoBoardViewController *)[segue destinationViewController];
+        [bingoBoard setBoardWords:self.currentWords];
+        bingoBoard.gameKey = uniqueID;
+
+    }
 }
 // testing here
 - (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue {

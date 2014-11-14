@@ -39,7 +39,6 @@
  needs to segue back to a VC with a current word list that includes all previous and new words
  */
 -(void)donePressed:(id)sender {
-    NSLog(@"done pressed");
     [self performSegueWithIdentifier:@"unwindToHomeScreenSegue" sender:self];
 }
 /**
@@ -139,7 +138,6 @@
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"unwindToHomeScreenSegue"]) {
-        NSLog(@"prep for seg");
         NSMutableArray *tempToSend = [[NSMutableArray alloc]init];
         for (int i = 0; i < [words count]; i++) {
             if ([[selectedWords objectAtIndex:i] boolValue]) {
@@ -148,9 +146,7 @@
         }
         HomeScreen *controller = (HomeScreen *)segue.destinationViewController;
         controller.arrayWithWordsToAdd = tempToSend;
-        NSLog(@"temp %@", tempToSend);
        // [controller addToCurrentWords:tempToSend];
-        NSLog(@"segued");
     }
 }
 

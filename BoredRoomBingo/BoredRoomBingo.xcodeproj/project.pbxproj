@@ -18,9 +18,12 @@
 		2F05367D19D9DBB400C14AF5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F05367C19D9DBB400C14AF5 /* Images.xcassets */; };
 		2F05368019D9DBB400C14AF5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F05367E19D9DBB400C14AF5 /* LaunchScreen.xib */; };
 		2F05368C19D9DBB400C14AF5 /* BoredRoomBingoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F05368B19D9DBB400C14AF5 /* BoredRoomBingoTests.m */; };
+		2F1B52EB1A16591300D91BE6 /* PublicGamesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F1B52EA1A16591300D91BE6 /* PublicGamesTableViewController.m */; };
 		2F2DB61A1A08590B00F98E23 /* ArchivedWordListsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2DB6191A08590B00F98E23 /* ArchivedWordListsTableViewController.m */; };
 		2F2DB61D1A0872EF00F98E23 /* DetailArchiveWordlistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2DB61C1A0872EF00F98E23 /* DetailArchiveWordlistTableViewController.m */; };
 		2F2DB6201A09532300F98E23 /* SelectWordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F2DB61F1A09532300F98E23 /* SelectWordTableViewCell.m */; };
+		2F423F2B1A1074810003DBAA /* BingoBoardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F423F2A1A1074810003DBAA /* BingoBoardViewController.m */; };
+		2F423F2E1A1078040003DBAA /* bingoBoard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2F423F2D1A1078040003DBAA /* bingoBoard.jpg */; };
 		2F518A3F19FEC86500A587D0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F518A3D19FEC86500A587D0 /* FacebookSDK.framework */; };
 		2F518A4019FEC86500A587D0 /* Firebase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F518A3E19FEC86500A587D0 /* Firebase.framework */; };
 		2F518A4119FECA4E00A587D0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F518A3D19FEC86500A587D0 /* FacebookSDK.framework */; };
@@ -67,12 +70,17 @@
 		2F05368519D9DBB400C14AF5 /* BoredRoomBingoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoredRoomBingoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F05368A19D9DBB400C14AF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2F05368B19D9DBB400C14AF5 /* BoredRoomBingoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BoredRoomBingoTests.m; sourceTree = "<group>"; };
+		2F1B52E91A16591300D91BE6 /* PublicGamesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PublicGamesTableViewController.h; sourceTree = "<group>"; };
+		2F1B52EA1A16591300D91BE6 /* PublicGamesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PublicGamesTableViewController.m; sourceTree = "<group>"; };
 		2F2DB6181A08590B00F98E23 /* ArchivedWordListsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivedWordListsTableViewController.h; sourceTree = "<group>"; };
 		2F2DB6191A08590B00F98E23 /* ArchivedWordListsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivedWordListsTableViewController.m; sourceTree = "<group>"; };
 		2F2DB61B1A0872EF00F98E23 /* DetailArchiveWordlistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailArchiveWordlistTableViewController.h; sourceTree = "<group>"; };
 		2F2DB61C1A0872EF00F98E23 /* DetailArchiveWordlistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailArchiveWordlistTableViewController.m; sourceTree = "<group>"; };
 		2F2DB61E1A09532300F98E23 /* SelectWordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectWordTableViewCell.h; sourceTree = "<group>"; };
 		2F2DB61F1A09532300F98E23 /* SelectWordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectWordTableViewCell.m; sourceTree = "<group>"; };
+		2F423F291A1074810003DBAA /* BingoBoardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BingoBoardViewController.h; sourceTree = "<group>"; };
+		2F423F2A1A1074810003DBAA /* BingoBoardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BingoBoardViewController.m; sourceTree = "<group>"; };
+		2F423F2D1A1078040003DBAA /* bingoBoard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bingoBoard.jpg; sourceTree = "<group>"; };
 		2F518A3D19FEC86500A587D0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = BoredRoomBingo/FacebookSDK.framework; sourceTree = "<group>"; };
 		2F518A3E19FEC86500A587D0 /* Firebase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Firebase.framework; path = BoredRoomBingo/Firebase.framework; sourceTree = "<group>"; };
 		2F518A4519FF2C8200A587D0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -174,12 +182,15 @@
 			isa = PBXGroup;
 			children = (
 				2F05367919D9DBB400C14AF5 /* Main.storyboard */,
+				2F1B52EC1A16591B00D91BE6 /* Public Games */,
 				2FC56FDE1A000A6B00BF3EF7 /* Current Words Table */,
 				2F2DB6171A0856E700F98E23 /* Archived List */,
 				2FC56FDA19FFFFDD00BF3EF7 /* HomeScreen */,
+				2F423F2C1A10748A0003DBAA /* Board */,
 				2FD0D77319FAB7C300F19DF6 /* Alternate Login */,
 				2FC383BE19FC8E7200B5B725 /* ForgotPassword? */,
 				2F05367C19D9DBB400C14AF5 /* Images.xcassets */,
+				2F423F2D1A1078040003DBAA /* bingoBoard.jpg */,
 				2F05367E19D9DBB400C14AF5 /* LaunchScreen.xib */,
 			);
 			path = BoredRoomBingo;
@@ -217,6 +228,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2F1B52EC1A16591B00D91BE6 /* Public Games */ = {
+			isa = PBXGroup;
+			children = (
+				2F1B52E91A16591300D91BE6 /* PublicGamesTableViewController.h */,
+				2F1B52EA1A16591300D91BE6 /* PublicGamesTableViewController.m */,
+			);
+			name = "Public Games";
+			sourceTree = "<group>";
+		};
 		2F2DB6171A0856E700F98E23 /* Archived List */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +248,15 @@
 				2F2DB61F1A09532300F98E23 /* SelectWordTableViewCell.m */,
 			);
 			name = "Archived List";
+			sourceTree = "<group>";
+		};
+		2F423F2C1A10748A0003DBAA /* Board */ = {
+			isa = PBXGroup;
+			children = (
+				2F423F291A1074810003DBAA /* BingoBoardViewController.h */,
+				2F423F2A1A1074810003DBAA /* BingoBoardViewController.m */,
+			);
+			name = Board;
 			sourceTree = "<group>";
 		};
 		2F70F5E719FDBD3B00542D24 /* Test Cases */ = {
@@ -385,6 +414,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2F423F2E1A1078040003DBAA /* bingoBoard.jpg in Resources */,
 				2F05367B19D9DBB400C14AF5 /* Main.storyboard in Resources */,
 				2F05368019D9DBB400C14AF5 /* LaunchScreen.xib in Resources */,
 				2F05367D19D9DBB400C14AF5 /* Images.xcassets in Resources */,
@@ -411,11 +441,13 @@
 				2F05367519D9DBB400C14AF5 /* AppDelegate.m in Sources */,
 				2F05367219D9DBB400C14AF5 /* main.m in Sources */,
 				2F2DB6201A09532300F98E23 /* SelectWordTableViewCell.m in Sources */,
+				2F1B52EB1A16591300D91BE6 /* PublicGamesTableViewController.m in Sources */,
 				2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */,
 				2FD0D76419F987C800F19DF6 /* NSStringAdditions.h in Sources */,
 				2FC383BD19FC84AD00B5B725 /* ForgotPasswordViewController.m in Sources */,
 				2FC56FD919FFFFD400BF3EF7 /* CurrentWordsTableViewController.m in Sources */,
 				2F70F5C719FD81B200542D24 /* ErrorMessage.m in Sources */,
+				2F423F2B1A1074810003DBAA /* BingoBoardViewController.m in Sources */,
 				2F518A4719FF2C8200A587D0 /* MBProgressHUD.m in Sources */,
 				2F2DB61A1A08590B00F98E23 /* ArchivedWordListsTableViewController.m in Sources */,
 			);
