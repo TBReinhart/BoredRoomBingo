@@ -18,13 +18,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    NSLog(@"list %@", self.boardWords);
     [self selectBoardWords];
     // Do any additional setup after loading the view.
     
 }
 -(void)selectBoardWords {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *wordlistUrl = [NSString stringWithFormat:@"%@",self.gameKey];
     NSLog(@"word list %@", wordlistUrl);
     Firebase *postsRef = [[Firebase alloc] initWithUrl: wordlistUrl];

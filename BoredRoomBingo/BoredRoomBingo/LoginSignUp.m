@@ -59,7 +59,7 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     } else {
         NSLog(@"AUTH %@", authData);
         [self setUserPrefs:authData];
-        [self postInitialUser];
+        //[self postInitialUser];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         [self performSegueWithIdentifier:@"loggedIn" sender:nil];
     }
@@ -100,6 +100,7 @@ withCompletionBlock:^(NSError *error) {
         [self displayError:error];
     } else {
         // firebase doesn't log in after creating... so have to log in now
+        [self postInitialUser];
         [self standardLogin];
     }
 }];
@@ -110,6 +111,9 @@ withCompletionBlock:^(NSError *error) {
     ErrorMessage *errorAlert = [[ErrorMessage alloc]init];
     [errorAlert errorMessages:error];
 }
+/**
+ TODO: throw up some javadocs bro
+ */
 -(void)standardLogin {
     Firebase *ref = [[Firebase alloc] initWithUrl:FIREBASE_URL];
     [ref authUser:self.emailTextField.text password:self.passwordTextField.text
@@ -118,7 +122,7 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
         [self displayError:error];
     } else {
         [self setUserPrefs:authData];
-        [self postInitialUser];
+        // [self postInitialUser];
         [self performSegueWithIdentifier:@"loggedIn" sender:nil];
     }
 }];
@@ -154,10 +158,10 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
 }
 -(void)postInitialUser {
     NSDictionary *userData = @{ @"email": self.emailTextField.text };
-    Firebase *ref = [[Firebase alloc] initWithUrl:FIREBASE_URL];
-    Firebase *usersRef = [ref childByAppendingPath: @"users"];
+    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@users", FIREBASE_URL]];
+    //Firebase *usersRef = [ref childByAppendingPath: @"users"];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    Firebase *newUserRef = [usersRef childByAppendingPath:[prefs stringForKey:@"username"]];
+    Firebase *newUserRef = [ref childByAppendingPath:[prefs stringForKey:@"username"]];
     [newUserRef setValue: userData];
 }
 

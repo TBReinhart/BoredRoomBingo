@@ -41,6 +41,7 @@
 		2FD0D76D19F9CD6D00F19DF6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76C19F9CD6D00F19DF6 /* CoreGraphics.framework */; };
 		2FD0D76F19F9CD7500F19DF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76E19F9CD7500F19DF6 /* UIKit.framework */; };
 		2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D77119FAB45200F19DF6 /* LoginSignUp.m */; };
+		2FF5B5101A16A10E00A3A196 /* BoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5B50F1A16A10E00A3A196 /* BoardModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,8 @@
 		2FD0D77019FAB45200F19DF6 /* LoginSignUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSignUp.h; sourceTree = "<group>"; };
 		2FD0D77119FAB45200F19DF6 /* LoginSignUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSignUp.m; sourceTree = "<group>"; };
 		2FE8CE0B19F0B2BA000BDF29 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		2FF5B50E1A16A10E00A3A196 /* BoardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardModel.h; sourceTree = "<group>"; };
+		2FF5B50F1A16A10E00A3A196 /* BoardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				2F05367919D9DBB400C14AF5 /* Main.storyboard */,
+				2FF5B50E1A16A10E00A3A196 /* BoardModel.h */,
+				2FF5B50F1A16A10E00A3A196 /* BoardModel.m */,
 				2F1B52EC1A16591B00D91BE6 /* Public Games */,
 				2FC56FDE1A000A6B00BF3EF7 /* Current Words Table */,
 				2F2DB6171A0856E700F98E23 /* Archived List */,
@@ -435,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FF5B5101A16A10E00A3A196 /* BoardModel.m in Sources */,
 				2F70F5EA19FDFE0A00542D24 /* HomeScreen.m in Sources */,
 				2F2DB61D1A0872EF00F98E23 /* DetailArchiveWordlistTableViewController.m in Sources */,
 				2FC56FDD1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m in Sources */,
