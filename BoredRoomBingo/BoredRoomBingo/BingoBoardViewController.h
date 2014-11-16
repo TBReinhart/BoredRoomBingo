@@ -10,7 +10,7 @@
 /**
  View and controller for the bingo board where we play the game.
  */
-@interface BingoBoardViewController : UIViewController
+@interface BingoBoardViewController : UIViewController <UIAlertViewDelegate>
 
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *boardButton; ///< Collection of all board buttons.
 @property (nonatomic,strong) NSMutableArray *boardWords; ///< Array containing all words on board.

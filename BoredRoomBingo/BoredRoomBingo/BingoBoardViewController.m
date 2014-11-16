@@ -53,6 +53,7 @@
     for (UIButton *button in self.boardButton) {
         button.tag = counter;
         NSString *title = randomList[counter];
+        NSLog(@"%zd:%@",button.tag,title);
         [button setTitle:title forState:UIControlStateNormal];
         counter++;
         button.titleLabel.minimumScaleFactor= 5./button.titleLabel.font.pointSize;
@@ -70,6 +71,41 @@
 -(IBAction)boardButtonPressed:(id)sender {
     [sender setAlpha:30];
     [sender setEnabled:NO];
+    // freespace should be at index 12.
+    NSInteger index = [sender tag];
+    
+//    if (index >= 12 && index) {
+//        index++;
+//    }
+    
+    NSInteger row = index/5;
+    NSInteger column = index % 5;
+    
+    NSLog(@"(%lld, %lld) is index %zd", row, column, index);
+    [model wordToggledatLocation:row withColumn:column];
+    if ([model checkForWin]) {
+        [self gameOver];
+    }
+}
+/**
+ Determine if create account was tapped or if cancel tapped.
+ */
+- (void)alertView:(UIAlertView *)alertView
+didDismissWithButtonIndex:(NSInteger) buttonIndex
+{
+    if (buttonIndex == 0) {
+        NSLog(@"0");
+    } else if (buttonIndex == 1) {
+        [self performSegueWithIdentifier:@"unwindToHomeScreenSegue" sender:self];
+    }
+}
+/**
+ Alert that game was won!
+ */
+-(void)gameOver {
+    UIAlertView *winAlert = [[UIAlertView alloc] initWithTitle:@"Game Over!" message:@"Someone won the game!" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    [winAlert addButtonWithTitle:@"Ok!"];
+    [winAlert show];
 }
 /*
 #pragma mark - Navigation

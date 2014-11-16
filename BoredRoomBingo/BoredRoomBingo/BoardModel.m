@@ -46,12 +46,14 @@
 -(void)randomizeList:(NSMutableArray *)fullList {
     NSUInteger randomIndex;
     self.randomList = [[NSMutableArray alloc]initWithCapacity:ROWS*COLUMNS];
-    for (int i = 0; i < (ROWS*COLUMNS) - 1; i++) {
+    for (int i = 0; i < (ROWS*COLUMNS - 1); i++) {
         randomIndex = arc4random() % [fullList count];
         [self.randomList addObject:[fullList objectAtIndex:randomIndex]];
         [fullList removeObjectAtIndex:randomIndex];
     }
-  //  [self.randomList insertObject:@"free" atIndex:12 ];
+    [self setUpGrids];
+    [self.randomList insertObject:@"BORED ROOM" atIndex:12];
+    NSLog(@"my random list %@", self.randomList);
     // TODO select a different way to add free to list of words 
 }
 /**
@@ -60,11 +62,9 @@
 -(instancetype)initBoardModel:(NSString *)gameKey withFullList:(NSMutableArray *)fullList {
     boolGrid = [[NSMutableArray alloc]initWithCapacity:ROWS];
     for (int i = 0; i < COLUMNS; i++) {
-        boolGrid[i] = [[NSMutableArray alloc]initWithCapacity:COLUMNS]  ;
+        [boolGrid setObject:[[NSMutableArray alloc]initWithCapacity:COLUMNS] atIndexedSubscript:i];
     }
-    
     [self randomizeList:fullList];
-
     return self;
 }
 
@@ -72,7 +72,16 @@
     return self.randomList;
 }
 
+-(void)wordToggledatLocation:(NSInteger)row withColumn:(NSInteger)column {
+    NSLog(@"in toggle(%zd, %zd)", row, column);
+    NSLog(@"%@" , boolGrid[row]);
+    [[boolGrid objectAtIndex:row] replaceObjectAtIndex:column withObject:@YES];
+    
+}
 
+-(NSMutableArray *)getBoolGrid {
+    return boolGrid;
+}
 
 /**
  Checks for winning row on board.
@@ -81,7 +90,7 @@
     BOOL rowValid = YES;
     for (int i = 0; i < ROWS; i++) {
         for (int j = 0; j < COLUMNS; j++) {
-            if (!boolGrid[i][j]) {
+            if ([boolGrid[i][j] isEqual:@NO]) {
                 rowValid = NO;
                 break;
             }
@@ -103,7 +112,8 @@
     BOOL columnValid = YES;
     for (int j = 0; j < COLUMNS; j++) {
         for (int i = 0; i < ROWS; i++) {
-            if (!boolGrid[i][j]) {
+            NSLog(@"in winCol (%zd, %zd) : %zd", i, j,[boolGrid[i][j] isEqual:@YES]);
+            if ([boolGrid[i][j] isEqual:@NO]) {
                 columnValid = NO;
                 break;
             }
@@ -124,10 +134,10 @@
     BOOL d1Valid = YES;
     BOOL d2Valid = YES;
     for (int j = 0; j < COLUMNS; j++) {
-        if (!boolGrid[j][j]) {
+        if ([boolGrid[j][j] isEqual: @NO]) {
             d1Valid = NO;
         }
-        if (!boolGrid[j][COLUMNS - j - 1]) {
+        if ([boolGrid[j][COLUMNS - j - 1] isEqual: @NO]) {
             d2Valid = NO;
         }
     }
@@ -138,6 +148,9 @@
  Checks to see if there is a win condition on the board.
  */
 -(BOOL)checkForWin {
+    NSLog(@"col %lo", [self checkForWinColumn]);
+    NSLog(@"row %lo", [self checkForWinRow]);
+    NSLog(@"diag %lo", [self checkForWinDiagonal]);
     return [self checkForWinColumn] || [self checkForWinDiagonal] || [self checkForWinRow];
 }
 

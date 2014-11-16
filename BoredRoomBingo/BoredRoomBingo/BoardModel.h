@@ -15,9 +15,12 @@ static const int COLUMNS = 5 ;
 /**
  Model for the bingo board game.
  */
-@interface BoardModel : NSObject
+@interface BoardModel : NSObject 
 @property (nonatomic,strong) NSMutableArray *boolBoard; ///< Grid of booleans that determine which space occupied.
 -(NSMutableArray *)getRandomList;
 -(instancetype)initBoardModel:(NSString *)gameKey withFullList:(NSMutableArray *)fullList;
+-(NSMutableArray *)getBoolGrid;
+-(void)wordToggledatLocation:(NSInteger)row withColumn:(NSInteger)column;
+-(BOOL)checkForWin;
 @property (nonatomic, strong) NSMutableArray *randomList;
 @end
