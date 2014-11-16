@@ -31,11 +31,14 @@
  Initialize grids of words and booleans.
  */
 -(void)setUpGrids {
-    for (int i = 0; i < ROWS * COLUMNS; i++) {
-        boolGrid[i] = @NO;
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLUMNS; j++) {
+            boolGrid[i][j] = @NO;
+        }
     }
-    boolGrid[(ROWS*COLUMNS)/2] = @YES;
+    boolGrid[ROWS/2][COLUMNS/2] = @YES;
 }
+
 /**
  randomize list of words to use from pool of all words
  once select word to put on board, remove from total words and decrease count to find new random.
@@ -55,7 +58,11 @@
  Get pool of words from firebase 
  */
 -(instancetype)initBoardModel:(NSString *)gameKey withFullList:(NSMutableArray *)fullList {
-    boolGrid = [[NSMutableArray alloc]initWithCapacity:ROWS*COLUMNS];
+    boolGrid = [[NSMutableArray alloc]initWithCapacity:ROWS];
+    for (int i = 0; i < COLUMNS; i++) {
+        boolGrid[i] = [[NSMutableArray alloc]initWithCapacity:COLUMNS]  ;
+    }
+    
     [self randomizeList:fullList];
 
     return self;
@@ -64,4 +71,74 @@
 -(NSMutableArray *)getRandomList {
     return self.randomList;
 }
+
+
+
+/**
+ Checks for winning row on board.
+ */
+-(BOOL)checkForWinRow {
+    BOOL rowValid = YES;
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLUMNS; j++) {
+            if (!boolGrid[i][j]) {
+                rowValid = NO;
+                break;
+            }
+        }
+        if (rowValid) {
+            return YES;
+        } else {
+            rowValid = YES;
+        }
+    }
+    return NO;
+}
+
+
+/**
+ Checks for winning column on board.
+ */
+-(BOOL)checkForWinColumn {
+    BOOL columnValid = YES;
+    for (int j = 0; j < COLUMNS; j++) {
+        for (int i = 0; i < ROWS; i++) {
+            if (!boolGrid[i][j]) {
+                columnValid = NO;
+                break;
+            }
+        }
+        if (columnValid) {
+            return YES;
+        } else {
+            columnValid = YES;
+        }
+    }
+    return NO;
+}
+
+/**
+ Checks for winning diagonal on board.
+ */
+-(BOOL)checkForWinDiagonal {
+    BOOL d1Valid = YES;
+    BOOL d2Valid = YES;
+    for (int j = 0; j < COLUMNS; j++) {
+        if (!boolGrid[j][j]) {
+            d1Valid = NO;
+        }
+        if (!boolGrid[j][COLUMNS - j - 1]) {
+            d2Valid = NO;
+        }
+    }
+    return d1Valid || d2Valid;
+}
+
+/**
+ Checks to see if there is a win condition on the board.
+ */
+-(BOOL)checkForWin {
+    return [self checkForWinColumn] || [self checkForWinDiagonal] || [self checkForWinRow];
+}
+
 @end
