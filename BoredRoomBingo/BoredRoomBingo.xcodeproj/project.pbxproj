@@ -163,7 +163,6 @@
 			children = (
 				2F05366E19D9DBB400C14AF5 /* BoredRoomBingo */,
 				2FD0D74A19F7619C00F19DF6 /* ErrorChecking */,
-				2F70F5E719FDBD3B00542D24 /* Test Cases */,
 				2F05366F19D9DBB400C14AF5 /* Supporting Files */,
 				2FD0D76919F9CCDA00F19DF6 /* ProgressHUD */,
 				2F05368819D9DBB400C14AF5 /* BoredRoomBingoTests */,
@@ -217,6 +216,7 @@
 		2F05368819D9DBB400C14AF5 /* BoredRoomBingoTests */ = {
 			isa = PBXGroup;
 			children = (
+				2F70F5E719FDBD3B00542D24 /* Test Cases */,
 				2F05368B19D9DBB400C14AF5 /* BoredRoomBingoTests.m */,
 				2F05368919D9DBB400C14AF5 /* Supporting Files */,
 			);
@@ -270,6 +270,7 @@
 				2F70F5E519FDBD3300542D24 /* LoginSignUpTests.m */,
 			);
 			name = "Test Cases";
+			path = ..;
 			sourceTree = "<group>";
 		};
 		2FC383BE19FC8E7200B5B725 /* ForgotPassword? */ = {

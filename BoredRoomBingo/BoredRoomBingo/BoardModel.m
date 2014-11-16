@@ -66,17 +66,22 @@
     [self randomizeList:fullList];
     return self;
 }
-
+/**
+ Returns random list of words.
+ */
 -(NSMutableArray *)getRandomList {
     return self.randomList;
 }
-
+/**
+ Toggles the boolean grid at location.
+ */
 -(void)wordToggledatLocation:(NSInteger)row withColumn:(NSInteger)column {
-    NSLog(@"%@" , boolGrid[row]);
     [[boolGrid objectAtIndex:row] replaceObjectAtIndex:column withObject:@YES];
     
 }
-
+/**
+ Returns the boolean grid of checked tiles.
+ */
 -(NSMutableArray *)getBoolGrid {
     return boolGrid;
 }

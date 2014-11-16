@@ -14,5 +14,4 @@
 
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField; ///< The field where user enters email
 @property (strong, nonatomic) IBOutlet UIButton *sendEmailButton; ///< The button that sends password reset
-
 @end

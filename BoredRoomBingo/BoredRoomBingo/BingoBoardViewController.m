@@ -70,11 +70,7 @@
     [sender setEnabled:NO];
     // freespace should be at index 12.
     NSInteger index = [sender tag];
-    
-//    if (index >= 12 && index) {
-//        index++;
-//    }
-    
+
     NSInteger row = index/5;
     NSInteger column = index % 5;
     [model wordToggledatLocation:row withColumn:column];

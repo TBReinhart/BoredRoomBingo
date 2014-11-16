@@ -22,5 +22,5 @@ static const int COLUMNS = 5 ;
 -(NSMutableArray *)getBoolGrid;
 -(void)wordToggledatLocation:(NSInteger)row withColumn:(NSInteger)column;
 -(BOOL)checkForWin;
-@property (nonatomic, strong) NSMutableArray *randomList;
+@property (nonatomic, strong) NSMutableArray *randomList; ///< List of random words for board.
 @end

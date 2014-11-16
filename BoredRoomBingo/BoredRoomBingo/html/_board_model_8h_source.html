@@ -96,16 +96,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> ROWS = 5 ;</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">int</span> COLUMNS = 5 ;</div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="interface_board_model.html">   18</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_board_model.html">BoardModel</a> : NSObject</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="interface_board_model.html">   18</a></span>&#160;<span class="keyword">@interface </span><a class="code" href="interface_board_model.html">BoardModel</a> : NSObject </div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="interface_board_model.html#a7c63e201829243984f5b4356d76259be">   19</a></span>&#160;<span class="keyword">@property</span> (nonatomic,strong) NSMutableArray *<a class="code" href="interface_board_model.html#a7c63e201829243984f5b4356d76259be">boolBoard</a>; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;-(void)initBoard:(NSMutableArray *)wordList;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;-(NSMutableArray *)getRandomList;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;-(instancetype)initBoardModel:(NSString *)gameKey withFullList:(NSMutableArray *)fullList;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;-(NSMutableArray *)getBoolGrid;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;-(void)wordToggledatLocation:(NSInteger)row withColumn:(NSInteger)column;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;-(BOOL)checkForWin;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="interface_board_model.html#a5a0e52c2bf6346dcaa464039212047b9">   25</a></span>&#160;<span class="keyword">@property</span> (nonatomic, strong) NSMutableArray *<a class="code" href="interface_board_model.html#a5a0e52c2bf6346dcaa464039212047b9">randomList</a>; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">@end</span></div>
+<div class="ttc" id="interface_board_model_html_a5a0e52c2bf6346dcaa464039212047b9"><div class="ttname"><a href="interface_board_model.html#a5a0e52c2bf6346dcaa464039212047b9">BoardModel::randomList</a></div><div class="ttdeci">NSMutableArray * randomList</div><div class="ttdoc">List of random words for board. </div><div class="ttdef"><b>Definition:</b> BoardModel.h:25</div></div>
 <div class="ttc" id="interface_board_model_html"><div class="ttname"><a href="interface_board_model.html">BoardModel</a></div><div class="ttdef"><b>Definition:</b> BoardModel.h:18</div></div>
 <div class="ttc" id="interface_board_model_html_a7c63e201829243984f5b4356d76259be"><div class="ttname"><a href="interface_board_model.html#a7c63e201829243984f5b4356d76259be">BoardModel::boolBoard</a></div><div class="ttdeci">NSMutableArray * boolBoard</div><div class="ttdoc">Grid of booleans that determine which space occupied. </div><div class="ttdef"><b>Definition:</b> BoardModel.h:19</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Nov 15 2014 15:55:39 for Bored Room Bingo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 16 2014 00:20:14 for Bored Room Bingo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

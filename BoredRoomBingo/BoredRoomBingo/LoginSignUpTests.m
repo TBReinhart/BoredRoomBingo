@@ -10,6 +10,7 @@
 #import <XCTest/XCTest.h>
 #import "LoginSignUp.h"
 #import "config.h"
+#import "BoardModel.h"
 #import <Firebase/Firebase.h>
 @interface LoginSignUpTests : XCTestCase
 
@@ -59,10 +60,8 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     NSLog(@"ref is %@", ref);
     [ref authUser:@"ian@brb.com" password:@"badPassword"
 withCompletionBlock:^(NSError *error, FAuthData *authData) {
-    
     if (error.code == FAuthenticationErrorInvalidPassword) {
-        NSLog(@"error: %@",error);
-        XCTAssert(YES, @"Wrong Password");
+        XCTAssert(YES, @"Bad Login");
         // There was an error logging in to this account
     } else {
         XCTFail(@"password wasn't incorrect!");
@@ -146,6 +145,121 @@ withCompletionBlock:^(NSError *error) {
                                                  }];
                                       }
                                   }];
+}
+-(void)testRepeatWords {
+    
+}
+-(void)testRowWin {
+    NSMutableArray *list = [[NSMutableArray alloc]init];
+    for (int i = 0; i < ROWS * COLUMNS; i++) {
+        [list addObject:[NSString stringWithFormat:@"%zd",i]];
+    }
+    BoardModel *model = [[BoardModel alloc]initBoardModel:@"test" withFullList:list];
+    for (int col = 0; col < COLUMNS; col++) {
+        [model wordToggledatLocation:0 withColumn:col];
+    }
+    if ([model checkForWin]) {
+        XCTAssert(YES, @"hor win");
+    } else {
+        XCTFail(@"you didn't win");
+    }
+}
+-(void)testRowNotWin {
+    NSMutableArray *list = [[NSMutableArray alloc]init];
+    for (int i = 0; i < ROWS * COLUMNS; i++) {
+        [list addObject:[NSString stringWithFormat:@"%zd",i]];
+    }
+    BoardModel *model = [[BoardModel alloc]initBoardModel:@"test" withFullList:list];
+    for (int col = 0; col < COLUMNS - 1; col++) {
+        [model wordToggledatLocation:0 withColumn:col];
+    }
+    if ([model checkForWin]) {
+        XCTFail(@"should not have won");
+    } else {
+        XCTAssertTrue(YES,@"you didn't win");
+    }
+}
+-(void)testDiagonalWin {
+    NSMutableArray *list = [[NSMutableArray alloc]init];
+    for (int i = 0; i < ROWS * COLUMNS; i++) {
+        [list addObject:[NSString stringWithFormat:@"%zd",i]];
+    }
+    BoardModel *model = [[BoardModel alloc]initBoardModel:@"test" withFullList:list];
+
+    for (int i = 0; i < ROWS; i++) {
+        [model wordToggledatLocation:i withColumn:i];
+    }
+    XCTAssertTrue([model checkForWin], @"Diagonal Win");
+}
+-(void)testColumnWin {
+    NSMutableArray *list = [[NSMutableArray alloc]init];
+    for (int i = 0; i < ROWS * COLUMNS; i++) {
+        [list addObject:[NSString stringWithFormat:@"%zd",i]];
+    }
+    BoardModel *model = [[BoardModel alloc]initBoardModel:@"test" withFullList:list];
+    for (int row = 0; row < ROWS; row++) {
+        [model wordToggledatLocation:row withColumn:0];
+    }
+    if ([model checkForWin]) {
+        XCTAssert(YES, @"vert win");
+    } else {
+        XCTFail(@"you didn't win");
+    }
+}
+-(void)testColumnNotWin {
+    NSMutableArray *list = [[NSMutableArray alloc]init];
+    for (int i = 0; i < ROWS * COLUMNS; i++) {
+        [list addObject:[NSString stringWithFormat:@"%zd",i]];
+    }
+    BoardModel *model = [[BoardModel alloc]initBoardModel:@"test" withFullList:list];
+    for (int row = 0; row < ROWS - 1; row++) {
+        [model wordToggledatLocation:row withColumn:0];
+    }
+    if ([model checkForWin]) {
+        XCTFail(@"should not win");
+    } else {
+        XCTAssertTrue(YES, @"nonwinnning situation");
+    }
+}
+- (void)testGameCreation {
+    NSMutableArray *list = [[NSMutableArray alloc]init];
+    for (int i = 0; i < 25; i++) {
+        [list addObject:[NSString stringWithFormat:@"%zd",i]];
+    }
+    
+    NSString *url = [NSString stringWithFormat:@"%@game",FIREBASE_URL];
+    Firebase *ref = [[Firebase alloc] initWithUrl:url];
+    Firebase *post1Ref = [ref childByAutoId];
+    NSString *uniqueID = [NSString stringWithFormat:@"%@",post1Ref];
+    NSDictionary *gameName = @{@"gameName":@"testGame",
+                               @"list":list};
+    [post1Ref setValue:gameName];
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:@"asynchronous request"];
+    NSString *wordlistUrl = [NSString stringWithFormat:@"%@",uniqueID];
+    Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
+    [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if (snapshot.value != [NSNull null]) {
+            // When creating game # words checked
+            NSMutableArray *fullList = [[NSMutableArray alloc]init];
+            for (NSString *word in snapshot.value[@"list"]) {
+                [fullList addObject:word];
+            }
+            for (int i = 0; i < [fullList count]; i++) {
+                if (![list containsObject:[fullList objectAtIndex:i]] ) {
+                    XCTFail(@"should be in list");
+                }
+            }
+        }
+        [expectation fulfill];
+
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"Cancel block %@", error.description);
+
+    }];
+
+    [self waitForExpectationsWithTimeout:10.0 handler:nil];
+    
 }
 - (void)testPerformanceExample {
     // This is an example of a performance test case.

@@ -207,7 +207,6 @@
         if (![self.currentWords containsObject:word]) {
             [self.currentWords addObject:word];
         }
-
     }
     CurrentWordsTableViewController *tbc = (CurrentWordsTableViewController *)self.childViewControllers[1];
     [tbc setMyList:self.currentWords];
