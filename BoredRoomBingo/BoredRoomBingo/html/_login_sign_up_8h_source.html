@@ -99,7 +99,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="interface_login_sign_up.html#aef2c833e97693b442b9bf988f7809826">   18</a></span>&#160;<span class="keyword">@property</span> (strong, nonatomic) IBOutlet UITextField *<a class="code" href="interface_login_sign_up.html#aef2c833e97693b442b9bf988f7809826">emailTextField</a>; </div>
 <div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="interface_login_sign_up.html#aad42d499881b619e94e5bbab8b20ce40">   19</a></span>&#160;<span class="keyword">@property</span> (strong, nonatomic) IBOutlet UITextField *<a class="code" href="interface_login_sign_up.html#aad42d499881b619e94e5bbab8b20ce40">passwordTextField</a>; </div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;-(void)<a class="code" href="interface_login_sign_up.html#a648321618c03b2f173a983524db03493">standardLogin</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;- (BOOL) validateEmail: (NSString *) candidate;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">@end</span></div>
 <div class="ttc" id="interface_login_sign_up_html_aad42d499881b619e94e5bbab8b20ce40"><div class="ttname"><a href="interface_login_sign_up.html#aad42d499881b619e94e5bbab8b20ce40">LoginSignUp::passwordTextField</a></div><div class="ttdeci">IBOutlet UITextField * passwordTextField</div><div class="ttdoc">The field where users enter his/her password. </div><div class="ttdef"><b>Definition:</b> LoginSignUp.h:19</div></div>
 <div class="ttc" id="interface_login_sign_up_html"><div class="ttname"><a href="interface_login_sign_up.html">LoginSignUp</a></div><div class="ttdef"><b>Definition:</b> LoginSignUp.h:14</div></div>
 <div class="ttc" id="interface_login_sign_up_html_a648321618c03b2f173a983524db03493"><div class="ttname"><a href="interface_login_sign_up.html#a648321618c03b2f173a983524db03493">-[LoginSignUp standardLogin]</a></div><div class="ttdeci">void standardLogin()</div><div class="ttdef"><b>Definition:</b> LoginSignUp.m:146</div></div>
@@ -109,7 +111,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 16 2014 00:20:14 for Bored Room Bingo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Nov 16 2014 01:28:29 for Bored Room Bingo by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
