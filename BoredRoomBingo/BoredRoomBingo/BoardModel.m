@@ -54,10 +54,10 @@
 /**
  Get pool of words from firebase 
  */
-
 -(instancetype)initBoardModel:(NSString *)gameKey {
     boolGrid = [[NSMutableArray alloc]initWithCapacity:ROWS*COLUMNS];
     NSString *wordlistUrl = [NSString stringWithFormat:@"%@",gameKey];
+    NSLog(@"game key is %@", gameKey);
     Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
     [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
@@ -67,13 +67,17 @@
                 [fullList addObject:word];
             }
             [self randomizeList:fullList];
+            NSLog(@"random list now %@", randomList);
             [self setUpGrids];
         }
-        
     } withCancelBlock:^(NSError *error) {
         NSLog(@"Cancel block %@", error.description);
     }];
+
     return self;
+}
+-(void)loadFirebase {
+    
 }
 -(NSMutableArray *)getRandomList {
     return randomList;

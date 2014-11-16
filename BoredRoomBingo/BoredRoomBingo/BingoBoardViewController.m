@@ -11,7 +11,7 @@
 #import "config.h"
 @interface BingoBoardViewController ()
 {
-    NSMutableArray *randomList;
+    BoardModel *model;
 }
 @end
 
@@ -21,44 +21,27 @@
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BoardModel *model = [[BoardModel alloc]initBoardModel:self.gameKey];
-    // Do any additional setup after loading the view.
+    model = [[BoardModel alloc]initBoardModel:self.gameKey];
+    NSLog(@"model gamekey is %@", self.gameKey);
+
     
+    [self setUpBoardButton];
 }
-///**
-// Gets list and title of game from firebase.
-// */
-//-(void)selectBoardWords {
-//    NSString *wordlistUrl = [NSString stringWithFormat:@"%@",self.gameKey];
-//    NSLog(@"word list %@", wordlistUrl);
-//    Firebase *postsRef = [[Firebase alloc] initWithUrl: wordlistUrl];
-//    [postsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        if (snapshot.value != [NSNull null]) {
-//            randomList = [[NSMutableArray alloc]init];
-//            for (NSString *word in snapshot.value[@"list"]) {
-//                [randomList addObject:word];
-//            }
-//            self.navigationItem.title = snapshot.value[@"gameName"];
-//            [self setUpBoardButton];
-//        }
-//        
-//    } withCancelBlock:^(NSError *error) {
-//        NSLog(@"Cancel block %@", error.description);
-//    }];
-//
-//}
+
 /**
  Set up board buttons with proper text format and titles
  */
 -(void)setUpBoardButton {
     NSInteger counter = 0;
-    for (UIButton *square in self.boardButton) {
-        square.tag = counter;
-        [square setTitle:randomList[counter] forState:UIControlStateNormal];
+    NSMutableArray *randomList = [model getRandomList];
+    for (UIButton *button in self.boardButton) {
+        button.tag = counter;
+        NSString *title = randomList[counter];
+        [button setTitle:title forState:UIControlStateNormal];
         counter++;
-        square.titleLabel.minimumScaleFactor= 5./square.titleLabel.font.pointSize;
-        square.titleLabel.numberOfLines = 1;
-        square.titleLabel.adjustsFontSizeToFitWidth = YES;
+        button.titleLabel.minimumScaleFactor= 5./button.titleLabel.font.pointSize;
+        button.titleLabel.numberOfLines = 1;
+        button.titleLabel.adjustsFontSizeToFitWidth = YES;
     }
 }
 - (void)didReceiveMemoryWarning {
