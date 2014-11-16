@@ -13,6 +13,9 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 @implementation LoginSignUp
+/**
+ Sets up view controller and if logged in already segues you to home screen
+ */
 -(void)viewDidLoad {
     [super viewDidLoad];
     [self.emailView setHidden:YES];
@@ -24,20 +27,34 @@
     }
     
 }
+/**
+ Choose email as means of signing in
+ */
 - (IBAction)emailPressed:(UIButton *)sender {
     [self.optionsView setHidden:YES];
     [self.emailView setHidden:NO];
 }
+/**
+ Return to menu of login options.
+ */
 - (IBAction)backPressed:(id)sender {
     [self.optionsView setHidden:NO];
     [self.emailView setHidden:YES];
     [self.emailTextField setText:@""];
     [self.passwordTextField setText:@""];
 }
+/**
+ Ends editing with keyboard.
+ */
 - (IBAction)backgroundTouch:(id)sender {
     [self.view endEditing:YES];
 }
-
+/**
+ Attempt login/sign up.
+ If account exists, user logged in.
+ If password is incorrect you will receive this error.
+ If Account does not exist will, prompt user to make new account.
+ */
 - (IBAction)nextPressed:(UIButton *)sender {
     if (![self checkFields]) { return; }
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
@@ -65,6 +82,11 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     }
     }];
 }
+/**
+ Checks fields for login/sign up are valid and will give errors if not correct.
+ Checks if password is @ least 6 characters.
+ Checks if email passes regex.
+ */
 -(BOOL)checkFields {
     if (![self validateEmail:self.emailTextField.text]) {
         UIAlertView *invalidEmail = [[UIAlertView alloc] initWithTitle:@"Invalid Email!" message:@"Please try again." delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
@@ -81,16 +103,21 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
         return YES;
     }
 }
+/**
+ Determine if create account was tapped or if cancel tapped.
+ */
 - (void)alertView:(UIAlertView *)alertView
 didDismissWithButtonIndex:(NSInteger) buttonIndex
 {
     if (buttonIndex == 0) {
-        NSLog(@"Cancel Tapped.");
     } else if (buttonIndex == 1) {
-        NSLog(@"Create Tapped");
         [self createNewAccount];
     }
 }
+/** 
+ Firebase call to create new user. 
+ Then logs in user
+ */
 -(void)createNewAccount {
     Firebase *ref = [[Firebase alloc] initWithUrl:FIREBASE_URL];
     [ref createUser:self.emailTextField.text password:self.passwordTextField.text
@@ -106,13 +133,15 @@ withCompletionBlock:^(NSError *error) {
 }];
 }
 
-
+/**
+ Display error message
+ */
 -(void)displayError: (NSError *)error {
     ErrorMessage *errorAlert = [[ErrorMessage alloc]init];
     [errorAlert errorMessages:error];
 }
 /**
- TODO: throw up some javadocs bro
+ Do a standard login with firebase and segue when done.
  */
 -(void)standardLogin {
     Firebase *ref = [[Firebase alloc] initWithUrl:FIREBASE_URL];
@@ -127,6 +156,9 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     }
 }];
 }
+/**
+ Set user tokens depending on firebase preferences
+ */
 -(void)setUserPrefs: (FAuthData *)authData {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     [prefs setObject:self.emailTextField.text forKey:@"email"];
@@ -135,6 +167,9 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     [prefs setObject:authData.token forKey:@"authToken"];
     [prefs synchronize];
 }
+/** 
+ Parse user unique id to make a userx username for user.
+ */
 -(NSString *)parseString:(NSString *)mySimpleLogin {
     NSArray *myWords = [mySimpleLogin componentsSeparatedByCharactersInSet:
                         [NSCharacterSet characterSetWithCharactersInString:@":"]
@@ -142,8 +177,12 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     return [NSString stringWithFormat:@"user%@",myWords[1]];
 }
 
-// catlan stackOF
-- (BOOL) validateEmail: (NSString *) candidate {
+/**
+ catlan stackOF
+ a regular expression that regulates what user emails can create.
+ WILL accept crazy emails !matt$=awesome@mail.aol.biz
+*/
+ - (BOOL) validateEmail: (NSString *) candidate {
     NSString *emailRegex =
     @"(?:[a-z0-9!#$%\\&'*+/=?\\^_`{|}~-]+(?:\\.[a-z0-9!#$%\\&'*+/=?\\^_`{|}"
     @"~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\"
@@ -156,10 +195,12 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     
     return [emailTest evaluateWithObject:candidate];
 }
+/**
+ Post initial data to firebase.
+ */
 -(void)postInitialUser {
     NSDictionary *userData = @{ @"email": self.emailTextField.text };
     Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@users", FIREBASE_URL]];
-    //Firebase *usersRef = [ref childByAppendingPath: @"users"];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     Firebase *newUserRef = [ref childByAppendingPath:[prefs stringForKey:@"username"]];
     [newUserRef setValue: userData];

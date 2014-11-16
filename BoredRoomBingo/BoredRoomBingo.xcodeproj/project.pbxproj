@@ -185,8 +185,6 @@
 			isa = PBXGroup;
 			children = (
 				2F05367919D9DBB400C14AF5 /* Main.storyboard */,
-				2FF5B50E1A16A10E00A3A196 /* BoardModel.h */,
-				2FF5B50F1A16A10E00A3A196 /* BoardModel.m */,
 				2F1B52EC1A16591B00D91BE6 /* Public Games */,
 				2FC56FDE1A000A6B00BF3EF7 /* Current Words Table */,
 				2F2DB6171A0856E700F98E23 /* Archived List */,
@@ -258,6 +256,8 @@
 		2F423F2C1A10748A0003DBAA /* Board */ = {
 			isa = PBXGroup;
 			children = (
+				2FF5B50E1A16A10E00A3A196 /* BoardModel.h */,
+				2FF5B50F1A16A10E00A3A196 /* BoardModel.m */,
 				2F423F291A1074810003DBAA /* BingoBoardViewController.h */,
 				2F423F2A1A1074810003DBAA /* BingoBoardViewController.m */,
 			);

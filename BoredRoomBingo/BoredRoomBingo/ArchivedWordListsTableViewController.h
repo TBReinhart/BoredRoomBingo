@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+/**
+ Displays all names of existing user word lists.
+ */
 @interface ArchivedWordListsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
 @property (strong, nonatomic) NSString *listToPass; ///< String containing name of string to pass for load from firebase
 

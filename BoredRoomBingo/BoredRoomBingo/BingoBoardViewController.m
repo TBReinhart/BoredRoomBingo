@@ -7,6 +7,7 @@
 //
 
 #import "BingoBoardViewController.h"
+#import "BoardModel.h"
 #import "config.h"
 @interface BingoBoardViewController ()
 {
@@ -15,32 +16,40 @@
 @end
 
 @implementation BingoBoardViewController
-
+/**
+ Initialize bingo board
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self selectBoardWords];
+    BoardModel *model = [[BoardModel alloc]initBoardModel:self.gameKey];
     // Do any additional setup after loading the view.
     
 }
--(void)selectBoardWords {
-    NSString *wordlistUrl = [NSString stringWithFormat:@"%@",self.gameKey];
-    NSLog(@"word list %@", wordlistUrl);
-    Firebase *postsRef = [[Firebase alloc] initWithUrl: wordlistUrl];
-    [postsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        if (snapshot.value != [NSNull null]) {
-            randomList = [[NSMutableArray alloc]init];
-            for (NSString *word in snapshot.value[@"list"]) {
-                [randomList addObject:word];
-            }
-            self.navigationItem.title = snapshot.value[@"gameName"];
-            [self setUpBoardButton];
-        }
-        
-    } withCancelBlock:^(NSError *error) {
-        NSLog(@"Cancel block %@", error.description);
-    }];
-
-}
+///**
+// Gets list and title of game from firebase.
+// */
+//-(void)selectBoardWords {
+//    NSString *wordlistUrl = [NSString stringWithFormat:@"%@",self.gameKey];
+//    NSLog(@"word list %@", wordlistUrl);
+//    Firebase *postsRef = [[Firebase alloc] initWithUrl: wordlistUrl];
+//    [postsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+//        if (snapshot.value != [NSNull null]) {
+//            randomList = [[NSMutableArray alloc]init];
+//            for (NSString *word in snapshot.value[@"list"]) {
+//                [randomList addObject:word];
+//            }
+//            self.navigationItem.title = snapshot.value[@"gameName"];
+//            [self setUpBoardButton];
+//        }
+//        
+//    } withCancelBlock:^(NSError *error) {
+//        NSLog(@"Cancel block %@", error.description);
+//    }];
+//
+//}
+/**
+ Set up board buttons with proper text format and titles
+ */
 -(void)setUpBoardButton {
     NSInteger counter = 0;
     for (UIButton *square in self.boardButton) {
@@ -56,6 +65,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+/**
+ Disable button on click and notify model.
+ */
 -(IBAction)boardButtonPressed:(id)sender {
     [sender setAlpha:30];
     [sender setEnabled:NO];

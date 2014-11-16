@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ The table view controller for selecting a specific existing list. 
+ */
 @interface DetailArchiveWordlistTableViewController : UITableViewController
 -(void)setSelectedList:(NSString *)selectedList;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneBarButton; ///< select done to add to current words.
 @end

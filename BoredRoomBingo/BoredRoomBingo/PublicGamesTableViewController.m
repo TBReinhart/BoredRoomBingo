@@ -17,13 +17,18 @@
 @end
 
 @implementation PublicGamesTableViewController
-
+/**
+ Set navigation title and loads game names
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"Public Games";
     [self loadGameNames];
 
 }
+/**
+ Load all public games from firebase.
+ */
 - (void)loadGameNames {
     NSString *gamelistUrl = [NSString stringWithFormat:@"%@game",FIREBASE_URL];
     Firebase *postsRef = [[Firebase alloc] initWithUrl: gamelistUrl];
@@ -31,7 +36,6 @@
         if (snapshot.value != [NSNull null]) {
             publicGameList = [[NSMutableArray alloc]init];
             gameKeys = [[NSMutableArray alloc]init];
-            NSLog(@"snapshot %@", snapshot.value);
             for (id game in snapshot.value) {
                 NSString *key = [NSString stringWithFormat:@"%@",game];
                 [publicGameList addObject:snapshot.value[key][@"gameName"]] ;
@@ -50,19 +54,24 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
+/**
+ 1 section in tableview.
+ */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     ///< Return the number of sections.
     return 1;
 }
-
+/**
+ There is one game per cell.
+ */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return [publicGameList count];
 }
 
-
+/**
+ Set each cell title with game name.
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"gameName" forIndexPath:indexPath];
     cell.textLabel.text = publicGameList[indexPath.row];

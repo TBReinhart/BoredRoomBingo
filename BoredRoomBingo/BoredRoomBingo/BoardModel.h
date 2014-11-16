@@ -7,8 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "config.h"
 
+
+static const int ROWS = 5 ;
+static const int COLUMNS = 5 ;
+/**
+ Model for the bingo board game.
+ */
 @interface BoardModel : NSObject
-@property (nonatomic,strong) NSMutableArray *boolBoard;
+@property (nonatomic,strong) NSMutableArray *boolBoard; ///< Grid of booleans that determine which space occupied.
 -(void)initBoard:(NSMutableArray *)wordList;
+-(NSMutableArray *)getRandomList;
+-(instancetype)initBoardModel:(NSString *)gameKey;
 @end

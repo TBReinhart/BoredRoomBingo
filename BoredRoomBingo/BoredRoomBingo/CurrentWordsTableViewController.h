@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ Table View Controller displaying current words.
+ */
 @interface CurrentWordsTableViewController : UITableViewController
 -(void)setMyList:(NSMutableArray *)list; ///< sets which list to set in current words
 @end

@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ View and controller for the bingo board where we play the game.
+ */
 @interface BingoBoardViewController : UIViewController
 
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *boardButton;
-@property (nonatomic,strong) NSMutableArray *boardWords;
-@property (nonatomic,strong) NSString *gameKey;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *boardButton; ///< Collection of all board buttons.
+@property (nonatomic,strong) NSMutableArray *boardWords; ///< Array containing all words on board.
+@property (nonatomic,strong) NSString *gameKey; ///< Unique game id where game is hosted from firebase.
 
 
 @end

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ Displays all public games by name.
+ */
 @interface PublicGamesTableViewController : UITableViewController
 
 @end
