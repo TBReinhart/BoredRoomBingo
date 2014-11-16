@@ -94,9 +94,7 @@
 didDismissWithButtonIndex:(NSInteger) buttonIndex
 {
     if (buttonIndex == 0) {
-        NSLog(@"0");
-    } else if (buttonIndex == 1) {
-        [self performSegueWithIdentifier:@"unwindToHomeScreenSegue" sender:self];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 /**
