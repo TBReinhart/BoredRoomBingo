@@ -80,6 +80,16 @@
  Create game on submit pressed by posting a unique id to firebase 
  */
 - (IBAction)submitButtonPressed:(UIButton *)sender {
+    if ([self.currentWords count] < 24) {
+        UIAlertView *notEnoughWordsAlert = [[UIAlertView alloc]initWithTitle:@"Too Few Words!" message:@"You need at least 24 words to play!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [notEnoughWordsAlert show];
+        return;
+    }
+    if ([self.groupNameTextField.text length] < 1) {
+        UIAlertView *notEnoughWordsAlert = [[UIAlertView alloc]initWithTitle:@"No Game Name!" message:@"You need a game name to play!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
+        [notEnoughWordsAlert show];
+        return;
+    }
     NSString *url = [NSString stringWithFormat:@"%@game",FIREBASE_URL];
     Firebase *ref = [[Firebase alloc] initWithUrl:url];
     Firebase *post1Ref = [ref childByAutoId];
@@ -194,7 +204,9 @@
     NSLog(@"in unwind");
     NSLog(@"array %@",self.arrayWithWordsToAdd);
     for (NSString *word in self.arrayWithWordsToAdd) {
-        [self.currentWords addObject:word];
+        if (![self.currentWords containsObject:word]) {
+            [self.currentWords addObject:word];
+        }
 
     }
     CurrentWordsTableViewController *tbc = (CurrentWordsTableViewController *)self.childViewControllers[1];

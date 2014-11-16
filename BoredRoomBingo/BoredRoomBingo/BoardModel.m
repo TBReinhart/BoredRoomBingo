@@ -53,8 +53,7 @@
     }
     [self setUpGrids];
     [self.randomList insertObject:@"BORED ROOM" atIndex:12];
-    NSLog(@"my random list %@", self.randomList);
-    // TODO select a different way to add free to list of words 
+    // TODO select a different way to add free to list of words
 }
 /**
  Get pool of words from firebase 
@@ -73,7 +72,6 @@
 }
 
 -(void)wordToggledatLocation:(NSInteger)row withColumn:(NSInteger)column {
-    NSLog(@"in toggle(%zd, %zd)", row, column);
     NSLog(@"%@" , boolGrid[row]);
     [[boolGrid objectAtIndex:row] replaceObjectAtIndex:column withObject:@YES];
     
@@ -112,7 +110,6 @@
     BOOL columnValid = YES;
     for (int j = 0; j < COLUMNS; j++) {
         for (int i = 0; i < ROWS; i++) {
-            NSLog(@"in winCol (%zd, %zd) : %zd", i, j,[boolGrid[i][j] isEqual:@YES]);
             if ([boolGrid[i][j] isEqual:@NO]) {
                 columnValid = NO;
                 break;
@@ -148,9 +145,6 @@
  Checks to see if there is a win condition on the board.
  */
 -(BOOL)checkForWin {
-    NSLog(@"col %lo", [self checkForWinColumn]);
-    NSLog(@"row %lo", [self checkForWinRow]);
-    NSLog(@"diag %lo", [self checkForWinDiagonal]);
     return [self checkForWinColumn] || [self checkForWinDiagonal] || [self checkForWinRow];
 }
 

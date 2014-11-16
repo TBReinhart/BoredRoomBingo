@@ -26,7 +26,6 @@
 }
 -(void)loadFirebase {
     NSString *wordlistUrl = [NSString stringWithFormat:@"%@",self.gameKey];
-    NSLog(@"game key is %@", self.gameKey);
     Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
     [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
@@ -36,7 +35,7 @@
                 [fullList addObject:word];
             }
             model = [[BoardModel alloc]initBoardModel:self.gameKey withFullList:fullList];
-            NSLog(@"random list now %@", model.randomList);
+
             [self setUpBoardButton];
         }
     } withCancelBlock:^(NSError *error) {
@@ -49,11 +48,9 @@
 -(void)setUpBoardButton {
     NSInteger counter = 0;
     NSMutableArray *randomList = model.randomList;
-    NSLog(@"random list is %@", model.randomList);
     for (UIButton *button in self.boardButton) {
         button.tag = counter;
         NSString *title = randomList[counter];
-        NSLog(@"%zd:%@",button.tag,title);
         [button setTitle:title forState:UIControlStateNormal];
         counter++;
         button.titleLabel.minimumScaleFactor= 5./button.titleLabel.font.pointSize;
@@ -80,8 +77,6 @@
     
     NSInteger row = index/5;
     NSInteger column = index % 5;
-    
-    NSLog(@"(%lld, %lld) is index %zd", row, column, index);
     [model wordToggledatLocation:row withColumn:column];
     if ([model checkForWin]) {
         [self gameOver];
