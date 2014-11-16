@@ -18,6 +18,6 @@ static const int COLUMNS = 5 ;
 @interface BoardModel : NSObject
 @property (nonatomic,strong) NSMutableArray *boolBoard; ///< Grid of booleans that determine which space occupied.
 -(NSMutableArray *)getRandomList;
--(instancetype)initBoardModel:(NSString *)gameKey;
-
+-(instancetype)initBoardModel:(NSString *)gameKey withFullList:(NSMutableArray *)fullList;
+@property (nonatomic, strong) NSMutableArray *randomList;
 @end

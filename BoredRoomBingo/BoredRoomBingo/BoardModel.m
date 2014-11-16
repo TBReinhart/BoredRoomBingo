@@ -15,7 +15,6 @@
 // 5x5 string grid
 {
     NSMutableArray *boolGrid;
-    NSMutableArray *randomList;
 
 }
 /**
@@ -43,43 +42,26 @@
  */
 -(void)randomizeList:(NSMutableArray *)fullList {
     NSUInteger randomIndex;
-    randomList = [[NSMutableArray alloc]initWithCapacity:ROWS*COLUMNS];
+    self.randomList = [[NSMutableArray alloc]initWithCapacity:ROWS*COLUMNS];
     for (int i = 0; i < (ROWS*COLUMNS) - 1; i++) {
         randomIndex = arc4random() % [fullList count];
-        [randomList addObject:[fullList objectAtIndex:randomIndex]];
+        [self.randomList addObject:[fullList objectAtIndex:randomIndex]];
         [fullList removeObjectAtIndex:randomIndex];
     }
-    [randomList insertObject:@"free" atIndex:(ROWS*COLUMNS)/2];
+  //  [self.randomList insertObject:@"free" atIndex:12 ];
+    // TODO select a different way to add free to list of words 
 }
 /**
  Get pool of words from firebase 
  */
--(instancetype)initBoardModel:(NSString *)gameKey {
+-(instancetype)initBoardModel:(NSString *)gameKey withFullList:(NSMutableArray *)fullList {
     boolGrid = [[NSMutableArray alloc]initWithCapacity:ROWS*COLUMNS];
-    NSString *wordlistUrl = [NSString stringWithFormat:@"%@",gameKey];
-    NSLog(@"game key is %@", gameKey);
-    Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
-    [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        if (snapshot.value != [NSNull null]) {
-            // When creating game # words checked
-            NSMutableArray *fullList = [[NSMutableArray alloc]init];
-            for (NSString *word in snapshot.value[@"list"]) {
-                [fullList addObject:word];
-            }
-            [self randomizeList:fullList];
-            NSLog(@"random list now %@", randomList);
-            [self setUpGrids];
-        }
-    } withCancelBlock:^(NSError *error) {
-        NSLog(@"Cancel block %@", error.description);
-    }];
+    [self randomizeList:fullList];
 
     return self;
 }
--(void)loadFirebase {
-    
-}
+
 -(NSMutableArray *)getRandomList {
-    return randomList;
+    return self.randomList;
 }
 @end
