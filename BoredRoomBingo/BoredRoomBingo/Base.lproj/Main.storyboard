@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A388a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="nIb-y0-RPf">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -377,10 +377,10 @@
             </objects>
             <point key="canvasLocation" x="-391" y="217"/>
         </scene>
-        <!--goToBoardSegue-->
+        <!--HomeScreen-->
         <scene sceneID="EFI-ys-hfG">
             <objects>
-                <viewController title="goToBoardSegue" id="E3F-LE-5uJ" customClass="HomeScreen" sceneMemberID="viewController">
+                <viewController title="HomeScreen" id="E3F-LE-5uJ" customClass="HomeScreen" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JKJ-jt-BDU"/>
                         <viewControllerLayoutGuide type="bottom" id="Ouy-1J-9UO"/>
@@ -389,7 +389,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <userGuides>
-                            <userLayoutGuide location="301" affinity="minY"/>
+                            <userLayoutGuide location="303" affinity="minY"/>
                             <userLayoutGuide location="300" affinity="minX"/>
                         </userGuides>
                         <subviews>
@@ -638,7 +638,7 @@
                         <outlet property="listNameTextField" destination="P27-PQ-2xo" id="sqV-fe-o4f"/>
                         <outlet property="privatePublicSwitch" destination="6sO-R8-K5Z" id="akW-sc-elV"/>
                         <segue destination="Nvm-my-yyu" kind="show" identifier="selectListSegue" id="0QL-gO-FHv"/>
-                        <segue destination="vNt-w7-ChI" kind="show" identifier="inviteFriends" id="Nh5-US-Fv6"/>
+                        <segue destination="PEe-Q2-R4J" kind="show" identifier="inviteFriends" id="9rv-bk-pkR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7x-Rs-yDM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -680,24 +680,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgl-vW-XgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="351" y="643"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="t3Q-Ci-t7D">
-            <objects>
-                <viewController id="vNt-w7-ChI" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="32B-Wo-hCC"/>
-                        <viewControllerLayoutGuide type="bottom" id="t6K-pK-cWz"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="D0U-gg-cBJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VHg-TW-lMq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1311" y="13"/>
         </scene>
         <!--Current Words Table View Controller-->
         <scene sceneID="Ks3-uQ-5aI">
@@ -759,6 +741,50 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="34d-VH-NaT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="842" y="-203"/>
+        </scene>
+        <!--Invite Friends View Controller-->
+        <scene sceneID="MX2-oF-xfV">
+            <objects>
+                <viewController id="PEe-Q2-R4J" customClass="InviteFriendsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="xsG-jA-qyY"/>
+                        <viewControllerLayoutGuide type="bottom" id="c60-Rj-t0K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ddx-SQ-eRy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Search User" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2jx-cq-Pjx">
+                                <rect key="frame" x="161" y="72" width="295" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="295" id="PaQ-Bu-6zX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="2jx-cq-Pjx" secondAttribute="centerY" constant="186" id="p61-Ml-dhh"/>
+                            <constraint firstAttribute="centerX" secondItem="2jx-cq-Pjx" secondAttribute="centerX" constant="-0.5" id="zmE-ff-obh"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="oUt-9s-fOg" appends="YES" id="9th-bF-omY"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="searchFriendsTextField" destination="2jx-cq-Pjx" id="5oW-jJ-Aix"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gGg-Me-Y5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="oUt-9s-fOg">
+                    <connections>
+                        <action selector="backgroundTap:" destination="PEe-Q2-R4J" id="nwy-1j-E3H"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1354" y="-67"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="CAe-DR-jct">

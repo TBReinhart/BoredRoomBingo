@@ -8,7 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InviteFriendsViewController : UIViewController
+@interface InviteFriendsViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic,strong) NSString *gameKey; ///< Key of Game to send to users
 @property (nonatomic,strong) NSString *gameName; ///< Name of game to send to users
+@property (strong, nonatomic) IBOutlet UITextField *searchFriendsTextField;
 @end
