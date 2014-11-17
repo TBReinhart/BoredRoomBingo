@@ -13,5 +13,4 @@
 #import "MBProgressHUD.h"
 #define FIREBASE_URL @"https://bored-room-bingo.firebaseio.com/"
 
-
 #endif

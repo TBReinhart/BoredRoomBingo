@@ -10,8 +10,8 @@
 
 @implementation InviteFriendModel
 
--(instancetype)initInviteModel:(NSMutableArray *)userList {
-    self.users = userList;
+-(instancetype)initInviteModel:(NSMutableArray *)friendsList {
+    self.friends = friendsList;
     return self;
 }
 

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface InviteFriendModel : NSObject
--(instancetype)initInviteModel:(NSMutableArray *)userList;
+-(instancetype)initInviteModel:(NSMutableArray *)friendsList;
 @property (nonatomic, strong) NSMutableArray *users; ///< List of all users.
-
+@property (nonatomic, strong) NSMutableArray *friends; ///< List of user friends.
 @end
