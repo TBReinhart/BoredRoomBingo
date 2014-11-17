@@ -227,7 +227,7 @@ withCompletionBlock:^(NSError *error) {
         [list addObject:[NSString stringWithFormat:@"%zd",i]];
     }
     
-    NSString *url = [NSString stringWithFormat:@"%@game",FIREBASE_URL];
+    NSString *url = [NSString stringWithFormat:@"%@game/public",FIREBASE_URL];
     Firebase *ref = [[Firebase alloc] initWithUrl:url];
     Firebase *post1Ref = [ref childByAutoId];
     NSString *uniqueID = [NSString stringWithFormat:@"%@",post1Ref];

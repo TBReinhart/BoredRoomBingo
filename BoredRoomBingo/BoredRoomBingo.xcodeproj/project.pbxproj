@@ -33,6 +33,7 @@
 		2F70F5E619FDBD3300542D24 /* LoginSignUpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70F5E519FDBD3300542D24 /* LoginSignUpTests.m */; };
 		2F70F5EA19FDFE0A00542D24 /* HomeScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F70F5E919FDFE0A00542D24 /* HomeScreen.m */; };
 		2FC383BD19FC84AD00B5B725 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */; };
+		2FC4B6B51A19A201007B5F78 /* InviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC4B6B41A19A201007B5F78 /* InviteFriendsViewController.m */; };
 		2FC56FD919FFFFD400BF3EF7 /* CurrentWordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC56FD819FFFFD400BF3EF7 /* CurrentWordsTableViewController.m */; };
 		2FC56FDD1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC56FDC1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m */; };
 		2FD0D76119F9855700F19DF6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76019F9855700F19DF6 /* CoreData.framework */; };
@@ -93,6 +94,8 @@
 		2F70F5E919FDFE0A00542D24 /* HomeScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeScreen.m; sourceTree = "<group>"; };
 		2FC383BB19FC84AD00B5B725 /* ForgotPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ForgotPasswordViewController.h; sourceTree = "<group>"; };
 		2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
+		2FC4B6B31A19A201007B5F78 /* InviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendsViewController.h; sourceTree = "<group>"; };
+		2FC4B6B41A19A201007B5F78 /* InviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendsViewController.m; sourceTree = "<group>"; };
 		2FC56FD719FFFFD400BF3EF7 /* CurrentWordsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentWordsTableViewController.h; sourceTree = "<group>"; };
 		2FC56FD819FFFFD400BF3EF7 /* CurrentWordsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentWordsTableViewController.m; sourceTree = "<group>"; };
 		2FC56FDB1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentWordsTableViewCell.h; sourceTree = "<group>"; };
@@ -287,6 +290,8 @@
 			children = (
 				2F70F5E819FDFE0A00542D24 /* HomeScreen.h */,
 				2F70F5E919FDFE0A00542D24 /* HomeScreen.m */,
+				2FC4B6B31A19A201007B5F78 /* InviteFriendsViewController.h */,
+				2FC4B6B41A19A201007B5F78 /* InviteFriendsViewController.m */,
 			);
 			name = HomeScreen;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				2F05367519D9DBB400C14AF5 /* AppDelegate.m in Sources */,
 				2F05367219D9DBB400C14AF5 /* main.m in Sources */,
 				2F2DB6201A09532300F98E23 /* SelectWordTableViewCell.m in Sources */,
+				2FC4B6B51A19A201007B5F78 /* InviteFriendsViewController.m in Sources */,
 				2F1B52EB1A16591300D91BE6 /* PublicGamesTableViewController.m in Sources */,
 				2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */,
 				2FD0D76419F987C800F19DF6 /* NSStringAdditions.h in Sources */,

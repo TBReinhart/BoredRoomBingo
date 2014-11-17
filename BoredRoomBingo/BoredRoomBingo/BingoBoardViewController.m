@@ -22,10 +22,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadFirebase];
+    
 
 }
 -(void)loadFirebase {
     NSString *wordlistUrl = [NSString stringWithFormat:@"%@",self.gameKey];
+    NSLog(@"url is %@", wordlistUrl);
     Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
     [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
@@ -56,6 +58,11 @@
         button.titleLabel.minimumScaleFactor= 5./button.titleLabel.font.pointSize;
         button.titleLabel.numberOfLines = 1;
         button.titleLabel.adjustsFontSizeToFitWidth = YES;
+        button.layer.borderWidth = 3.0f;
+        button.layer.borderColor = [UIColor whiteColor].CGColor;
+        button.layer.cornerRadius = 10.0f;
+        [button.titleLabel setTextAlignment: NSTextAlignmentCenter];
+
     }
 }
 - (void)didReceiveMemoryWarning {
@@ -66,6 +73,7 @@
  Disable button on click and notify model.
  */
 -(IBAction)boardButtonPressed:(id)sender {
+    [sender setBackgroundColor:[UIColor orangeColor]];
     [sender setAlpha:30];
     [sender setEnabled:NO];
     // freespace should be at index 12.

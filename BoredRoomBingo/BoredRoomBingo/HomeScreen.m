@@ -11,6 +11,7 @@
 #import "CurrentWordsTableViewController.h"
 #import "DetailArchiveWordlistTableViewController.h"
 #import "BingoBoardViewController.h"
+#import "InviteFriendsViewController.h"
 @interface HomeScreen ()
 
 @end
@@ -21,12 +22,14 @@
     CGFloat keyboardHeight;
     NSString *selectedList;
     NSString *uniqueID;
+    BOOL public;
 }
 /**
  Initialize vc to set current words and delegates.
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
+    public = YES;
     self.addNewWordTextField.delegate = self;
     if (self.currentWords
         == nil) {
@@ -77,27 +80,53 @@
     [tbc.tableView reloadData];
 }
 /**
- Create game on submit pressed by posting a unique id to firebase 
+ Determines if game is public or private
+ 
  */
-- (IBAction)submitButtonPressed:(UIButton *)sender {
+- (IBAction)switchChanged:(UISwitch *)sender {
+    if ([self.privatePublicSwitch isOn]) {
+        public = YES;
+    } else {
+        public = NO;
+    }
+}
+/**
+ Check if game can be submitted
+ */
+-(BOOL)validateSubmit {
     if ([self.currentWords count] < 24) {
         UIAlertView *notEnoughWordsAlert = [[UIAlertView alloc]initWithTitle:@"Too Few Words!" message:@"You need at least 24 words to play!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [notEnoughWordsAlert show];
-        return;
+        return NO;
     }
     if ([self.groupNameTextField.text length] < 1) {
         UIAlertView *notEnoughWordsAlert = [[UIAlertView alloc]initWithTitle:@"No Game Name!" message:@"You need a game name to play!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [notEnoughWordsAlert show];
+        return NO;
+    }
+    return YES;
+}
+/**
+ Create game on submit pressed by posting a unique id to firebase 
+ */
+- (IBAction)submitButtonPressed:(UIButton *)sender {
+    if (![self validateSubmit]) {
         return;
     }
-    NSString *url = [NSString stringWithFormat:@"%@game",FIREBASE_URL];
+    
+    NSString *url;
+    if (public) {
+        url = [NSString stringWithFormat:@"%@game/public",FIREBASE_URL];
+    } else {
+        url = [NSString stringWithFormat:@"%@game/private",FIREBASE_URL];
+    }
     Firebase *ref = [[Firebase alloc] initWithUrl:url];
     Firebase *post1Ref = [ref childByAutoId];
     uniqueID = [NSString stringWithFormat:@"%@",post1Ref];
     NSDictionary *gameName = @{@"gameName":self.groupNameTextField.text,
                                @"list":self.currentWords};
     [post1Ref setValue:gameName];
-    [self performSegueWithIdentifier:@"goToBoardSegue" sender:nil];
+    [self performSegueWithIdentifier:@"inviteFriends" sender:nil];
 }
 /**
  Overwrites existing list with same name or creates a new list with current words 
@@ -190,19 +219,22 @@
         NSLog(@"tbc's detail %@", tbc.listToPass);
         [childViewController setSelectedList:tbc.listToPass];
     }
-    if ([segue.identifier isEqualToString:@"goToBoardSegue"]) {
-        BingoBoardViewController * bingoBoard = (BingoBoardViewController *)[segue destinationViewController];
-        [bingoBoard setBoardWords:self.currentWords];
-        bingoBoard.gameKey = uniqueID;
-
+    if ([segue.identifier isEqualToString:@"inviteFriends"]) {
+        InviteFriendsViewController *friendVC = (InviteFriendsViewController *)[segue destinationViewController];
+        friendVC.gameKey = uniqueID;
+        friendVC.gameName = self.groupNameTextField.text;
     }
+//    if ([segue.identifier isEqualToString:@"goToBoardSegue"]) {
+//        BingoBoardViewController * bingoBoard = (BingoBoardViewController *)[segue destinationViewController];
+//        //[bingoBoard setBoardWords:self.currentWords];
+//        bingoBoard.gameKey = uniqueID;
+//
+//    }
 }
 /**
  Unwind segue necessary to move back to this view controller without making a new VC
  */
 - (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue {
-    NSLog(@"in unwind");
-    NSLog(@"array %@",self.arrayWithWordsToAdd);
     for (NSString *word in self.arrayWithWordsToAdd) {
         if (![self.currentWords containsObject:word]) {
             [self.currentWords addObject:word];

@@ -30,7 +30,7 @@
  Load all public games from firebase.
  */
 - (void)loadGameNames {
-    NSString *gamelistUrl = [NSString stringWithFormat:@"%@game",FIREBASE_URL];
+    NSString *gamelistUrl = [NSString stringWithFormat:@"%@game/public",FIREBASE_URL];
     Firebase *postsRef = [[Firebase alloc] initWithUrl: gamelistUrl];
     [postsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
@@ -39,7 +39,7 @@
             for (id game in snapshot.value) {
                 NSString *key = [NSString stringWithFormat:@"%@",game];
                 [publicGameList addObject:snapshot.value[key][@"gameName"]] ;
-                NSString *gameUrl = [NSString stringWithFormat:@"%@game/%@",FIREBASE_URL,key];
+                NSString *gameUrl = [NSString stringWithFormat:@"%@game/public/%@",FIREBASE_URL,key];
                 [gameKeys addObject:gameUrl];
             }
         }
