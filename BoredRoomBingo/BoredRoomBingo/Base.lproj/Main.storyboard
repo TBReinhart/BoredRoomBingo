@@ -514,6 +514,12 @@
                                     <segue destination="E3F-LE-5uJ" kind="show" id="uLg-Dp-8mL"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3LC-eo-eup">
+                                <rect key="frame" x="180" y="193" width="240" height="213"/>
+                                <connections>
+                                    <segue destination="J3b-Tz-KBh" kind="embed" id="hh3-et-Z5f"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1733,6 +1739,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qyi-Si-hqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="856" y="191.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="d9M-6X-KQB">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="J3b-Tz-KBh" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2oq-7u-lee"/>
+                        <viewControllerLayoutGuide type="bottom" id="agH-uj-elV"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ddh-fT-U32">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="213"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wXf-5l-xbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
     <resources>

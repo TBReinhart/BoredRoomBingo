@@ -201,8 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				2F05367919D9DBB400C14AF5 /* Main.storyboard */,
-				2F8372F51A1AE5F80035C322 /* HomeScreenViewController.h */,
-				2F8372F61A1AE5F80035C322 /* HomeScreenViewController.m */,
+				2FD2ABA11A1BB5D5004FA5AE /* Home Screen */,
 				2F1B52EC1A16591B00D91BE6 /* Public Games */,
 				2FC56FDE1A000A6B00BF3EF7 /* Current Words Table */,
 				2F2DB6171A0856E700F98E23 /* Archived List */,
@@ -373,6 +372,15 @@
 				2FD0D77119FAB45200F19DF6 /* LoginSignUp.m */,
 			);
 			name = login;
+			sourceTree = "<group>";
+		};
+		2FD2ABA11A1BB5D5004FA5AE /* Home Screen */ = {
+			isa = PBXGroup;
+			children = (
+				2F8372F51A1AE5F80035C322 /* HomeScreenViewController.h */,
+				2F8372F61A1AE5F80035C322 /* HomeScreenViewController.m */,
+			);
+			name = "Home Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

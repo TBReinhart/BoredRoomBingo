@@ -82,10 +82,10 @@
 -(void)getData {
     // Get a reference to our posts
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *myUsername = [prefs stringForKey:@"username"];
+    NSString *myID = [prefs stringForKey:@"userID"];
     NSString *encodedList = [self encodeString:detailList];
 
-    NSString *wordlistUrl = [NSString stringWithFormat:@"%@users/%@/wordlists/%@",FIREBASE_URL,myUsername,encodedList];
+    NSString *wordlistUrl = [NSString stringWithFormat:@"%@users/%@/wordlists/%@",FIREBASE_URL,myID,encodedList];
     Firebase *postsRef = [[Firebase alloc] initWithUrl: wordlistUrl];
     // Attach a block to read the data at our posts reference
     [postsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {

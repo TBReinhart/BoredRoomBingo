@@ -131,7 +131,7 @@ withCompletionBlock:^(NSError *error) {
         NSString *userWithID = [NSString stringWithFormat:@"user%@",myUserID[1]];
         for (NSString *user in snapshot.value) {
             if ([user isEqualToString:userWithID]) {
-                [self setUserPrefs:snapshot.value[user][@"email"] withUsername:snapshot.value[user][@"username"] withUserID:[NSString stringWithFormat:@"user%@", uniqueID]];
+                [self setUserPrefs:snapshot.value[user][@"email"] withUsername:snapshot.value[user][@"username"] withUserID:userWithID];
             }
         }
     } withCancelBlock:^(NSError *error) {
@@ -160,7 +160,6 @@ withCompletionBlock:^(NSError *error) {
  */
 -(void)setUserPrefs:(NSString *)email withUsername:(NSString *)username withUserID:(NSString *)userID {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSLog(@"in prefs");
     [prefs setObject:email forKey:@"email"];
     [prefs setObject:userID forKey:@"userID"]; // for now username is unique id
     [prefs setObject:username forKey:@"username"]; // for now username is unique id
@@ -225,7 +224,6 @@ withCompletionBlock:^(NSError *error) {
             }
         } else {
             // first user
-            NSLog(@"first user");
             [self createAccount:self.emailTextField.text withPassword:self.passwordTextField.text withUsername:self.usernameTextField.text];
         }
     }];

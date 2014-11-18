@@ -8,10 +8,12 @@
 
 #import "SearchUsersTableViewController.h"
 #import "SearchUsersTableViewCell.h"
+#import "config.h"
 @interface SearchUsersTableViewController ()
 {
     NSMutableArray *userList;
     NSMutableArray *myFriends;
+    NSString *gameKey;
 }
 @end
 
@@ -27,15 +29,15 @@
         userList = [[NSMutableArray alloc]init];
     }
     userList = list;
-    if (myFriends == nil) {
-        myFriends = [[NSMutableArray alloc]init];
-    }
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)setGameKey:(NSString *)key {
+    gameKey = key;
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -55,56 +57,44 @@
     if (cell == nil) {
         cell = [[SearchUsersTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    [cell.addRemoveButton setTag:indexPath.row];
+    [cell.addRemoveButton setTitle:userList[indexPath.row] forState:UIControlStateNormal];
+    [cell.addRemoveButton addTarget:self action:@selector(invitePressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.friendLabel setText:@""];
     cell.usernameLabel.text = userList[indexPath.row];
-    if (![myFriends containsObject:userList[indexPath.row]]) {
-        [cell.friendLabel setText:@""];
-    }
     return cell;
 }
+/**
+ When you invite a friend, will send invitation
+ // TODO: notifications
+ */
+-(void)invitePressed:(UIButton*)sender {
+    // sender.tag is indexpath.row of user looking for
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *myUsername = [prefs stringForKey:@"username"];
+    NSString *theirUsername = userList[[sender tag]];
+    NSString *theirUserID;
+    NSString *getUserURL = [NSString stringWithFormat:@"%@users",FIREBASE_URL];
+    Firebase *gameRef = [[Firebase alloc] initWithUrl: getUserURL];
+    [gameRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if (snapshot.value != [NSNull null]) {
+            // When creating game # words checked
+            NSMutableArray *allUsers = [[NSMutableArray alloc]init];
+            for (NSDictionary *user in snapshot.value) {
+                if( [snapshot.value[user][@"username"] isEqualToString:theirUsername]) {
+                    NSLog(@"their name ? %@", [NSString stringWithFormat:@"%@",user]);
+                    [self sendInvitation:[NSString stringWithFormat:@"%@",user] withMyUsername:myUsername];
+                }
+            }
+        }
+    }];
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    [self.tableView reloadData];
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+-(void)sendInvitation:(NSString *)theirID withMyUsername:(NSString *)myUsername {
+    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@users/%@/invites",FIREBASE_URL, theirID]];
+    NSDictionary *invitation = @{@"gameName":gameKey, @"creator":myUsername};
+    Firebase *newInviteRef = [ref childByAutoId];
+    [newInviteRef setValue:invitation];
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

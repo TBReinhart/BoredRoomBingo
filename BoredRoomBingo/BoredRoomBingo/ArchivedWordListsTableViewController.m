@@ -35,8 +35,8 @@
 -(void)getLists {
     // Get a reference to our posts
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *myUsername = [prefs stringForKey:@"username"];
-    NSString *wordlistUrl = [NSString stringWithFormat:@"%@users/%@/wordlists",FIREBASE_URL,myUsername];
+    NSString *myID = [prefs stringForKey:@"userID"];
+    NSString *wordlistUrl = [NSString stringWithFormat:@"%@users/%@/wordlists",FIREBASE_URL,myID];
     Firebase *postsRef = [[Firebase alloc] initWithUrl: wordlistUrl];
     [postsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {

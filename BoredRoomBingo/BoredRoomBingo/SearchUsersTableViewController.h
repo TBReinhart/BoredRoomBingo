@@ -10,5 +10,5 @@
 
 @interface SearchUsersTableViewController : UITableViewController
 -(void)setUserList:(NSMutableArray *)list withFriendsList:(NSMutableArray *)friends;
-
+-(void)setGameKey:(NSString *)key;
 @end

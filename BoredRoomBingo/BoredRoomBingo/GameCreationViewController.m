@@ -126,6 +126,8 @@
     NSDictionary *gameName = @{@"gameName":self.groupNameTextField.text,
                                @"list":self.currentWords};
     [post1Ref setValue:gameName];
+    // PASS THIS TO OTHER USERS AS GAME INVITE
+    NSLog(@"post ref %@", post1Ref);
     [self performSegueWithIdentifier:@"inviteFriends" sender:nil];
 }
 /**
@@ -133,8 +135,8 @@
  */
 - (IBAction)saveListPressed:(UIButton *)sender {
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *myUsername = [prefs stringForKey:@"username"];
-    NSString *url = [NSString stringWithFormat:@"%@users/%@/wordlists",FIREBASE_URL,myUsername];
+    NSString *myID = [prefs stringForKey:@"userID"];
+    NSString *url = [NSString stringWithFormat:@"%@users/%@/wordlists",FIREBASE_URL,myID];
     Firebase *ref = [[Firebase alloc] initWithUrl:url];
     Firebase *listRef = [ref childByAppendingPath: self.listNameTextField.text];
     [listRef setValue: self.currentWords];
