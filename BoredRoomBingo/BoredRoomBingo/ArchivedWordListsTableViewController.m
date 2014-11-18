@@ -8,7 +8,7 @@
 
 #import "ArchivedWordListsTableViewController.h"
 #import "DetailArchiveWordlistTableViewController.h"
-#import "HomeScreen.h"
+#import "GameCreationViewController.h"
 #import "config.h"
 @interface ArchivedWordListsTableViewController ()
 {
@@ -89,7 +89,7 @@
  */
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    HomeScreen *homeScreen = [[HomeScreen alloc]init];
+    GameCreationViewController *homeScreen = [[GameCreationViewController alloc]init];
     [homeScreen setList:archivedLists[indexPath.row]];
     self.listToPass = archivedLists[indexPath.row];
     [self.parentViewController performSegueWithIdentifier:@"selectListSegue" sender:self];

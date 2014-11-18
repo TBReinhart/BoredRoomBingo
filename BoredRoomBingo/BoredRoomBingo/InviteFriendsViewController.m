@@ -23,8 +23,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.searchFriendsTextField.delegate = self;
-    friendsList = [[NSMutableArray alloc]init];
     [self loadFirebaseInitModel];
+    NSLog(@"in vdl");
     // Do any additional setup after loading the view.
 }
 /**
@@ -34,17 +34,22 @@
     // TODO: find better way for the below 2 lines
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myUsername = [prefs stringForKey:@"username"];
+    NSLog(@"myUsername %@", myUsername);
     NSString *wordlistUrl = [NSString stringWithFormat:@"%@users/%@/friends",FIREBASE_URL,myUsername];
     
     Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
     [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
             // When creating game # words checked
-           friendsList = [[NSMutableArray alloc]init];
+            if (friendsList == nil) {
+                friendsList = [[NSMutableArray alloc]init];
+            }
             for (NSString *friend in snapshot.value) {
                 [friendsList addObject:friend];
             }
             self.model = [[InviteFriendModel alloc]initInviteModel:friendsList];
+            NSLog(@"friendList:%@, model.friends:%@",friendsList, self.model.friends);
+
             SearchUsersTableViewController *tbc = (SearchUsersTableViewController *)self.childViewControllers[0];
             [tbc setUserList:self.model.friends withFriendsList:self.model.friends];
             [tbc.tableView reloadData];
@@ -68,6 +73,7 @@
             for (NSString *user in snapshot.value) {
                 [fullUserList addObject:user];
             }
+            NSLog(@"all users");
             [self searchArray];
         }
     } withCancelBlock:^(NSError *error) {
@@ -85,6 +91,7 @@
         if (fullUserList == nil) {
             [self loadAllUsers];
         } else {
+            NSLog(@"should return");
             [self searchArray];
         }
         return YES;
@@ -99,9 +106,11 @@
         [self loadFirebaseInitModel];
     }
     if ([self.searchFriendsTextField.text length] > 0 ) {
+        NSLog(@"full list %@",fullUserList);
         if (fullUserList == nil) {
             [self loadAllUsers];
         } else {
+            NSLog(@"text changes");
             [self searchArray];
         }
     }
@@ -116,6 +125,7 @@
     NSArray *immutable = [fullUserList copy];
     searchResults = [immutable filteredArrayUsingPredicate:userPredicate];
     SearchUsersTableViewController *tbc = (SearchUsersTableViewController *)self.childViewControllers[0];
+    NSLog(@"about to set list in search array local: %@, model: %@", friendsList, self.model.friends);
     [tbc setUserList:[searchResults mutableCopy] withFriendsList:self.model.friends];
     [tbc.tableView reloadData];
 }

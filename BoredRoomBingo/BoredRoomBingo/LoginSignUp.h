@@ -17,7 +17,9 @@
 @property (strong, nonatomic) IBOutlet UIView *optionsView; ///< The view for selecting which login/signup
 @property (strong, nonatomic) IBOutlet UITextField *emailTextField; ///< The field where users enter email
 @property (strong, nonatomic) IBOutlet UITextField *passwordTextField; ///< The field where users enter his/her password
--(void)standardLogin;
 - (BOOL) validateEmail: (NSString *) candidate;
-
+-(void)standardLogin:(NSString *)email withPassword:(NSString *)password withCreated:(BOOL)justCreated;
+@property (strong, nonatomic) IBOutlet UITextField *usernameTextField; ///< Username prompt for first time users.
+@property (strong, nonatomic) IBOutlet UIButton *forgotPasswordButton; ///< Button that allows users to reset password when loggin in.
+- (IBAction)unwindToLoginScreen:(UIStoryboardSegue *)segue;
 @end

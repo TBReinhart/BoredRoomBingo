@@ -9,7 +9,7 @@
 #import "DetailArchiveWordlistTableViewController.h"
 #import "SelectWordTableViewCell.h"
 #import "CurrentWordsTableViewController.h"
-#import "HomeScreen.h"
+#import "GameCreationViewController.h"
 #import "config.h"
 #import <Firebase/Firebase.h>
 @interface DetailArchiveWordlistTableViewController ()
@@ -39,7 +39,7 @@
  needs to segue back to a VC with a current word list that includes all previous and new words
  */
 -(void)donePressed:(id)sender {
-    [self performSegueWithIdentifier:@"unwindToHomeScreenSegue" sender:self];
+    [self performSegueWithIdentifier:@"unwindToGameCreationViewController" sender:self];
 }
 /**
  Sets which VC will be used for use when fetching data and setting nav bar.
@@ -137,14 +137,14 @@
     //[self.tableView reloadData];
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"unwindToHomeScreenSegue"]) {
+    if ([segue.identifier isEqualToString:@"unwindToGameCreationViewController"]) {
         NSMutableArray *tempToSend = [[NSMutableArray alloc]init];
         for (int i = 0; i < [words count]; i++) {
             if ([[selectedWords objectAtIndex:i] boolValue]) {
                 [tempToSend addObject:words[i]];
             }
         }
-        HomeScreen *controller = (HomeScreen *)segue.destinationViewController;
+        GameCreationViewController *controller = (GameCreationViewController *)segue.destinationViewController;
         controller.arrayWithWordsToAdd = tempToSend;
        // [controller addToCurrentWords:tempToSend];
     }

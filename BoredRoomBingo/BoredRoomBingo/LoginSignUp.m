@@ -13,6 +13,7 @@
 
 #import <FacebookSDK/FacebookSDK.h>
 @implementation LoginSignUp
+
 /**
  Sets up view controller and if logged in already segues you to home screen
  */
@@ -22,6 +23,7 @@
     [self.optionsView setHidden:NO];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myUsername = [prefs stringForKey:@"username"];
+    NSLog(@"view did load username %@", myUsername);
     if (myUsername != nil) {
         [self performSegueWithIdentifier:@"loggedIn" sender:nil];
     }
@@ -31,6 +33,15 @@
  Choose email as means of signing in
  */
 - (IBAction)emailPressed:(UIButton *)sender {
+    if ([sender.titleLabel.text isEqualToString:@"Sign Up With Email"]) {
+        [self.usernameTextField setHidden:NO];
+        [self.forgotPasswordButton setHidden:YES];
+        
+    } else {
+        // when logging in allow users to press forgot password.
+        [self.usernameTextField setHidden:YES];
+        [self.forgotPasswordButton setHidden:NO];
+    }
     [self.optionsView setHidden:YES];
     [self.emailView setHidden:NO];
 }
@@ -38,6 +49,7 @@
  Return to menu of login options.
  */
 - (IBAction)backPressed:(id)sender {
+    [self.usernameTextField setHidden:YES];
     [self.optionsView setHidden:NO];
     [self.emailView setHidden:YES];
     [self.emailTextField setText:@""];
@@ -50,37 +62,114 @@
     [self.view endEditing:YES];
 }
 /**
- Attempt login/sign up.
- If account exists, user logged in.
- If password is incorrect you will receive this error.
- If Account does not exist will, prompt user to make new account.
+ User Submits login/signup credentials.
  */
 - (IBAction)nextPressed:(UIButton *)sender {
-    if (![self checkFields]) { return; }
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    Firebase *ref = [[Firebase alloc] initWithUrl:FIREBASE_URL];
-    [ref authUser:self.emailTextField.text password:self.passwordTextField.text
-withCompletionBlock:^(NSError *error, FAuthData *authData) {
-    if (error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        // if password was invalid, but email wasn't. user exists but screwed up
-        if (error.code == FAuthenticationErrorInvalidPassword) {
-            NSLog(@"invalid password"); // password invalid or acct taken
-        } else if (error.code == FAuthenticationErrorUserDoesNotExist) {
-            UIAlertView *askToMakeAccount = [[UIAlertView alloc] initWithTitle:@"Email Available!" message:@"create new account?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil, nil];
-            [askToMakeAccount addButtonWithTitle:@"Create"];
-            [askToMakeAccount show];
-        } else {
-            [self displayError:error];
-        }
-    } else {
-        NSLog(@"AUTH %@", authData);
-        [self setUserPrefs:authData];
-        //[self postInitialUser];
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        [self performSegueWithIdentifier:@"loggedIn" sender:nil];
+    // if username is hidden, that means we are just logging in.
+    if ([self.usernameTextField isHidden]) {
+        [self standardLogin:self.emailTextField.text withPassword:self.passwordTextField.text withCreated:NO];
+    } else { // else they are creating account.
+        NSLog(@"creating account about to load names ");
+        [self verifyCreateUser];
+        // loads all usernames, if unique calls create account
+        // if create successful with call standard login
     }
+}
+/**
+ Create new account.
+ Will be called after checking to make sure username is not taken.
+ */
+-(void)createAccount:(NSString *)email withPassword:(NSString *)password withUsername:(NSString *)username {
+    Firebase *createAccountRef = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@",FIREBASE_URL]];
+    [createAccountRef createUser:email password:password
+withCompletionBlock:^(NSError *error) {
+    
+    if (error) {
+        [self displayError:error];
+    } else {
+        // We created a new user account
+        // now set their initial data and then
+        [self standardLogin:email withPassword:password withCreated:YES];
+    }
+}];
+}
+/**
+ Standard login.
+ Will be called for a normal login including after account creation
+ Will use data to set user defaults.
+ */
+-(void)standardLogin:(NSString *)email withPassword:(NSString *)password withCreated:(BOOL)justCreated {
+    Firebase *loginRef = [[Firebase alloc] initWithUrl:FIREBASE_URL];
+    [loginRef authUser:email password:password
+   withCompletionBlock:^(NSError *error, FAuthData *authData) {
+       if (error ) {
+           [self displayError:error];
+       } else {
+           // logged in and now have permission to set firebase data.
+           if (justCreated) {
+               // need to set data before getting data.
+               [self setFireBaseUserDictionary:email withID:[NSString stringWithFormat:@"%@", authData.uid] withUsername:self.usernameTextField.text];
+           } else {
+               // simply get the data.
+               [self getDefaultsFromFirebase:[NSString stringWithFormat:@"%@", authData.uid]];
+           }
+       }
+   }];
+}
+/**
+ Get user dictionary to set device defaults
+ Only called on existing users
+ */
+-(void)getDefaultsFromFirebase:(NSString *)uniqueID {
+    // Get a reference to our posts
+    Firebase *ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"%@users",FIREBASE_URL]];
+    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"%@", snapshot.value);
+        NSArray *myUserID = [uniqueID componentsSeparatedByCharactersInSet:
+                             [NSCharacterSet characterSetWithCharactersInString:@":"]
+                             ];
+        NSString *userWithID = [NSString stringWithFormat:@"user%@",myUserID[1]];
+        for (NSString *user in snapshot.value) {
+            if ([user isEqualToString:userWithID]) {
+                [self setUserPrefs:snapshot.value[user][@"email"] withUsername:snapshot.value[user][@"username"] withUserID:[NSString stringWithFormat:@"user%@", uniqueID]];
+            }
+        }
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"%@", error.description);
     }];
+}
+/**
+ Set firebase dictionary
+ only called upon creation since it won't exist yet.
+ */
+-(void)setFireBaseUserDictionary:(NSString *)email withID:(NSString *)uniqueID withUsername:(NSString *)username {
+    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@users",FIREBASE_URL]];
+    NSDictionary *user = @{@"email":email, @"username":username};
+    NSArray *myUserID = [uniqueID componentsSeparatedByCharactersInSet:
+                        [NSCharacterSet characterSetWithCharactersInString:@":"]
+                        ];
+    NSString *userWithID = [NSString stringWithFormat:@"user%@",myUserID[1]];
+    Firebase *newUserRef = [ref childByAppendingPath:userWithID];
+    [newUserRef setValue:user];
+    [self setUserPrefs:email withUsername:username withUserID:userWithID];
+
+}
+/**
+ Set user tokens depending on firebase preferences
+ Segues wince the last thing to do is set preferences
+ */
+-(void)setUserPrefs:(NSString *)email withUsername:(NSString *)username withUserID:(NSString *)userID {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSLog(@"in prefs");
+    [prefs setObject:email forKey:@"email"];
+    [prefs setObject:userID forKey:@"userID"]; // for now username is unique id
+    [prefs setObject:username forKey:@"username"]; // for now username is unique id
+    // TODO: check valid username strings . $ # [ ] /
+    [prefs synchronize];
+    [self.emailTextField setText:@""];
+    [self.usernameTextField setText: @""];
+    [self.passwordTextField setText:@""];
+    [self performSegueWithIdentifier:@"loggedIn" sender:nil];
 }
 /**
  Checks fields for login/sign up are valid and will give errors if not correct.
@@ -104,33 +193,42 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     }
 }
 /**
- Determine if create account was tapped or if cancel tapped.
+ Get All usernames to check new user against
+ Will be called at every submit in case somebody creates an account while this user is signing up.
+ If username is unique, will call create account.
  */
-- (void)alertView:(UIAlertView *)alertView
-didDismissWithButtonIndex:(NSInteger) buttonIndex
-{
-    if (buttonIndex == 0) {
-    } else if (buttonIndex == 1) {
-        [self createNewAccount];
+-(void)verifyCreateUser {
+    if ([self.usernameTextField.text length] < 1) {
+        UIAlertView *noUsername = [[UIAlertView alloc] initWithTitle:@"No Username!" message:@"You need a username to register." delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+        [noUsername show];
+        return;
     }
-}
-/** 
- Firebase call to create new user. 
- Then logs in user
- */
--(void)createNewAccount {
-    Firebase *ref = [[Firebase alloc] initWithUrl:FIREBASE_URL];
-    [ref createUser:self.emailTextField.text password:self.passwordTextField.text
-withCompletionBlock:^(NSError *error) {
-    if (error) {
-        // There was an error creating the account
-        [self displayError:error];
-    } else {
-        // firebase doesn't log in after creating... so have to log in now
-        [self postInitialUser];
-        [self standardLogin];
-    }
-}];
+    
+    NSString *wordlistUrl = [NSString stringWithFormat:@"%@users",FIREBASE_URL];
+    Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
+    [gameRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if (snapshot.value != [NSNull null]) {
+            // When creating game # words checked
+            NSMutableArray *allUsers = [[NSMutableArray alloc]init];
+            for (NSDictionary *user in snapshot.value) {
+                [allUsers addObject:snapshot.value[user][@"username"]];
+            }
+            // if username is taken flash an alert and don't proceed with sign up process.
+            if ([allUsers containsObject:self.usernameTextField.text]) {
+                UIAlertView *usernameTaken = [[UIAlertView alloc] initWithTitle:@"Username Unavailable!" message:@"Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                [usernameTaken show];
+                return;
+            } else {
+                NSLog(@"unique, now creating acct");
+                [self createAccount:self.emailTextField.text withPassword:self.passwordTextField.text withUsername:self.usernameTextField.text];
+                return;
+            }
+        } else {
+            // first user
+            NSLog(@"first user");
+            [self createAccount:self.emailTextField.text withPassword:self.passwordTextField.text withUsername:self.usernameTextField.text];
+        }
+    }];
 }
 
 /**
@@ -139,42 +237,6 @@ withCompletionBlock:^(NSError *error) {
 -(void)displayError: (NSError *)error {
     ErrorMessage *errorAlert = [[ErrorMessage alloc]init];
     [errorAlert errorMessages:error];
-}
-/**
- Do a standard login with firebase and segue when done.
- */
--(void)standardLogin {
-    Firebase *ref = [[Firebase alloc] initWithUrl:FIREBASE_URL];
-    [ref authUser:self.emailTextField.text password:self.passwordTextField.text
-withCompletionBlock:^(NSError *error, FAuthData *authData) {
-    if (error ) {
-        [self displayError:error];
-    } else {
-        [self setUserPrefs:authData];
-        // [self postInitialUser];
-        [self performSegueWithIdentifier:@"loggedIn" sender:nil];
-    }
-}];
-}
-/**
- Set user tokens depending on firebase preferences
- */
--(void)setUserPrefs: (FAuthData *)authData {
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    [prefs setObject:self.emailTextField.text forKey:@"email"];
-    NSString *usernameOfID = [self parseString:authData.uid];
-    [prefs setObject:usernameOfID forKey:@"username"]; // for now username is unique id
-    [prefs setObject:authData.token forKey:@"authToken"];
-    [prefs synchronize];
-}
-/** 
- Parse user unique id to make a userx username for user.
- */
--(NSString *)parseString:(NSString *)mySimpleLogin {
-    NSArray *myWords = [mySimpleLogin componentsSeparatedByCharactersInSet:
-                        [NSCharacterSet characterSetWithCharactersInString:@":"]
-                        ];
-    return [NSString stringWithFormat:@"user%@",myWords[1]];
 }
 
 /**
@@ -195,16 +257,8 @@ withCompletionBlock:^(NSError *error, FAuthData *authData) {
     
     return [emailTest evaluateWithObject:candidate];
 }
-/**
- Post initial data to firebase.
- */
--(void)postInitialUser {
-    NSDictionary *userData = @{ @"email": self.emailTextField.text };
-    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@users", FIREBASE_URL]];
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    Firebase *newUserRef = [ref childByAppendingPath:[prefs stringForKey:@"username"]];
-    [newUserRef setValue: userData];
+- (IBAction)unwindToLoginScreen:(UIStoryboardSegue *)segue {
+    //nothing goes here
 }
-
 
 @end

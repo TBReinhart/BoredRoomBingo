@@ -6,18 +6,18 @@
 //  Copyright (c) 2014 Tom Reinhart. All rights reserved.
 //
 
-#import "HomeScreen.h"
+#import "GameCreationViewController.h"
 #import "config.h"
 #import "CurrentWordsTableViewController.h"
 #import "DetailArchiveWordlistTableViewController.h"
 #import "BingoBoardViewController.h"
 #import "InviteFriendsViewController.h"
-@interface HomeScreen ()
+@interface GameCreationViewController ()
 
 @end
 
 
-@implementation HomeScreen
+@implementation GameCreationViewController
 {
     CGFloat keyboardHeight;
     NSString *selectedList;
@@ -234,7 +234,7 @@
 /**
  Unwind segue necessary to move back to this view controller without making a new VC
  */
-- (IBAction)unwindToHomeScreen:(UIStoryboardSegue *)segue {
+- (IBAction)unwindToGameCreationViewController:(UIStoryboardSegue *)segue {
     for (NSString *word in self.arrayWithWordsToAdd) {
         if (![self.currentWords containsObject:word]) {
             [self.currentWords addObject:word];
