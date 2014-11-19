@@ -226,13 +226,9 @@
         friendVC.gameKey = uniqueID;
         friendVC.gameName = self.groupNameTextField.text;
     }
-//    if ([segue.identifier isEqualToString:@"goToBoardSegue"]) {
-//        BingoBoardViewController * bingoBoard = (BingoBoardViewController *)[segue destinationViewController];
-//        //[bingoBoard setBoardWords:self.currentWords];
-//        bingoBoard.gameKey = uniqueID;
-//
-//    }
+
 }
+
 /**
  Unwind segue necessary to move back to this view controller without making a new VC
  */

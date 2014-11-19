@@ -7,13 +7,15 @@
 //
 
 #import "HomeScreenViewController.h"
-
+#import "BingoBoardViewController.h"
 @interface HomeScreenViewController ()
 
 @end
 
 @implementation HomeScreenViewController
-
+{
+    NSString *gameKey;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -40,7 +42,9 @@
 - (IBAction)unwindToLoginScreen:(UIStoryboardSegue *)segue {
     // should be empty
 }
-
+-(void)setGameKey:(NSString *)key {
+    gameKey = key;
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -56,6 +60,11 @@
         [prefs setObject:nil forKey:@"username"]; // for now username is unique id
         [prefs synchronize];
     }
+    if ([segue.identifier isEqualToString:@"acceptInvite"]) {
+        BingoBoardViewController * bingoBoard = (BingoBoardViewController *)[segue destinationViewController];
+        bingoBoard.gameKey = gameKey;
+    }
+    
 }
 
 

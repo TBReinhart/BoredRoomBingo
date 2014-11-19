@@ -199,21 +199,21 @@ static CGFloat const kBounceValue = 30.0f;
     }];
 }
 - (IBAction)buttonClicked:(id)sender {
-    if (sender == self.acceptButton) {
-        [self.delegate acceptActionForItemText:@"accept"];
-        NSLog(@"sender tag of accept is %zd", [sender tag]);
-        
-        // TODO: just segue to this game.
-        
-    } else if (sender == self.denyButton) {
-        [self.delegate denyActionForItemText:@"deny"];
-        NSLog(@"sender tag of deny %zd", [sender tag]);
-        
-        // TODO: delete this from your invites and firebase will autoupdate table.
-        
-    } else {
-        NSLog(@"Clicked unknown button!");
-    }
+//    if (sender == self.acceptButton) {
+//        [self.delegate acceptActionForItemText:@"accept"];
+//        NSLog(@"sender tag of accept is %zd", [sender tag]);
+//        
+//        // TODO: just segue to this game.
+//        
+//    } else if (sender == self.denyButton) {
+//        [self.delegate denyActionForItemText:@"deny"];
+//        NSLog(@"sender tag of deny %zd", [sender tag]);
+//        
+//        // TODO: delete this from your invites and firebase will autoupdate table.
+//        
+//    } else {
+//        NSLog(@"Clicked unknown button!");
+//    }
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];

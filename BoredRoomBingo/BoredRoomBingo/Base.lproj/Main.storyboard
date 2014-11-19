@@ -678,12 +678,13 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="u5N-Xs-Jc0"/>
                     <connections>
                         <segue destination="CRB-Bq-6jV" kind="unwind" identifier="unwindToLoginSegue" unwindAction="unwindToLoginScreen:" id="nML-1l-U1f"/>
+                        <segue destination="ZZZ-ta-sgQ" kind="show" identifier="acceptInvite" id="KHH-He-tqB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="58C-KS-lCA" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="CRB-Bq-6jV" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="-391" y="217"/>
+            <point key="canvasLocation" x="-403" y="160"/>
         </scene>
         <!--New Game-->
         <scene sceneID="EFI-ys-hfG">
@@ -987,7 +988,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hgl-vW-XgO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="351" y="643"/>
+            <point key="canvasLocation" x="332" y="980"/>
         </scene>
         <!--Current Words Table View Controller-->
         <scene sceneID="Ks3-uQ-5aI">
@@ -1862,29 +1863,12 @@
             </objects>
             <point key="canvasLocation" x="856" y="191.5"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="d9M-6X-KQB">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="J3b-Tz-KBh" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="2oq-7u-lee"/>
-                        <viewControllerLayoutGuide type="bottom" id="agH-uj-elV"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ddh-fT-U32">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wXf-5l-xbB" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="magnifyingGlass.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1b3-RG-KUo"/>
+        <segue reference="KHH-He-tqB"/>
     </inferredMetricsTieBreakers>
 </document>

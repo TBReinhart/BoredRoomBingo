@@ -9,11 +9,15 @@
 #import "InvitationsTableViewController.h"
 #import "config.h"
 #import "InvitationTableViewCell.h"
+#import "BingoBoardViewController.h"
+#import "HomeScreenViewController.h"
 @interface InvitationsTableViewController () <InvitationsTableViewCellDelegate>
 {
+    NSMutableArray *myInviteFirebase;
     NSMutableArray *invitations;
     NSMutableArray *gameKeys;
     NSMutableArray *creators;
+    NSInteger acceptedTag;
 }
 @property (nonatomic, strong) NSMutableArray *cellsCurrentlyEditing;
 @end
@@ -53,17 +57,21 @@
             invitations = [[NSMutableArray alloc]init];
             gameKeys = [[NSMutableArray alloc]init];
             creators = [[NSMutableArray alloc]init];
+            myInviteFirebase = [[NSMutableArray alloc]init];
         } else {
             [invitations removeAllObjects];
             [gameKeys removeAllObjects];
             [creators removeAllObjects];
+            [myInviteFirebase removeAllObjects];
         }
         if (snapshot.value != [NSNull null]) {
             for (NSDictionary *invite in snapshot.value) {
                 NSLog(@"invite %@, snap %@", invite, snapshot.value);
+                
                 [invitations addObject:snapshot.value[invite][@"gameName"]];
                 [gameKeys addObject:snapshot.value[invite][@"gameKey"]];
                 [creators addObject:snapshot.value[invite][@"creator"]];
+                [myInviteFirebase addObject:[NSString stringWithFormat:@"%@users/%@/invites/%@",FIREBASE_URL,myID,invite]];
             }
         }
         [self.tableView reloadData];
@@ -98,39 +106,29 @@
     if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
         [cell openCell];
     }
+    [cell.denyButton addTarget:self action:@selector(denyButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.acceptButton addTarget:self action:@selector(acceptButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
+-(void)denyButtonPressed:(UIButton *)sender {
+    NSLog(@"i just pressed deny and the tag was %zd", [sender tag]);
+    NSLog(@"game key of deny %@", gameKeys[[sender tag]]);
+    NSString *denyUrl = [NSString stringWithFormat:@"%@",myInviteFirebase[[sender tag]]];
+    NSLog(@"deny url %@", denyUrl);
+    Firebase *denyRef = [[Firebase alloc] initWithUrl: denyUrl];
+    [denyRef removeValue];
 
-#pragma mark - SwipeableCellDelegate
-- (void)acceptActionForItemText:(NSString *)itemText {
-    NSLog(@"In the delegate, Clicked button one for accept");
-}
 
-- (void)denyActionForItemText:(NSString *)itemText {
-    NSLog(@"In the delegate, Clicked button two for deny");
 }
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
+-(void)acceptButtonPressed:(UIButton *)sender {
+    NSLog(@"i just pressed accept and the tag was %zd", [sender tag]);
+    NSLog(@"game key of accept %@", gameKeys[[sender tag]]);
+    acceptedTag = [sender tag];
+    HomeScreenViewController *parent = ((HomeScreenViewController *)self.parentViewController);
+    [parent setGameKey:gameKeys[[sender tag]]];
+    [parent performSegueWithIdentifier: @"acceptInvite" sender: self.parentViewController];
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
 
 @end
