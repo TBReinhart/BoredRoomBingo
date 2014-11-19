@@ -43,22 +43,24 @@
 }
 
 -(void)loadInvitations {
-    if (invitations == nil) {
-        invitations = [[NSMutableArray alloc]init];
-        gameKeys = [[NSMutableArray alloc]init];
-        creators = [[NSMutableArray alloc]init];
-    } else {
-        [invitations removeAllObjects];
-        [gameKeys removeAllObjects];
-        [creators removeAllObjects];
-    }
+
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myID = [prefs stringForKey:@"userID"];
     NSString *invitationUrl = [NSString stringWithFormat:@"%@users/%@/invites",FIREBASE_URL,myID];
     Firebase *gameRef = [[Firebase alloc] initWithUrl: invitationUrl];
     [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if (invitations == nil) {
+            invitations = [[NSMutableArray alloc]init];
+            gameKeys = [[NSMutableArray alloc]init];
+            creators = [[NSMutableArray alloc]init];
+        } else {
+            [invitations removeAllObjects];
+            [gameKeys removeAllObjects];
+            [creators removeAllObjects];
+        }
         if (snapshot.value != [NSNull null]) {
             for (NSDictionary *invite in snapshot.value) {
+                NSLog(@"invite %@, snap %@", invite, snapshot.value);
                 [invitations addObject:snapshot.value[invite][@"gameName"]];
                 [gameKeys addObject:snapshot.value[invite][@"gameKey"]];
                 [creators addObject:snapshot.value[invite][@"creator"]];
@@ -91,30 +93,14 @@
     cell.backgroundColor = [UIColor purpleColor];
     cell.contentView.backgroundColor = [UIColor blueColor];
     cell.delegate = self;
+    [cell.acceptButton setTag:indexPath.row];
+    [cell.denyButton setTag:indexPath.row];
     if ([self.cellsCurrentlyEditing containsObject:indexPath]) {
         [cell openCell];
     }
     return cell;
 }
 
-
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-//
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [invitations removeObjectAtIndex:indexPath.row];
-//        [creators removeObjectAtIndex:indexPath.row];
-//        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-//    } else {
-//        NSLog(@"Unhandled editing style! %ld", editingStyle);
-//    }
-//}
 #pragma mark - SwipeableCellDelegate
 - (void)acceptActionForItemText:(NSString *)itemText {
     NSLog(@"In the delegate, Clicked button one for accept");

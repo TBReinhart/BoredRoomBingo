@@ -7,7 +7,7 @@
 //
 
 #import "InvitationTableViewCell.h"
-static CGFloat const kBounceValue = 20.0f;
+static CGFloat const kBounceValue = 30.0f;
 @interface InvitationTableViewCell() <UIGestureRecognizerDelegate>
 
 - (void)openCell;
@@ -88,8 +88,8 @@ static CGFloat const kBounceValue = 20.0f;
         case UIGestureRecognizerStateEnded:
             if (self.startingRightLayoutConstraintConstant == 0) { //1
                 //We were opening
-                CGFloat halfOfButtonOne = CGRectGetWidth(self.denyButton.frame) / 2; //2
-                if (self.contentViewRightConstraint.constant >= halfOfButtonOne) { //3
+                CGFloat halfOfButtonDeny = CGRectGetWidth(self.denyButton.frame) / 2; //2
+                if (self.contentViewRightConstraint.constant >= halfOfButtonDeny) { //3
                     //Open all the way
                     [self setConstraintsToShowAllButtons:YES notifyDelegateDidOpen:YES];
                 } else {
@@ -99,8 +99,8 @@ static CGFloat const kBounceValue = 20.0f;
                 
             } else {
                 //We were closing
-                CGFloat buttonOnePlusHalfOfButton2 = CGRectGetWidth(self.denyButton.frame) + (CGRectGetWidth(self.acceptButton.frame) / 2); //4
-                if (self.contentViewRightConstraint.constant >= buttonOnePlusHalfOfButton2) { //5
+                CGFloat denyPlusHalfOfAdd = CGRectGetWidth(self.denyButton.frame) + (CGRectGetWidth(self.acceptButton.frame) / 2); //4
+                if (self.contentViewRightConstraint.constant >= denyPlusHalfOfAdd) { //5
                     //Re-open all the way
                     [self setConstraintsToShowAllButtons:YES notifyDelegateDidOpen:YES];
                 } else {
@@ -140,9 +140,29 @@ static CGFloat const kBounceValue = 20.0f;
 - (CGFloat)buttonTotalWidth {
     return CGRectGetWidth(self.frame) - CGRectGetMinX(self.acceptButton.frame);
 }
-- (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)endEditing
+- (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)notifyDelegate
 {
-    //TODO: Build.
+    if (notifyDelegate) {
+        [self.delegate cellDidClose:self];
+    }
+    
+    if (self.startingRightLayoutConstraintConstant == 0 &&
+        self.contentViewRightConstraint.constant == 0) {
+        //Already all the way closed, no bounce necessary
+        return;
+    }
+    
+    self.contentViewRightConstraint.constant = -kBounceValue;
+    self.contentViewLeftConstraint.constant = kBounceValue;
+    
+    [self updateConstraintsIfNeeded:animated completion:^(BOOL finished) {
+        self.contentViewRightConstraint.constant = 0;
+        self.contentViewLeftConstraint.constant = 0;
+        
+        [self updateConstraintsIfNeeded:animated completion:^(BOOL finished) {
+            self.startingRightLayoutConstraintConstant = self.contentViewRightConstraint.constant;
+        }];
+    }];
 }
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
@@ -181,8 +201,16 @@ static CGFloat const kBounceValue = 20.0f;
 - (IBAction)buttonClicked:(id)sender {
     if (sender == self.acceptButton) {
         [self.delegate acceptActionForItemText:@"accept"];
+        NSLog(@"sender tag of accept is %zd", [sender tag]);
+        
+        // TODO: just segue to this game.
+        
     } else if (sender == self.denyButton) {
-        [self.delegate denyActionForItemText:@"accept"];
+        [self.delegate denyActionForItemText:@"deny"];
+        NSLog(@"sender tag of deny %zd", [sender tag]);
+        
+        // TODO: delete this from your invites and firebase will autoupdate table.
+        
     } else {
         NSLog(@"Clicked unknown button!");
     }

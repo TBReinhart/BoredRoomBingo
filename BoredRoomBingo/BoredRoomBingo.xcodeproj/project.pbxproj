@@ -207,8 +207,6 @@
 			isa = PBXGroup;
 			children = (
 				2F05367919D9DBB400C14AF5 /* Main.storyboard */,
-				2FD2ABA61A1C632D004FA5AE /* InvitationTableViewCell.h */,
-				2FD2ABA71A1C632D004FA5AE /* InvitationTableViewCell.m */,
 				2FD2ABA51A1C6051004FA5AE /* MyInvitations */,
 				2FD2ABA11A1BB5D5004FA5AE /* Home Screen */,
 				2F1B52EC1A16591B00D91BE6 /* Public Games */,
@@ -397,6 +395,8 @@
 			children = (
 				2FD2ABA21A1C5A05004FA5AE /* InvitationsTableViewController.h */,
 				2FD2ABA31A1C5A05004FA5AE /* InvitationsTableViewController.m */,
+				2FD2ABA61A1C632D004FA5AE /* InvitationTableViewCell.h */,
+				2FD2ABA71A1C632D004FA5AE /* InvitationTableViewCell.m */,
 			);
 			name = MyInvitations;
 			sourceTree = "<group>";
