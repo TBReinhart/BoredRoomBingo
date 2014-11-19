@@ -28,35 +28,6 @@
     // Do any additional setup after loading the view.
 }
 /**
- Get All Friends From Firebase.
- */
-//-(void)loadFirebaseInitModel {
-//    // TODO: find better way for the below 2 lines
-//    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-//    NSString *myUsername = [prefs stringForKey:@"username"];
-//    NSString *myID = [prefs stringForKey:@"userID"];
-//    NSString *wordlistUrl = [NSString stringWithFormat:@"%@users/%@/%@/friends",FIREBASE_URL,myID, myUsername];
-//    
-//    Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
-//    [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-//        if (snapshot.value != [NSNull null]) {
-//            // When creating game # words checked
-//            if (friendsList == nil) {
-//                friendsList = [[NSMutableArray alloc]init];
-//            }
-//            for (NSString *friend in snapshot.value) {
-//                [friendsList addObject:friend];
-//            }
-//            self.model = [[InviteFriendModel alloc]initInviteModel:friendsList];
-//            SearchUsersTableViewController *tbc = (SearchUsersTableViewController *)self.childViewControllers[0];
-//            [tbc setUserList:self.model.friends withFriendsList:self.model.friends];
-//            [tbc.tableView reloadData];
-//        }
-//    } withCancelBlock:^(NSError *error) {
-//        NSLog(@"Cancel block %@", error.description);
-//    }];
-//}
-/**
  Will load all users from firebase into an array to check for existence to invite to game.
  Should only be called once.
  Perhaps memory heavy for a mature game.
@@ -119,6 +90,7 @@
     SearchUsersTableViewController *tbc = (SearchUsersTableViewController *)self.childViewControllers[0];
     NSLog(@"RESULTS %@", searchResults);
     [tbc setGameKey:self.gameKey];
+    [tbc setGameName:self.gameName];
     [tbc setUserList:[searchResults mutableCopy] withFriendsList:self.model.friends];
     [tbc.tableView reloadData];
 }

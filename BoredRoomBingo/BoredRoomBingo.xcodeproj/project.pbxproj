@@ -47,6 +47,8 @@
 		2FD0D76D19F9CD6D00F19DF6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76C19F9CD6D00F19DF6 /* CoreGraphics.framework */; };
 		2FD0D76F19F9CD7500F19DF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76E19F9CD7500F19DF6 /* UIKit.framework */; };
 		2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D77119FAB45200F19DF6 /* LoginSignUp.m */; };
+		2FD2ABA41A1C5A05004FA5AE /* InvitationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2ABA31A1C5A05004FA5AE /* InvitationsTableViewController.m */; };
+		2FD2ABA81A1C632D004FA5AE /* InvitationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2ABA71A1C632D004FA5AE /* InvitationTableViewCell.m */; };
 		2FF5B5101A16A10E00A3A196 /* BoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5B50F1A16A10E00A3A196 /* BoardModel.m */; };
 /* End PBXBuildFile section */
 
@@ -121,6 +123,10 @@
 		2FD0D76E19F9CD7500F19DF6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2FD0D77019FAB45200F19DF6 /* LoginSignUp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginSignUp.h; sourceTree = "<group>"; };
 		2FD0D77119FAB45200F19DF6 /* LoginSignUp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginSignUp.m; sourceTree = "<group>"; };
+		2FD2ABA21A1C5A05004FA5AE /* InvitationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationsTableViewController.h; sourceTree = "<group>"; };
+		2FD2ABA31A1C5A05004FA5AE /* InvitationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationsTableViewController.m; sourceTree = "<group>"; };
+		2FD2ABA61A1C632D004FA5AE /* InvitationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationTableViewCell.h; sourceTree = "<group>"; };
+		2FD2ABA71A1C632D004FA5AE /* InvitationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationTableViewCell.m; sourceTree = "<group>"; };
 		2FE8CE0B19F0B2BA000BDF29 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
 		2FF5B50E1A16A10E00A3A196 /* BoardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardModel.h; sourceTree = "<group>"; };
 		2FF5B50F1A16A10E00A3A196 /* BoardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardModel.m; sourceTree = "<group>"; };
@@ -201,6 +207,9 @@
 			isa = PBXGroup;
 			children = (
 				2F05367919D9DBB400C14AF5 /* Main.storyboard */,
+				2FD2ABA61A1C632D004FA5AE /* InvitationTableViewCell.h */,
+				2FD2ABA71A1C632D004FA5AE /* InvitationTableViewCell.m */,
+				2FD2ABA51A1C6051004FA5AE /* MyInvitations */,
 				2FD2ABA11A1BB5D5004FA5AE /* Home Screen */,
 				2F1B52EC1A16591B00D91BE6 /* Public Games */,
 				2FC56FDE1A000A6B00BF3EF7 /* Current Words Table */,
@@ -383,6 +392,15 @@
 			name = "Home Screen";
 			sourceTree = "<group>";
 		};
+		2FD2ABA51A1C6051004FA5AE /* MyInvitations */ = {
+			isa = PBXGroup;
+			children = (
+				2FD2ABA21A1C5A05004FA5AE /* InvitationsTableViewController.h */,
+				2FD2ABA31A1C5A05004FA5AE /* InvitationsTableViewController.m */,
+			);
+			name = MyInvitations;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -494,8 +512,10 @@
 				2F05367219D9DBB400C14AF5 /* main.m in Sources */,
 				2F8372F71A1AE5F80035C322 /* HomeScreenViewController.m in Sources */,
 				2F2DB6201A09532300F98E23 /* SelectWordTableViewCell.m in Sources */,
+				2FD2ABA41A1C5A05004FA5AE /* InvitationsTableViewController.m in Sources */,
 				2FC4B6B81A19A7B6007B5F78 /* InviteFriendsViewController.m in Sources */,
 				2F8372F01A19B3190035C322 /* SearchUsersTableViewCell.m in Sources */,
+				2FD2ABA81A1C632D004FA5AE /* InvitationTableViewCell.m in Sources */,
 				2FC4B6BB1A19AB0D007B5F78 /* InviteFriendModel.m in Sources */,
 				2F8372ED1A19B1660035C322 /* SearchUsersTableViewController.m in Sources */,
 				2F1B52EB1A16591300D91BE6 /* PublicGamesTableViewController.m in Sources */,

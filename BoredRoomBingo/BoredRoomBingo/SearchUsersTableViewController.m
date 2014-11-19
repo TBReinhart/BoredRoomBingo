@@ -14,6 +14,7 @@
     NSMutableArray *userList;
     NSMutableArray *myFriends;
     NSString *gameKey;
+    NSString *inviteGameName;
 }
 @end
 
@@ -38,6 +39,9 @@
 -(void)setGameKey:(NSString *)key {
     gameKey = key;
 }
+-(void)setGameName:(NSString *)gameName {
+    inviteGameName = gameName;
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -58,7 +62,6 @@
         cell = [[SearchUsersTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     [cell.addRemoveButton setTag:indexPath.row];
-    [cell.addRemoveButton setTitle:userList[indexPath.row] forState:UIControlStateNormal];
     [cell.addRemoveButton addTarget:self action:@selector(invitePressed:) forControlEvents:UIControlEventTouchUpInside];
     [cell.friendLabel setText:@""];
     cell.usernameLabel.text = userList[indexPath.row];
@@ -73,17 +76,15 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myUsername = [prefs stringForKey:@"username"];
     NSString *theirUsername = userList[[sender tag]];
-    NSString *theirUserID;
     NSString *getUserURL = [NSString stringWithFormat:@"%@users",FIREBASE_URL];
     Firebase *gameRef = [[Firebase alloc] initWithUrl: getUserURL];
     [gameRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
             // When creating game # words checked
-            NSMutableArray *allUsers = [[NSMutableArray alloc]init];
             for (NSDictionary *user in snapshot.value) {
                 if( [snapshot.value[user][@"username"] isEqualToString:theirUsername]) {
                     NSLog(@"their name ? %@", [NSString stringWithFormat:@"%@",user]);
-                    [self sendInvitation:[NSString stringWithFormat:@"%@",user] withMyUsername:myUsername];
+                    [self sendInvitation:[NSString stringWithFormat:@"%@",user] withMyUsername:myUsername withGameName:inviteGameName];
                 }
             }
         }
@@ -91,9 +92,9 @@
 
     [self.tableView reloadData];
 }
--(void)sendInvitation:(NSString *)theirID withMyUsername:(NSString *)myUsername {
+-(void)sendInvitation:(NSString *)theirID withMyUsername:(NSString *)myUsername withGameName:(NSString *)thisGameName {
     Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@users/%@/invites",FIREBASE_URL, theirID]];
-    NSDictionary *invitation = @{@"gameName":gameKey, @"creator":myUsername};
+    NSDictionary *invitation = @{@"gameKey":gameKey, @"creator":myUsername, @"gameName":thisGameName};
     Firebase *newInviteRef = [ref childByAutoId];
     [newInviteRef setValue:invitation];
 }
