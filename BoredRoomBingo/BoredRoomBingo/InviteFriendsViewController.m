@@ -8,13 +8,16 @@
 
 #import "InviteFriendsViewController.h"
 #import "config.h"
-#import "InviteFriendModel.h"
 #import "SearchUsersTableViewController.h"
+#import "BingoBoardViewController.h"
+
 @interface InviteFriendsViewController ()
 {
     NSMutableArray *fullUserList;
+    NSMutableDictionary *usernameToIDs;
     NSArray *searchResults;
     NSMutableArray *friendsList;
+    NSMutableArray *userIDs;
 }
 @end
 
@@ -26,6 +29,14 @@
     [self loadAllUsers];
  //   [self loadFirebaseInitModel];
     // Do any additional setup after loading the view.
+}
+-(IBAction)startGamePressed:(id)sender {
+    NSString *changeActiveUrl = [NSString stringWithFormat:@"%@/active",self.gameKey];
+    Firebase *ref = [[Firebase alloc] initWithUrl:changeActiveUrl];
+    [ref setValue:@"yes"];
+    SearchUsersTableViewController *tbc = (SearchUsersTableViewController *)self.childViewControllers[0];
+    [tbc setActiveGame:YES];
+    [self performSegueWithIdentifier:@"activeGameSegue" sender:nil];
 }
 /**
  Will load all users from firebase into an array to check for existence to invite to game.
@@ -39,10 +50,12 @@
         if (snapshot.value != [NSNull null]) {
             // When creating game # words checked
             fullUserList = [[NSMutableArray alloc]init];
+
+            usernameToIDs = [[NSMutableDictionary alloc]init];
             for (NSDictionary *user in snapshot.value) {
                 [fullUserList addObject:snapshot.value[user][@"username"]];
+                [usernameToIDs setValue:user forKey:snapshot.value[user][@"username"]];
             }
-            NSLog(@"all users");
             [self searchArray];
         }
     } withCancelBlock:^(NSError *error) {
@@ -56,19 +69,14 @@
  */
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     // check if word already in list
-    if ([self.searchFriendsTextField.text length] > -1 ) { //TODO change to return only friends when no searching.
+    if ([self.searchFriendsTextField.text length] > -1 ) { // TODO change to return only friends when no searching.
         if (fullUserList == nil) {
             [self loadAllUsers];
         } else {
-            NSLog(@"should return");
             [self searchArray];
         }
         return YES;
     }
-//    } else {
-//        //[self loadFirebaseInitModel];
-//    }
-
     return YES;
 }
 -(IBAction)textChanges:(id)sender {
@@ -88,10 +96,17 @@
     NSArray *immutable = [fullUserList copy];
     searchResults = [immutable filteredArrayUsingPredicate:userPredicate];
     SearchUsersTableViewController *tbc = (SearchUsersTableViewController *)self.childViewControllers[0];
-    NSLog(@"RESULTS %@", searchResults);
     [tbc setGameKey:self.gameKey];
     [tbc setGameName:self.gameName];
-    [tbc setUserList:[searchResults mutableCopy] withFriendsList:self.model.friends];
+    if (userIDs == nil) {
+        userIDs = [[NSMutableArray alloc]init];
+    } else {
+        [userIDs removeAllObjects];
+    }
+    for (NSString *username in searchResults) {
+        [userIDs addObject:[usernameToIDs objectForKey:username]];
+    }
+    [tbc setUserList:[searchResults mutableCopy] withUserIDs:userIDs];
     [tbc.tableView reloadData];
 }
 
@@ -102,14 +117,13 @@
 -(IBAction)backgroundTap:(id)sender {
     [self.view endEditing:YES];
 }
-/*
-#pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if ([segue.identifier isEqualToString:@"activeGameSegue"]) {
+        BingoBoardViewController * bingoBoard = (BingoBoardViewController *)[segue destinationViewController];
+        bingoBoard.gameKey = self.gameKey;
+    }
 }
-*/
 
 @end

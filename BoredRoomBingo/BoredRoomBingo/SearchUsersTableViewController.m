@@ -12,9 +12,12 @@
 @interface SearchUsersTableViewController ()
 {
     NSMutableArray *userList;
+    NSMutableArray *userIDList;
     NSMutableArray *myFriends;
     NSString *gameKey;
     NSString *inviteGameName;
+    NSMutableArray *invitedUserList;
+    BOOL activeGame;
 }
 @end
 
@@ -22,16 +25,32 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-}
--(void)setUserList:(NSMutableArray *)list withFriendsList:(NSMutableArray *)friends {
-    if (userList) {
-        [userList removeAllObjects];
+    if (invitedUserList == nil) {
+        invitedUserList = [[NSMutableArray alloc]init];
     } else {
+        [invitedUserList removeAllObjects];
+    }
+}
+-(void)setUserList:(NSMutableArray *)list withUserIDs:(NSMutableArray *)userIDs {
+    if (userList == nil) {
         userList = [[NSMutableArray alloc]init];
+        userIDList = [[NSMutableArray alloc]init];
     }
     userList = list;
+    userIDList = userIDs;
 }
-
+-(void)setActiveGame:(BOOL)active {
+    activeGame = active;
+    if (activeGame) {
+        // invite everyone
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString *myUsername = [prefs stringForKey:@"username"];
+        for (int index = 0; index < [userList count]; index++) {
+            [self sendInvitation:userIDList[index] withMyUsername:myUsername withGameName:inviteGameName withTheirUsername:userList[index]];
+        }
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -62,20 +81,37 @@
         cell = [[SearchUsersTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     [cell.addRemoveButton setTag:indexPath.row];
-    [cell.addRemoveButton addTarget:self action:@selector(invitePressed:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.addRemoveButton addTarget:self action:@selector(keepTrackOfInvitedUsers:) forControlEvents:UIControlEventTouchUpInside];
     [cell.friendLabel setText:@""];
+    [cell.addRemoveButton setBackgroundImage:[UIImage imageNamed:@"envelope.png"] forState:UIControlStateNormal];
+    cell.addRemoveButton.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
+    cell.addRemoveButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
+
     cell.usernameLabel.text = userList[indexPath.row];
     return cell;
 }
 /**
- When you invite a friend, will send invitation
- // TODO: notifications
+ Keep track of all users invited
  */
--(void)invitePressed:(UIButton*)sender {
-    // sender.tag is indexpath.row of user looking for
-    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
-    NSString *myUsername = [prefs stringForKey:@"username"];
-    NSString *theirUsername = userList[[sender tag]];
+-(void)keepTrackOfInvitedUsers:(UIButton *)sender {
+    if (![invitedUserList containsObject:userList[[sender tag]]]) {
+        [invitedUserList addObject:userList[[sender tag]]];
+    }
+    [sender setBackgroundImage:[UIImage imageNamed:@"airplane.png"] forState:UIControlStateNormal];
+}
+/**
+ Check if user has already been invited to the game
+ */
+-(BOOL)checkIfInvited:(NSString *)thisKey withInvites:(NSDictionary *)invites {
+    for (NSDictionary *invite in invites) {
+        if ([invites[invite][@"gameKey"] isEqualToString:thisKey]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+-(void)sendInvitation:(NSString *)theirID withMyUsername:(NSString *)myUsername withGameName:(NSString *)thisGameName withTheirUsername:(NSString *)theirUsername {
+    
     NSString *getUserURL = [NSString stringWithFormat:@"%@users",FIREBASE_URL];
     Firebase *gameRef = [[Firebase alloc] initWithUrl: getUserURL];
     [gameRef observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
@@ -83,19 +119,19 @@
             // When creating game # words checked
             for (NSDictionary *user in snapshot.value) {
                 if( [snapshot.value[user][@"username"] isEqualToString:theirUsername]) {
-                    NSLog(@"their name ? %@", [NSString stringWithFormat:@"%@",user]);
-                    [self sendInvitation:[NSString stringWithFormat:@"%@",user] withMyUsername:myUsername withGameName:inviteGameName];
+                    if ([self checkIfInvited:gameKey withInvites:snapshot.value[user][@"invites"]]) {
+                        // already invited
+                        return;
+                    } else {
+                        Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@users/%@/invites",FIREBASE_URL, theirID]];
+                        NSDictionary *invitation = @{@"gameKey":gameKey, @"creator":myUsername, @"gameName":thisGameName};
+                        Firebase *newInviteRef = [ref childByAutoId];
+                        [newInviteRef setValue:invitation];
+                    }
                 }
             }
         }
     }];
 
-    [self.tableView reloadData];
-}
--(void)sendInvitation:(NSString *)theirID withMyUsername:(NSString *)myUsername withGameName:(NSString *)thisGameName {
-    Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@users/%@/invites",FIREBASE_URL, theirID]];
-    NSDictionary *invitation = @{@"gameKey":gameKey, @"creator":myUsername, @"gameName":thisGameName};
-    Firebase *newInviteRef = [ref childByAutoId];
-    [newInviteRef setValue:invitation];
 }
 @end

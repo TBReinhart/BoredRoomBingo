@@ -485,9 +485,6 @@
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
-                                            <connections>
-                                                <action selector="buttonClicked:" destination="Q1x-fC-Ygf" eventType="touchUpInside" id="xPW-9B-lPb"/>
-                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihu-4G-ngY">
                                             <rect key="frame" x="386" y="0.0" width="70" height="72"/>
@@ -499,9 +496,6 @@
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
-                                            <connections>
-                                                <action selector="buttonClicked:" destination="Q1x-fC-Ygf" eventType="touchUpInside" id="HiR-1k-n0e"/>
-                                            </connections>
                                         </button>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="myO-54-avW" userLabel="cellView">
                                             <rect key="frame" x="0.0" y="0.0" width="457" height="72"/>
@@ -1063,7 +1057,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jai-Tp-bF8">
+                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jai-Tp-bF8">
                                 <rect key="frame" x="0.0" y="94" width="600" height="457"/>
                                 <connections>
                                     <segue destination="I1K-9m-2U7" kind="embed" id="21A-bw-aKs"/>
@@ -1118,8 +1112,18 @@
                             <outletCollection property="gestureRecognizers" destination="oUt-9s-fOg" appends="YES" id="9th-bF-omY"/>
                         </connections>
                     </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="lbY-RX-8hL">
+                        <barButtonItem key="rightBarButtonItem" title="Start Game" id="oii-hL-EEk">
+                            <connections>
+                                <action selector="startGamePressed:" destination="PEe-Q2-R4J" id="FYn-zV-qHI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="searchFriendsTextField" destination="2jx-cq-Pjx" id="5oW-jJ-Aix"/>
+                        <segue destination="ZZZ-ta-sgQ" kind="show" identifier="activeGameSegue" id="Src-o2-se0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gGg-Me-Y5n" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1145,19 +1149,23 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hWj-Gd-938" id="MJF-16-OvE">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LI3-nz-uq3">
+                                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LI3-nz-uq3">
                                             <rect key="frame" x="534" y="7" width="46" height="30"/>
-                                            <state key="normal" title="Button">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="46" id="DDR-g1-8xC"/>
+                                                <constraint firstAttribute="height" constant="30" id="Y9P-Hh-rlK"/>
+                                            </constraints>
+                                            <state key="normal" backgroundImage="envelope.png">
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOQ-1L-a1y">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Friend" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tOQ-1L-a1y">
                                             <rect key="frame" x="476" y="11" width="49" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlG-Bo-Mqw">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlG-Bo-Mqw">
                                             <rect key="frame" x="8" y="11" width="518" height="20.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -1824,7 +1832,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eio-H1-rL4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1011" y="643"/>
+            <point key="canvasLocation" x="1220" y="691"/>
         </scene>
         <!--Archived Word Lists Table View Controller-->
         <scene sceneID="TGe-5T-NLN">
@@ -1865,10 +1873,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="envelope.png" width="256" height="256"/>
         <image name="magnifyingGlass.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="1b3-RG-KUo"/>
-        <segue reference="KHH-He-tqB"/>
+        <segue reference="Src-o2-se0"/>
     </inferredMetricsTieBreakers>
 </document>

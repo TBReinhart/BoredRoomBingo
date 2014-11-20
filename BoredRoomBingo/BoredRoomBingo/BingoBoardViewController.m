@@ -36,6 +36,7 @@
             for (NSString *word in snapshot.value[@"list"]) {
                 [fullList addObject:word];
             }
+            [self.navigationItem setTitle:snapshot.value[@"gameName"]];
             model = [[BoardModel alloc]initBoardModel:self.gameKey withFullList:fullList];
 
             [self setUpBoardButton];

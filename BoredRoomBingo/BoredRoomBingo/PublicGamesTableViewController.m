@@ -38,9 +38,11 @@
             gameKeys = [[NSMutableArray alloc]init];
             for (id game in snapshot.value) {
                 NSString *key = [NSString stringWithFormat:@"%@",game];
-                [publicGameList addObject:snapshot.value[key][@"gameName"]] ;
                 NSString *gameUrl = [NSString stringWithFormat:@"%@game/public/%@",FIREBASE_URL,key];
-                [gameKeys addObject:gameUrl];
+                if ([snapshot.value[key][@"active"] isEqualToString:@"yes"]) {
+                    [gameKeys addObject:gameUrl];
+                    [publicGameList addObject:snapshot.value[key][@"gameName"]];
+                }
             }
         }
         [self.tableView reloadData];

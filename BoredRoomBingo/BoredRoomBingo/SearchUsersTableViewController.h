@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface SearchUsersTableViewController : UITableViewController
--(void)setUserList:(NSMutableArray *)list withFriendsList:(NSMutableArray *)friends;
+-(void)setUserList:(NSMutableArray *)list withUserIDs:(NSMutableArray *)userIDs;
 -(void)setGameKey:(NSString *)key;
 -(void)setGameName:(NSString *)gameName;
+-(void)setActiveGame:(BOOL)active;
 @end

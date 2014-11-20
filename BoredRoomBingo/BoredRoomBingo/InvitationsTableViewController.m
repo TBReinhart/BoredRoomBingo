@@ -66,8 +66,6 @@
         }
         if (snapshot.value != [NSNull null]) {
             for (NSDictionary *invite in snapshot.value) {
-                NSLog(@"invite %@, snap %@", invite, snapshot.value);
-                
                 [invitations addObject:snapshot.value[invite][@"gameName"]];
                 [gameKeys addObject:snapshot.value[invite][@"gameKey"]];
                 [creators addObject:snapshot.value[invite][@"creator"]];
@@ -111,18 +109,13 @@
     return cell;
 }
 -(void)denyButtonPressed:(UIButton *)sender {
-    NSLog(@"i just pressed deny and the tag was %zd", [sender tag]);
-    NSLog(@"game key of deny %@", gameKeys[[sender tag]]);
     NSString *denyUrl = [NSString stringWithFormat:@"%@",myInviteFirebase[[sender tag]]];
-    NSLog(@"deny url %@", denyUrl);
     Firebase *denyRef = [[Firebase alloc] initWithUrl: denyUrl];
     [denyRef removeValue];
 
 
 }
 -(void)acceptButtonPressed:(UIButton *)sender {
-    NSLog(@"i just pressed accept and the tag was %zd", [sender tag]);
-    NSLog(@"game key of accept %@", gameKeys[[sender tag]]);
     acceptedTag = [sender tag];
     HomeScreenViewController *parent = ((HomeScreenViewController *)self.parentViewController);
     [parent setGameKey:gameKeys[[sender tag]]];

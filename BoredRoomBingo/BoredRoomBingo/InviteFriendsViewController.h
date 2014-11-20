@@ -7,11 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "InviteFriendModel.h"
 @interface InviteFriendsViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic,strong) NSString *gameKey; ///< Key of Game to send to users
 @property (nonatomic,strong) NSString *gameName; ///< Name of game to send to users
 @property (strong, nonatomic) IBOutlet UITextField *searchFriendsTextField; ///< Text Field used to search all users
-@property (strong, nonatomic) InviteFriendModel *model;
+
 
 @end

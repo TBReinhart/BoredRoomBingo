@@ -38,7 +38,6 @@
 		2F8372F71A1AE5F80035C322 /* HomeScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2F8372F61A1AE5F80035C322 /* HomeScreenViewController.m */; };
 		2FC383BD19FC84AD00B5B725 /* ForgotPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */; };
 		2FC4B6B81A19A7B6007B5F78 /* InviteFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC4B6B71A19A7B6007B5F78 /* InviteFriendsViewController.m */; };
-		2FC4B6BB1A19AB0D007B5F78 /* InviteFriendModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC4B6BA1A19AB0D007B5F78 /* InviteFriendModel.m */; };
 		2FC56FD919FFFFD400BF3EF7 /* CurrentWordsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC56FD819FFFFD400BF3EF7 /* CurrentWordsTableViewController.m */; };
 		2FC56FDD1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FC56FDC1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m */; };
 		2FD0D76119F9855700F19DF6 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FD0D76019F9855700F19DF6 /* CoreData.framework */; };
@@ -49,6 +48,8 @@
 		2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D77119FAB45200F19DF6 /* LoginSignUp.m */; };
 		2FD2ABA41A1C5A05004FA5AE /* InvitationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2ABA31A1C5A05004FA5AE /* InvitationsTableViewController.m */; };
 		2FD2ABA81A1C632D004FA5AE /* InvitationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2ABA71A1C632D004FA5AE /* InvitationTableViewCell.m */; };
+		2FF0ACBC1A1D85A90046FFD4 /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0ACBB1A1D85A90046FFD4 /* airplane.png */; };
+		2FF0ACBE1A1D86920046FFD4 /* envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0ACBD1A1D86920046FFD4 /* envelope.png */; };
 		2FF5B5101A16A10E00A3A196 /* BoardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FF5B50F1A16A10E00A3A196 /* BoardModel.m */; };
 /* End PBXBuildFile section */
 
@@ -110,8 +111,6 @@
 		2FC383BC19FC84AD00B5B725 /* ForgotPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ForgotPasswordViewController.m; sourceTree = "<group>"; };
 		2FC4B6B61A19A7B6007B5F78 /* InviteFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendsViewController.h; sourceTree = "<group>"; };
 		2FC4B6B71A19A7B6007B5F78 /* InviteFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendsViewController.m; sourceTree = "<group>"; };
-		2FC4B6B91A19AB0D007B5F78 /* InviteFriendModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InviteFriendModel.h; sourceTree = "<group>"; };
-		2FC4B6BA1A19AB0D007B5F78 /* InviteFriendModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InviteFriendModel.m; sourceTree = "<group>"; };
 		2FC56FD719FFFFD400BF3EF7 /* CurrentWordsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentWordsTableViewController.h; sourceTree = "<group>"; };
 		2FC56FD819FFFFD400BF3EF7 /* CurrentWordsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CurrentWordsTableViewController.m; sourceTree = "<group>"; };
 		2FC56FDB1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CurrentWordsTableViewCell.h; sourceTree = "<group>"; };
@@ -128,6 +127,8 @@
 		2FD2ABA61A1C632D004FA5AE /* InvitationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationTableViewCell.h; sourceTree = "<group>"; };
 		2FD2ABA71A1C632D004FA5AE /* InvitationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationTableViewCell.m; sourceTree = "<group>"; };
 		2FE8CE0B19F0B2BA000BDF29 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		2FF0ACBB1A1D85A90046FFD4 /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane.png; sourceTree = "<group>"; };
+		2FF0ACBD1A1D86920046FFD4 /* envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = envelope.png; sourceTree = "<group>"; };
 		2FF5B50E1A16A10E00A3A196 /* BoardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoardModel.h; sourceTree = "<group>"; };
 		2FF5B50F1A16A10E00A3A196 /* BoardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoardModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -218,8 +219,7 @@
 				2FD0D77319FAB7C300F19DF6 /* login */,
 				2FC383BE19FC8E7200B5B725 /* ForgotPassword? */,
 				2F05367C19D9DBB400C14AF5 /* Images.xcassets */,
-				2F8372E91A19B1320035C322 /* magnifyingGlass.png */,
-				2F423F2D1A1078040003DBAA /* bingoBoard.jpg */,
+				2FF0ACBF1A1D92390046FFD4 /* Photos */,
 				2F05367E19D9DBB400C14AF5 /* LaunchScreen.xib */,
 			);
 			path = BoredRoomBingo;
@@ -303,8 +303,6 @@
 		2F8372F11A19B3220035C322 /* InviteUsers */ = {
 			isa = PBXGroup;
 			children = (
-				2FC4B6B91A19AB0D007B5F78 /* InviteFriendModel.h */,
-				2FC4B6BA1A19AB0D007B5F78 /* InviteFriendModel.m */,
 				2FC4B6B61A19A7B6007B5F78 /* InviteFriendsViewController.h */,
 				2FC4B6B71A19A7B6007B5F78 /* InviteFriendsViewController.m */,
 				2F8372EB1A19B1660035C322 /* SearchUsersTableViewController.h */,
@@ -401,6 +399,17 @@
 			name = MyInvitations;
 			sourceTree = "<group>";
 		};
+		2FF0ACBF1A1D92390046FFD4 /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				2F8372E91A19B1320035C322 /* magnifyingGlass.png */,
+				2FF0ACBD1A1D86920046FFD4 /* envelope.png */,
+				2FF0ACBB1A1D85A90046FFD4 /* airplane.png */,
+				2F423F2D1A1078040003DBAA /* bingoBoard.jpg */,
+			);
+			name = Photos;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -485,7 +494,9 @@
 				2F423F2E1A1078040003DBAA /* bingoBoard.jpg in Resources */,
 				2F05367B19D9DBB400C14AF5 /* Main.storyboard in Resources */,
 				2F05368019D9DBB400C14AF5 /* LaunchScreen.xib in Resources */,
+				2FF0ACBC1A1D85A90046FFD4 /* airplane.png in Resources */,
 				2F05367D19D9DBB400C14AF5 /* Images.xcassets in Resources */,
+				2FF0ACBE1A1D86920046FFD4 /* envelope.png in Resources */,
 				2F8372EA1A19B1320035C322 /* magnifyingGlass.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,7 +527,6 @@
 				2FC4B6B81A19A7B6007B5F78 /* InviteFriendsViewController.m in Sources */,
 				2F8372F01A19B3190035C322 /* SearchUsersTableViewCell.m in Sources */,
 				2FD2ABA81A1C632D004FA5AE /* InvitationTableViewCell.m in Sources */,
-				2FC4B6BB1A19AB0D007B5F78 /* InviteFriendModel.m in Sources */,
 				2F8372ED1A19B1660035C322 /* SearchUsersTableViewController.m in Sources */,
 				2F1B52EB1A16591300D91BE6 /* PublicGamesTableViewController.m in Sources */,
 				2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */,
