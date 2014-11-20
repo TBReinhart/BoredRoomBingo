@@ -9,9 +9,11 @@
 #import "BingoBoardViewController.h"
 #import "BoardModel.h"
 #import "config.h"
+#import <Parse/Parse.h>
 @interface BingoBoardViewController ()
 {
     BoardModel *model;
+    NSString *creator;
 }
 @end
 
@@ -36,6 +38,7 @@
             for (NSString *word in snapshot.value[@"list"]) {
                 [fullList addObject:word];
             }
+            creator = snapshot.value[@"creator"];
             [self.navigationItem setTitle:snapshot.value[@"gameName"]];
             model = [[BoardModel alloc]initBoardModel:self.gameKey withFullList:fullList];
 
@@ -101,9 +104,19 @@ didDismissWithButtonIndex:(NSInteger) buttonIndex
  Alert that game was won!
  */
 -(void)gameOver {
-    UIAlertView *winAlert = [[UIAlertView alloc] initWithTitle:@"Game Over!" message:@"Someone won the game!" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-    [winAlert addButtonWithTitle:@"Ok!"];
-    [winAlert show];
+    [self sendWinningNotification];
+//    UIAlertView *winAlert = [[UIAlertView alloc] initWithTitle:@"Game Over!" message:@"Someone won the game!" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+//    [winAlert addButtonWithTitle:@"Ok!"];
+//    [winAlert show];
+//    
+}
+-(void)sendWinningNotification {
+    // Send a notification to all devices subscribed to the "Giants" channel.
+    PFPush *push = [[PFPush alloc] init];
+    [push setChannel:creator];
+    NSLog(@"creator is %@", creator);
+    [push setMessage:@"The Game Is Over!"];
+    [push sendPushInBackground];
 }
 /*
 #pragma mark - Navigation

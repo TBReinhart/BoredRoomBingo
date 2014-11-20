@@ -8,6 +8,7 @@
 
 #import "HomeScreenViewController.h"
 #import "BingoBoardViewController.h"
+#import <Parse/Parse.h>
 @interface HomeScreenViewController ()
 
 @end
@@ -15,6 +16,7 @@
 @implementation HomeScreenViewController
 {
     NSString *gameKey;
+    NSString *theCreator;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -42,8 +44,9 @@
 - (IBAction)unwindToLoginScreen:(UIStoryboardSegue *)segue {
     // should be empty
 }
--(void)setGameKey:(NSString *)key {
+-(void)setGameKey:(NSString *)key withCreator:(NSString *)creator {
     gameKey = key;
+    theCreator = creator;
 }
 #pragma mark - Navigation
 
@@ -62,9 +65,16 @@
     }
     if ([segue.identifier isEqualToString:@"acceptInvite"]) {
         BingoBoardViewController * bingoBoard = (BingoBoardViewController *)[segue destinationViewController];
+        [self setNotifcations:gameKey withCreator:theCreator];
         bingoBoard.gameKey = gameKey;
     }
     
+}
+-(void)setNotifcations:(NSString *)key withCreator:(NSString *)creator {
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    NSLog(@"the creator in set notifcations %@", theCreator);
+    [currentInstallation addUniqueObject:theCreator forKey:@"channels"];
+    [currentInstallation saveInBackground];
 }
 
 

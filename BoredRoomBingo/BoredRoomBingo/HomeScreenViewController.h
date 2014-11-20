@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeScreenViewController : UIViewController
--(void)setGameKey:(NSString *)key;
+-(void)setGameKey:(NSString *)key withCreator:(NSString *)creator;
 
 @end

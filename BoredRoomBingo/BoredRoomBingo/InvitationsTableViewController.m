@@ -17,6 +17,7 @@
     NSMutableArray *invitations;
     NSMutableArray *gameKeys;
     NSMutableArray *creators;
+    NSMutableArray *creatorIDs;
     NSInteger acceptedTag;
 }
 @property (nonatomic, strong) NSMutableArray *cellsCurrentlyEditing;
@@ -57,18 +58,22 @@
             invitations = [[NSMutableArray alloc]init];
             gameKeys = [[NSMutableArray alloc]init];
             creators = [[NSMutableArray alloc]init];
+            creatorIDs = [[NSMutableArray alloc]init];
             myInviteFirebase = [[NSMutableArray alloc]init];
         } else {
             [invitations removeAllObjects];
             [gameKeys removeAllObjects];
             [creators removeAllObjects];
+            [creatorIDs removeAllObjects];
             [myInviteFirebase removeAllObjects];
+            
         }
         if (snapshot.value != [NSNull null]) {
             for (NSDictionary *invite in snapshot.value) {
                 [invitations addObject:snapshot.value[invite][@"gameName"]];
                 [gameKeys addObject:snapshot.value[invite][@"gameKey"]];
                 [creators addObject:snapshot.value[invite][@"creator"]];
+                [creatorIDs addObject:snapshot.value[invite][@"creatorID"]];
                 [myInviteFirebase addObject:[NSString stringWithFormat:@"%@users/%@/invites/%@",FIREBASE_URL,myID,invite]];
             }
         }
@@ -118,7 +123,7 @@
 -(void)acceptButtonPressed:(UIButton *)sender {
     acceptedTag = [sender tag];
     HomeScreenViewController *parent = ((HomeScreenViewController *)self.parentViewController);
-    [parent setGameKey:gameKeys[[sender tag]]];
+    [parent setGameKey:gameKeys[[sender tag]] withCreator:creatorIDs[[sender tag]]];
     [parent performSegueWithIdentifier: @"acceptInvite" sender: self.parentViewController];
 
 

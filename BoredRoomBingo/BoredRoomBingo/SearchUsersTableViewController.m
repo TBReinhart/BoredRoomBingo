@@ -123,8 +123,10 @@
                         // already invited
                         return;
                     } else {
+                        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+                        NSString *myID = [prefs stringForKey:@"userID"];
                         Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@users/%@/invites",FIREBASE_URL, theirID]];
-                        NSDictionary *invitation = @{@"gameKey":gameKey, @"creator":myUsername, @"gameName":thisGameName};
+                        NSDictionary *invitation = @{@"gameKey":gameKey, @"creator":myUsername, @"gameName":thisGameName, @"creatorID":myID};
                         Firebase *newInviteRef = [ref childByAutoId];
                         [newInviteRef setValue:invitation];
                     }

@@ -123,8 +123,10 @@
     Firebase *ref = [[Firebase alloc] initWithUrl:url];
     Firebase *post1Ref = [ref childByAutoId];
     uniqueID = [NSString stringWithFormat:@"%@",post1Ref];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *myID = [prefs stringForKey:@"userID"];
     NSDictionary *gameName = @{@"gameName":self.groupNameTextField.text,
-                               @"list":self.currentWords, @"active":@"no", @"winner":@""}; // TODO: can i assign bool?
+                               @"list":self.currentWords, @"active":@"no", @"winner":@"", @"creator":myID}; // TODO: can i assign bool?
     [post1Ref setValue:gameName];
     // PASS THIS TO OTHER USERS AS GAME INVITE
     NSLog(@"post ref %@", post1Ref);
