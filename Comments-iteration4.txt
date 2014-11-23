@@ -1,0 +1,14 @@
+Group 11,
+
+ErrorMessage.m is still duplicated (it also occurs under Errors), and you still haven't fixed the OCP violation.
+Since you insist on using your regex to validate emails, here are some valid emails which it will reject:
+    webmaster@müller.de
+    "Fred Bloggs"@example.com
+    \$A12345@example.com
+    Chuck Norris <gmail@chucknorris.com>
+Of these, I think the first and last are of more concern. Also, you have not attributed the regex; I'm pretty sure you didn't write it yourself. You might also consider the regex [here](http://www.ex-parrot.com/pdw/Mail-RFC822-Address.html), which is RFC compliant (for the earlier RFC).
+Your iteration plan is a bit sparse.
+
+Otherwise, good job.
+
+Total Score: 96/100
