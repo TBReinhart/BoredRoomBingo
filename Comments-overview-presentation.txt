@@ -1,0 +1,11 @@
+Group 11,
+
+Your did a good job motivating and providing an overview of your project. For the most part, you succeeded in conveying the information necessary.
+
+However:
+  - I feel like the lack of any sort of slide deck detracted from your presentation, both in terms of organization and in term of audience understanding.
+  - You had technical difficulties which lost you time.
+  - You hesitated a lot while you were presenting
+All this put together meant that you were a bit short on time.
+
+Total Score: 95/100
