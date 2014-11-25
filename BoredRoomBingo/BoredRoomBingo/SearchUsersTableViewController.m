@@ -110,6 +110,10 @@
     }
     return NO;
 }
+
+/**
+ Performs all the invitations at once whenever game start clicked
+ */
 -(void)sendInvitation:(NSString *)theirID withMyUsername:(NSString *)myUsername withGameName:(NSString *)thisGameName withTheirUsername:(NSString *)theirUsername {
     
     NSString *getUserURL = [NSString stringWithFormat:@"%@users",FIREBASE_URL];

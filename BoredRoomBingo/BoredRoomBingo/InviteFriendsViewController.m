@@ -30,6 +30,14 @@
  //   [self loadFirebaseInitModel];
     // Do any additional setup after loading the view.
 }
+/**
+ Set my notification
+ */
+-(void)setNotifcations:(NSString *)key withCreator:(NSString *)creator {
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation addUniqueObject:creator forKey:@"channels"];
+    [currentInstallation saveInBackground];
+}
 -(IBAction)startGamePressed:(id)sender {
     NSString *changeActiveUrl = [NSString stringWithFormat:@"%@/active",self.gameKey];
     Firebase *ref = [[Firebase alloc] initWithUrl:changeActiveUrl];
@@ -46,6 +54,8 @@
 -(void)loadAllUsers {
     NSString *wordlistUrl = [NSString stringWithFormat:@"%@users",FIREBASE_URL];
     Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *myUsername = [prefs stringForKey:@"username"];
     [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
             // When creating game # words checked
@@ -53,8 +63,12 @@
 
             usernameToIDs = [[NSMutableDictionary alloc]init];
             for (NSDictionary *user in snapshot.value) {
-                [fullUserList addObject:snapshot.value[user][@"username"]];
-                [usernameToIDs setValue:user forKey:snapshot.value[user][@"username"]];
+                if (![snapshot.value[user][@"username"] isEqualToString:myUsername]) {
+                    // this is myself so don't add
+                    [fullUserList addObject:snapshot.value[user][@"username"]];
+                    [usernameToIDs setValue:user forKey:snapshot.value[user][@"username"]];
+                }
+
             }
             [self searchArray];
         }
@@ -121,7 +135,10 @@
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"activeGameSegue"]) {
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString *myUsername = [prefs stringForKey:@"username"];
         BingoBoardViewController * bingoBoard = (BingoBoardViewController *)[segue destinationViewController];
+        [self setNotifcations:self.gameKey withCreator:myUsername];
         bingoBoard.gameKey = self.gameKey;
     }
 }

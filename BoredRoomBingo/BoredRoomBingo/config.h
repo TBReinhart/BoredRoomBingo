@@ -11,6 +11,7 @@
 #import <Firebase/Firebase.h>
 #import "ErrorMessage.h"
 #import "MBProgressHUD.h"
+#import <Parse/Parse.h>
 #define FIREBASE_URL @"https://bored-room-bingo.firebaseio.com/"
 
 #endif

@@ -12,7 +12,7 @@
  This is the intro screen for setting up a game which displays selecting an existing list or adding current words.
  */
 @interface GameCreationViewController : UIViewController <UITextFieldDelegate, UIGestureRecognizerDelegate>
-@property (strong, nonatomic) IBOutlet UITextField *groupNameTextField; ///< Group Name of Game.
+@property (strong, nonatomic) IBOutlet UITextField *gameNameTextField; ///< Group Name of Game.
 @property (strong, nonatomic) IBOutlet UITextField *addNewWordTextField; ///< Text field to add a new word to game.
 @property (strong, nonatomic) IBOutlet UITextField *listNameTextField; ///< Text field to name your current list as new list.
 @property (strong, nonatomic) IBOutlet UISwitch *privatePublicSwitch; ///< Switch to set game to public or private.

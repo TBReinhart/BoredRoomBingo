@@ -67,7 +67,6 @@
     [self.addNewWordTextField setText:@""];
     CurrentWordsTableViewController *tbc = (CurrentWordsTableViewController *)self.childViewControllers[1];
     [tbc setMyList:self.currentWords];
-    NSLog(@"just set list in textfield %@", self.currentWords);
     [tbc.tableView reloadData];
     return YES;
 }
@@ -99,7 +98,7 @@
         [notEnoughWordsAlert show];
         return NO;
     }
-    if ([self.groupNameTextField.text length] < 1) {
+    if ([self.gameNameTextField.text length] < 1) {
         UIAlertView *notEnoughWordsAlert = [[UIAlertView alloc]initWithTitle:@"No Game Name!" message:@"You need a game name to play!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"OK", nil];
         [notEnoughWordsAlert show];
         return NO;
@@ -125,10 +124,9 @@
     uniqueID = [NSString stringWithFormat:@"%@",post1Ref];
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myID = [prefs stringForKey:@"userID"];
-    NSDictionary *gameName = @{@"gameName":self.groupNameTextField.text,
-                               @"list":self.currentWords, @"active":@"no", @"winner":@"", @"creator":myID}; // TODO: can i assign bool?
+    NSDictionary *gameName = @{@"gameName":self.gameNameTextField.text,
+                               @"list":self.currentWords, @"active":@"no", @"winner":@"", @"creator":myID};
     [post1Ref setValue:gameName];
-    // PASS THIS TO OTHER USERS AS GAME INVITE
     NSLog(@"post ref %@", post1Ref);
     [self performSegueWithIdentifier:@"inviteFriends" sender:nil];
 }
@@ -226,7 +224,7 @@
     if ([segue.identifier isEqualToString:@"inviteFriends"]) {
         InviteFriendsViewController *friendVC = (InviteFriendsViewController *)[segue destinationViewController];
         friendVC.gameKey = uniqueID;
-        friendVC.gameName = self.groupNameTextField.text;
+        friendVC.gameName = self.gameNameTextField.text;
     }
 }
 

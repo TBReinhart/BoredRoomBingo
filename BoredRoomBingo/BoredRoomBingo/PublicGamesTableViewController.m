@@ -8,11 +8,13 @@
 
 #import "PublicGamesTableViewController.h"
 #import "BingoBoardViewController.h"
+#import <Parse/Parse.h>
 #import "config.h"
 @interface PublicGamesTableViewController ()
 {
     NSMutableArray *publicGameList;
     NSMutableArray *gameKeys;
+    NSMutableArray *creators;
 }
 @end
 
@@ -35,12 +37,14 @@
     [postsRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
             publicGameList = [[NSMutableArray alloc]init];
+            creators = [[NSMutableArray alloc]init];
             gameKeys = [[NSMutableArray alloc]init];
             for (id game in snapshot.value) {
                 NSString *key = [NSString stringWithFormat:@"%@",game];
                 NSString *gameUrl = [NSString stringWithFormat:@"%@game/public/%@",FIREBASE_URL,key];
                 if ([snapshot.value[key][@"active"] isEqualToString:@"yes"]) {
                     [gameKeys addObject:gameUrl];
+                    [creators addObject:snapshot.value[key][@"creator"]];
                     [publicGameList addObject:snapshot.value[key][@"gameName"]];
                 }
             }
@@ -88,13 +92,21 @@
 {
     [self performSegueWithIdentifier:@"gameSelected" sender:self];
 }
-
+/**
+ Set parse notifications.
+ */
+-(void)setNotifcations:(NSString *)key withCreator:(NSString *)creator {
+    PFInstallation *currentInstallation = [PFInstallation currentInstallation];
+    [currentInstallation addUniqueObject:creator forKey:@"channels"];
+    [currentInstallation saveInBackground];
+}
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"gameSelected"]) {
         NSIndexPath *path = [self.tableView indexPathForSelectedRow];
+        [self setNotifcations:gameKeys[path.row] withCreator:creators[path.row]];
         BingoBoardViewController * bingoBoard = (BingoBoardViewController *)[segue destinationViewController];
         bingoBoard.gameKey = gameKeys[path.row];
         

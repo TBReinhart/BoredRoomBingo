@@ -9,6 +9,7 @@
 #import "BingoBoardViewController.h"
 #import "BoardModel.h"
 #import "config.h"
+#import "ChatViewController.h"
 #import <Parse/Parse.h>
 @interface BingoBoardViewController ()
 {
@@ -23,14 +24,18 @@
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
+    NSLog(@"self children %@", self.childViewControllers);
+    ChatViewController *chat = (ChatViewController *)self.childViewControllers[0];
+    chat.url = @"hello world";
+    NSLog(@"chat url %@", chat.username);
+    [chat reloadInputViews];
     [self loadFirebase];
     
 
 }
 -(void)loadFirebase {
-    NSString *wordlistUrl = [NSString stringWithFormat:@"%@",self.gameKey];
-    NSLog(@"url is %@", wordlistUrl);
-    Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
+    NSString *gameKeyUrl = [NSString stringWithFormat:@"%@",self.gameKey];
+    Firebase *gameRef = [[Firebase alloc] initWithUrl: gameKeyUrl];
     [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
             // When creating game # words checked
@@ -41,7 +46,6 @@
             creator = snapshot.value[@"creator"];
             [self.navigationItem setTitle:snapshot.value[@"gameName"]];
             model = [[BoardModel alloc]initBoardModel:self.gameKey withFullList:fullList];
-
             [self setUpBoardButton];
         }
     } withCancelBlock:^(NSError *error) {
@@ -105,27 +109,27 @@ didDismissWithButtonIndex:(NSInteger) buttonIndex
  */
 -(void)gameOver {
     [self sendWinningNotification];
-//    UIAlertView *winAlert = [[UIAlertView alloc] initWithTitle:@"Game Over!" message:@"Someone won the game!" delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
-//    [winAlert addButtonWithTitle:@"Ok!"];
-//    [winAlert show];
-//    
 }
+/**
+ Send an alert that you just won to everyone in the game!
+ */
 -(void)sendWinningNotification {
     // Send a notification to all devices subscribed to the "Giants" channel.
     PFPush *push = [[PFPush alloc] init];
     [push setChannel:creator];
     NSLog(@"creator is %@", creator);
-    [push setMessage:@"The Game Is Over!"];
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *myUsername = [prefs stringForKey:@"username"];
+    NSString *message = [NSString stringWithFormat:@"Game Over!\n%@ Won!",myUsername];
+    [push setMessage:message];
     [push sendPushInBackground];
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+/** send to child */
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"embeddedChat"]) {
+        ChatViewController *chat = [segue destinationViewController];
+        [chat setUrl:self.gameKey];
+    }
 }
-*/
-
 @end

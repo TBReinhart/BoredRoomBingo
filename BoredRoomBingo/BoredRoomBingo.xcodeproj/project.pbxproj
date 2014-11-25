@@ -58,6 +58,8 @@
 		2FE62F721A1DBD6000AC8066 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE62F711A1DBD6000AC8066 /* Accounts.framework */; };
 		2FE62F791A1DBF5A00AC8066 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FE62F771A1DBF5A00AC8066 /* Parse.framework */; };
 		2FE62F7A1A1DBFD600AC8066 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF0ACCE1A1D968E0046FFD4 /* QuartzCore.framework */; };
+		2FEA85891A241813001E5842 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA85881A241813001E5842 /* ChatViewController.m */; };
+		2FEA858C1A241D73001E5842 /* UITouchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA858B1A241D73001E5842 /* UITouchTableView.m */; };
 		2FF0ACBC1A1D85A90046FFD4 /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0ACBB1A1D85A90046FFD4 /* airplane.png */; };
 		2FF0ACBE1A1D86920046FFD4 /* envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0ACBD1A1D86920046FFD4 /* envelope.png */; };
 		2FF0ACC51A1D966A0046FFD4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF0ACC41A1D966A0046FFD4 /* AudioToolbox.framework */; };
@@ -151,6 +153,10 @@
 		2FE62F711A1DBD6000AC8066 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		2FE62F771A1DBF5A00AC8066 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		2FE8CE0B19F0B2BA000BDF29 /* config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		2FEA85871A241813001E5842 /* ChatViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatViewController.h; sourceTree = "<group>"; };
+		2FEA85881A241813001E5842 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
+		2FEA858A1A241D73001E5842 /* UITouchTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouchTableView.h; sourceTree = "<group>"; };
+		2FEA858B1A241D73001E5842 /* UITouchTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITouchTableView.m; sourceTree = "<group>"; };
 		2FF0ACBB1A1D85A90046FFD4 /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane.png; sourceTree = "<group>"; };
 		2FF0ACBD1A1D86920046FFD4 /* envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = envelope.png; sourceTree = "<group>"; };
 		2FF0ACC41A1D966A0046FFD4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -276,6 +282,7 @@
 				2F8372F11A19B3220035C322 /* InviteUsers */,
 				2FC56FDA19FFFFDD00BF3EF7 /* GameCreation */,
 				2F423F2C1A10748A0003DBAA /* Board */,
+				2FEA858D1A243195001E5842 /* Chat */,
 				2FD0D77319FAB7C300F19DF6 /* login */,
 				2FC383BE19FC8E7200B5B725 /* ForgotPassword? */,
 				2F05367C19D9DBB400C14AF5 /* Images.xcassets */,
@@ -459,6 +466,17 @@
 			name = MyInvitations;
 			sourceTree = "<group>";
 		};
+		2FEA858D1A243195001E5842 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				2FEA85871A241813001E5842 /* ChatViewController.h */,
+				2FEA85881A241813001E5842 /* ChatViewController.m */,
+				2FEA858A1A241D73001E5842 /* UITouchTableView.h */,
+				2FEA858B1A241D73001E5842 /* UITouchTableView.m */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
 		2FF0ACBF1A1D92390046FFD4 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
@@ -577,6 +595,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2FF5B5101A16A10E00A3A196 /* BoardModel.m in Sources */,
+				2FEA858C1A241D73001E5842 /* UITouchTableView.m in Sources */,
 				2F70F5EA19FDFE0A00542D24 /* GameCreationViewController.m in Sources */,
 				2F2DB61D1A0872EF00F98E23 /* DetailArchiveWordlistTableViewController.m in Sources */,
 				2FC56FDD1A000A5B00BF3EF7 /* CurrentWordsTableViewCell.m in Sources */,
@@ -597,6 +616,7 @@
 				2F70F5C719FD81B200542D24 /* ErrorMessage.m in Sources */,
 				2F423F2B1A1074810003DBAA /* BingoBoardViewController.m in Sources */,
 				2F518A4719FF2C8200A587D0 /* MBProgressHUD.m in Sources */,
+				2FEA85891A241813001E5842 /* ChatViewController.m in Sources */,
 				2F2DB61A1A08590B00F98E23 /* ArchivedWordListsTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

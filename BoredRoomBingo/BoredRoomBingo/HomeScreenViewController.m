@@ -19,8 +19,10 @@
     NSString *theCreator;
 }
 - (void)viewDidLoad {
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *myUsername = [prefs stringForKey:@"username"];
+    [self.navigationItem setTitle:myUsername];
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,6 +72,9 @@
     }
     
 }
+/**
+ Set Parse Notifications.
+ */
 -(void)setNotifcations:(NSString *)key withCreator:(NSString *)creator {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
     NSLog(@"the creator in set notifcations %@", theCreator);
