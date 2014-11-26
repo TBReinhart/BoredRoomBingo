@@ -44,7 +44,10 @@
                                                          UIRemoteNotificationTypeAlert |
                                                          UIRemoteNotificationTypeSound)];
     }
+    
+    [[UILabel appearance] setFont:[UIFont fontWithName:@"MarkerFelt-Wide" size:17.0]];
     return YES;
+
 }
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // Store the deviceToken in the current installation and save it to Parse.

@@ -39,8 +39,8 @@
     [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // Add the chat message to the array.
         if (newMessagesOnTop) {
-            [self.chat addObject:snapshot.value];
-            //[self.chat insertObject:snapshot.value atIndex:0]; // change here to be at bottom count - 1
+            //[self.chat addObject:snapshot.value];
+            [self.chat insertObject:snapshot.value atIndex:0]; // change here to be at bottom count - 1
         } else {
             [self.chat addObject:snapshot.value];
         }
@@ -72,8 +72,9 @@
     
     // This will also add the message to our local array self.chat because
     // the FEventTypeChildAdded event will be immediately fired.
-    [[self.firebase childByAutoId] setValue:@{@"name" : self.username, @"text": aTextField.text}];
-    
+    if ([aTextField.text length] > 0) {
+        [[self.firebase childByAutoId] setValue:@{@"name" : self.username, @"text": aTextField.text}];
+    }
     [aTextField setText:@""];
     return NO;
 }

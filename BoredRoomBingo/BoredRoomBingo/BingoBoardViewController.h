@@ -16,5 +16,6 @@
 @property (nonatomic,strong) NSMutableArray *boardWords; ///< Array containing all words on board.
 @property (nonatomic,strong) NSString *gameKey; ///< Unique game id where game is hosted from firebase.
 
+@property (strong, nonatomic) IBOutlet UIImageView *bingoCelebrationImage;
 
 @end

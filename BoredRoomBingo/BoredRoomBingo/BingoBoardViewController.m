@@ -30,6 +30,7 @@
     NSLog(@"chat url %@", chat.username);
     [chat reloadInputViews];
     [self loadFirebase];
+    [self checkForOtherGameOvers];
     
 
 }
@@ -108,7 +109,26 @@ didDismissWithButtonIndex:(NSInteger) buttonIndex
  Alert that game was won!
  */
 -(void)gameOver {
+   // self.bingoCelebrationImage.image = [UIImage imageNamed:@"bingo.png"];
+    [self endGameForOthers];
     [self sendWinningNotification];
+}
+-(void)endGameForOthers {
+    NSString *changeActiveUrl = [NSString stringWithFormat:@"%@/active",self.gameKey];
+    Firebase *ref = [[Firebase alloc] initWithUrl:changeActiveUrl];
+    [ref setValue:@"over"];
+}
+-(void)checkForOtherGameOvers {
+    NSString *isGameOverYetUrl = [NSString stringWithFormat:@"%@/active",self.gameKey];
+    Firebase *ref = [[Firebase alloc]initWithUrl:isGameOverYetUrl];
+    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        if (snapshot.value != [NSNull null] && [snapshot.value isEqualToString:@"over"]) {
+            NSLog(@"game over!! ");
+        }
+        
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"Cancel block %@", error.description);
+    }];
 }
 /**
  Send an alert that you just won to everyone in the game!
@@ -117,7 +137,6 @@ didDismissWithButtonIndex:(NSInteger) buttonIndex
     // Send a notification to all devices subscribed to the "Giants" channel.
     PFPush *push = [[PFPush alloc] init];
     [push setChannel:creator];
-    NSLog(@"creator is %@", creator);
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myUsername = [prefs stringForKey:@"username"];

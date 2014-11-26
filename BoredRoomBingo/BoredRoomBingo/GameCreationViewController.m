@@ -17,8 +17,7 @@
 @end
 
 
-@implementation GameCreationViewController
-{
+@implementation GameCreationViewController {
     CGFloat keyboardHeight;
     NSString *selectedList;
     NSString *uniqueID;
@@ -29,8 +28,11 @@
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+
     public = YES;
     self.addNewWordTextField.delegate = self;
+    self.listNameTextField.delegate = self;
     if (self.currentWords
         == nil) {
         self.currentWords = [[NSMutableArray alloc]init];
@@ -60,6 +62,13 @@
     }
     // check if empty string inserting
     if ([self.addNewWordTextField.text length] < 1) {
+        return YES;
+    }
+    // check if all space string
+    NSString *str = textField.text;
+    NSCharacterSet *set = [NSCharacterSet whitespaceCharacterSet];
+    if ([[str stringByTrimmingCharactersInSet: set] length] == 0) {
+        // String contains only whitespace.
         return YES;
     }
     

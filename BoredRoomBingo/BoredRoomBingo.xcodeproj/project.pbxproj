@@ -60,6 +60,7 @@
 		2FE62F7A1A1DBFD600AC8066 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF0ACCE1A1D968E0046FFD4 /* QuartzCore.framework */; };
 		2FEA85891A241813001E5842 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA85881A241813001E5842 /* ChatViewController.m */; };
 		2FEA858C1A241D73001E5842 /* UITouchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA858B1A241D73001E5842 /* UITouchTableView.m */; };
+		2FF09B031A256F9E0071731C /* bingo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF09B021A256F9E0071731C /* bingo.png */; };
 		2FF0ACBC1A1D85A90046FFD4 /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0ACBB1A1D85A90046FFD4 /* airplane.png */; };
 		2FF0ACBE1A1D86920046FFD4 /* envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0ACBD1A1D86920046FFD4 /* envelope.png */; };
 		2FF0ACC51A1D966A0046FFD4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF0ACC41A1D966A0046FFD4 /* AudioToolbox.framework */; };
@@ -157,6 +158,7 @@
 		2FEA85881A241813001E5842 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		2FEA858A1A241D73001E5842 /* UITouchTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouchTableView.h; sourceTree = "<group>"; };
 		2FEA858B1A241D73001E5842 /* UITouchTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITouchTableView.m; sourceTree = "<group>"; };
+		2FF09B021A256F9E0071731C /* bingo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bingo.png; sourceTree = "<group>"; };
 		2FF0ACBB1A1D85A90046FFD4 /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane.png; sourceTree = "<group>"; };
 		2FF0ACBD1A1D86920046FFD4 /* envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = envelope.png; sourceTree = "<group>"; };
 		2FF0ACC41A1D966A0046FFD4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -354,6 +356,7 @@
 				2FF5B50F1A16A10E00A3A196 /* BoardModel.m */,
 				2F423F291A1074810003DBAA /* BingoBoardViewController.h */,
 				2F423F2A1A1074810003DBAA /* BingoBoardViewController.m */,
+				2FF09B021A256F9E0071731C /* bingo.png */,
 			);
 			name = Board;
 			sourceTree = "<group>";
@@ -573,6 +576,7 @@
 				2F423F2E1A1078040003DBAA /* bingoBoard.jpg in Resources */,
 				2F05367B19D9DBB400C14AF5 /* Main.storyboard in Resources */,
 				2F05368019D9DBB400C14AF5 /* LaunchScreen.xib in Resources */,
+				2FF09B031A256F9E0071731C /* bingo.png in Resources */,
 				2FF0ACBC1A1D85A90046FFD4 /* airplane.png in Resources */,
 				2F05367D19D9DBB400C14AF5 /* Images.xcassets in Resources */,
 				2FF0ACBE1A1D86920046FFD4 /* envelope.png in Resources */,
