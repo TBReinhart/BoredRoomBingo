@@ -100,8 +100,6 @@
     NSDictionary* chatMessage = [self.chat objectAtIndex:indexPath.row];
     
     NSString *text = chatMessage[@"text"];
-    
-    // typical textLabel.frame = {{10, 30}, {260, 22}}
     const CGFloat TEXT_LABEL_WIDTH = 260;
     CGSize constraint = CGSizeMake(TEXT_LABEL_WIDTH, 20000);
     

@@ -136,8 +136,18 @@
                     }
                 }
             }
+            [self addInviteesToGameKey];
         }
     }];
-
+}
+/**
+ Add the invitees to the game so that deletions ending the game can delete invitations.
+ */
+-(void)addInviteesToGameKey {
+    NSString *url = [NSString stringWithFormat:@"%@",gameKey];
+    Firebase *gameInviteRef = [[Firebase alloc]initWithUrl:url];
+    NSDictionary *invitees = @{@"invitees":invitedUserList};
+    Firebase *inviteeRef = [gameInviteRef childByAppendingPath:@"invitees"];
+    [inviteeRef setValue:invitees];
 }
 @end

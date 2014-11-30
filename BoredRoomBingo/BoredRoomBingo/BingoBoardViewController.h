@@ -17,5 +17,6 @@
 @property (nonatomic,strong) NSString *gameKey; ///< Unique game id where game is hosted from firebase.
 
 @property (strong, nonatomic) IBOutlet UIImageView *bingoCelebrationImage;
+@property (strong, nonatomic) IBOutlet UIView *gameOverView;
 
 @end

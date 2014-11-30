@@ -46,7 +46,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+/**
+ Load all invitations for user.
+ */
 -(void)loadInvitations {
 
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
@@ -92,7 +94,9 @@
     return [invitations count];
 }
 
-
+/**
+ Sets each cell with name of game, creator, and accept/deny buttons underneath.
+ */
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"invitationCell";
     InvitationTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -113,20 +117,22 @@
     [cell.acceptButton addTarget:self action:@selector(acceptButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     return cell;
 }
+/**
+ Delete request from firebase.
+ */
 -(void)denyButtonPressed:(UIButton *)sender {
     NSString *denyUrl = [NSString stringWithFormat:@"%@",myInviteFirebase[[sender tag]]];
     Firebase *denyRef = [[Firebase alloc] initWithUrl: denyUrl];
     [denyRef removeValue];
-
-
 }
+/**
+ Accept the game invitation and go to that game.
+ */
 -(void)acceptButtonPressed:(UIButton *)sender {
     acceptedTag = [sender tag];
     HomeScreenViewController *parent = ((HomeScreenViewController *)self.parentViewController);
     [parent setGameKey:gameKeys[[sender tag]] withCreator:creatorIDs[[sender tag]]];
     [parent performSegueWithIdentifier: @"acceptInvite" sender: self.parentViewController];
-
-
 }
 
 @end

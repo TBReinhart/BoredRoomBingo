@@ -38,14 +38,21 @@
     [currentInstallation addUniqueObject:creator forKey:@"channels"];
     [currentInstallation saveInBackground];
 }
+/**
+ Pressed the button to start the game and send out all invitations.
+ */
 -(IBAction)startGamePressed:(id)sender {
     NSString *changeActiveUrl = [NSString stringWithFormat:@"%@/active",self.gameKey];
+    [self.view endEditing:YES];
+    [self didMoveToParentViewController:self];
     Firebase *ref = [[Firebase alloc] initWithUrl:changeActiveUrl];
     [ref setValue:@"yes"];
     SearchUsersTableViewController *tbc = (SearchUsersTableViewController *)self.childViewControllers[0];
     [tbc setActiveGame:YES];
     [self performSegueWithIdentifier:@"activeGameSegue" sender:nil];
 }
+
+
 /**
  Will load all users from firebase into an array to check for existence to invite to game.
  Should only be called once.
@@ -132,9 +139,9 @@
     [self.view endEditing:YES];
 }
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"activeGameSegue"]) {
+        NSLog(@"pref for seg in invite");
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         NSString *myUsername = [prefs stringForKey:@"username"];
         BingoBoardViewController * bingoBoard = (BingoBoardViewController *)[segue destinationViewController];

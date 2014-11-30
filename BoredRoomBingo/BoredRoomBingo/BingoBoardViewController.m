@@ -11,6 +11,7 @@
 #import "config.h"
 #import "ChatViewController.h"
 #import <Parse/Parse.h>
+#import <AudioToolbox/AudioToolbox.h>
 @interface BingoBoardViewController ()
 {
     BoardModel *model;
@@ -23,17 +24,18 @@
  Initialize bingo board
  */
 - (void)viewDidLoad {
+    [self.gameOverView setHidden:YES];
     [super viewDidLoad];
-    NSLog(@"self children %@", self.childViewControllers);
     ChatViewController *chat = (ChatViewController *)self.childViewControllers[0];
-    chat.url = @"hello world";
-    NSLog(@"chat url %@", chat.username);
     [chat reloadInputViews];
     [self loadFirebase];
     [self checkForOtherGameOvers];
     
 
 }
+/**
+ Loads specific firebase with values of game.
+ */
 -(void)loadFirebase {
     NSString *gameKeyUrl = [NSString stringWithFormat:@"%@",self.gameKey];
     Firebase *gameRef = [[Firebase alloc] initWithUrl: gameKeyUrl];
@@ -113,19 +115,28 @@ didDismissWithButtonIndex:(NSInteger) buttonIndex
     [self endGameForOthers];
     [self sendWinningNotification];
 }
+/**
+ Send notice that the game is over.
+ */
 -(void)endGameForOthers {
     NSString *changeActiveUrl = [NSString stringWithFormat:@"%@/active",self.gameKey];
     Firebase *ref = [[Firebase alloc] initWithUrl:changeActiveUrl];
     [ref setValue:@"over"];
 }
+/**
+ Checks for gameover. will notify others when game is over.
+ */
 -(void)checkForOtherGameOvers {
     NSString *isGameOverYetUrl = [NSString stringWithFormat:@"%@/active",self.gameKey];
     Firebase *ref = [[Firebase alloc]initWithUrl:isGameOverYetUrl];
     [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null] && [snapshot.value isEqualToString:@"over"]) {
             NSLog(@"game over!! ");
+            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
+            [self.gameOverView setHidden:NO];
+            Firebase *removeRef = [[Firebase alloc]initWithUrl:[NSString stringWithFormat:@"%@",self.gameKey]];
+            [removeRef removeValue];
         }
-        
     } withCancelBlock:^(NSError *error) {
         NSLog(@"Cancel block %@", error.description);
     }];

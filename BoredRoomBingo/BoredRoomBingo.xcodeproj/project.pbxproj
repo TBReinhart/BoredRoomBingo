@@ -176,10 +176,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2FE62F6A1A1DBCCF00AC8066 /* AudioToolbox.framework in Frameworks */,
 				2FE62F7A1A1DBFD600AC8066 /* QuartzCore.framework in Frameworks */,
 				2FE62F721A1DBD6000AC8066 /* Accounts.framework in Frameworks */,
 				2FE62F6C1A1DBD3000AC8066 /* Social.framework in Frameworks */,
-				2FE62F6A1A1DBCCF00AC8066 /* AudioToolbox.framework in Frameworks */,
 				2F018DED19F0963400666586 /* CFNetwork.framework in Frameworks */,
 				2FE62F691A1DBCB800AC8066 /* CoreLocation.framework in Frameworks */,
 				2FE62F681A1DBCAA00AC8066 /* MobileCoreServices.framework in Frameworks */,

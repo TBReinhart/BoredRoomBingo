@@ -40,7 +40,14 @@
     self.backgroundTap.delegate = self;
     [self addToCurrentWords:self.arrayWithWordsToAdd];
 }
-
+/**
+ Sets this view controller to be in portrait mode.
+ */
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+    
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
