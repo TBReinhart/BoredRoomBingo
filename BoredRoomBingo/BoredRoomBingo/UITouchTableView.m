@@ -18,7 +18,9 @@
     }
     return self;
 }
-
+/**
+ Sets touches allowed on table
+ */
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
     [self.nextResponder touchesBegan:touches withEvent:event];

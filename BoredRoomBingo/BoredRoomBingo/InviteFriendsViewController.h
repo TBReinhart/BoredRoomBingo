@@ -7,6 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+/**
+ View controller to invite friends to game being created 
+ */
 @interface InviteFriendsViewController : UIViewController <UITextFieldDelegate>
 @property (nonatomic,strong) NSString *gameKey; ///< Key of Game to send to users
 @property (nonatomic,strong) NSString *gameName; ///< Name of game to send to users

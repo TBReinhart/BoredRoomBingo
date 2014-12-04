@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ View Controller to search all users for potential invites to game 
+ */
 @interface SearchUsersTableViewController : UITableViewController
 -(void)setUserList:(NSMutableArray *)list withUserIDs:(NSMutableArray *)userIDs;
 -(void)setGameKey:(NSString *)key;

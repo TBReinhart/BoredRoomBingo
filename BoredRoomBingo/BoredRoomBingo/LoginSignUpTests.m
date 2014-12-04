@@ -240,7 +240,6 @@ withCompletionBlock:^(NSError *error) {
     Firebase *gameRef = [[Firebase alloc] initWithUrl: wordlistUrl];
     [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (snapshot.value != [NSNull null]) {
-            // When creating game # words checked
             NSMutableArray *fullList = [[NSMutableArray alloc]init];
             for (NSString *word in snapshot.value[@"list"]) {
                 [fullList addObject:word];

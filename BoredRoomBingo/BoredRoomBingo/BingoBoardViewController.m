@@ -133,9 +133,9 @@ didDismissWithButtonIndex:(NSInteger) buttonIndex
         if (snapshot.value != [NSNull null] && [snapshot.value isEqualToString:@"over"]) {
             NSLog(@"game over!! ");
             AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-            [self.gameOverView setHidden:NO];
-            Firebase *removeRef = [[Firebase alloc]initWithUrl:[NSString stringWithFormat:@"%@",self.gameKey]];
-            [removeRef removeValue];
+            //[self.gameOverView setHidden:NO];
+            //Firebase *removeRef = [[Firebase alloc]initWithUrl:[NSString stringWithFormat:@"%@",self.gameKey]];
+            //[removeRef removeValue];
         }
     } withCancelBlock:^(NSError *error) {
         NSLog(@"Cancel block %@", error.description);

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ This controls the table for a user's active invitations to games. 
+ Users can accept/deny requests.
+ */
 @interface InvitationsTableViewController : UITableViewController
 
 @end

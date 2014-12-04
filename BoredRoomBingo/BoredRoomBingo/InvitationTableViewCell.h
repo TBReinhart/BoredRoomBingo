@@ -13,14 +13,17 @@
 - (void)cellDidOpen:(UITableViewCell *)cell;
 - (void)cellDidClose:(UITableViewCell *)cell;
 @end
+/**
+ A Swipeable invitation cell for accepting and denying invitations.
+ */
 @interface InvitationTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UILabel *gameNameLabel;
-@property (strong, nonatomic) IBOutlet UILabel *creatorLabel;
+@property (strong, nonatomic) IBOutlet UILabel *gameNameLabel; ///< Name of Label for Invite
+@property (strong, nonatomic) IBOutlet UILabel *creatorLabel; ///< Name of Creator For Invite
 // swipeable
-@property (nonatomic, weak) IBOutlet UIButton *acceptButton;
-@property (nonatomic, weak) IBOutlet UIButton *denyButton;
-@property (nonatomic, weak) IBOutlet UIView *myContentView;
-@property (nonatomic, weak) id <InvitationsTableViewCellDelegate> delegate;
+@property (nonatomic, weak) IBOutlet UIButton *acceptButton; ///< Accept invitation button
+@property (nonatomic, weak) IBOutlet UIButton *denyButton; ///< Deny invitation button
+@property (nonatomic, weak) IBOutlet UIView *myContentView; ///< content in cell view
+@property (nonatomic, weak) id <InvitationsTableViewCellDelegate> delegate; ///< Invitation Cell Delegate
 - (void)openCell;
 
 @end

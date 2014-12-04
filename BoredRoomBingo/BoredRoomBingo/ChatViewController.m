@@ -4,7 +4,7 @@
 //
 //  Created by Tom Reinhart on 11/24/14.
 //  Copyright (c) 2014 Tom Reinhart. All rights reserved.
-//
+// 
 
 #import "ChatViewController.h"
 #import "BingoBoardViewController.h"
@@ -18,7 +18,10 @@
 @synthesize chatTableView;
 @synthesize newMessagesOnTop;
 
-
+/**
+ Load the view controller with all chat messages and users
+ Once again, code adapted from https://github.com/firebase/firechat-ios
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Initialize array that will store chat messages.
@@ -29,29 +32,21 @@
     self.username = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
     
     newMessagesOnTop = YES;
-    
-    // This allows us to check if these were messages already stored on the server
-    // when we booted up (YES) or if they are new messages since we've started the app.
-    // This is so that we can batch together the initial messages' reloadData for a perf gain.
     __block BOOL initialAdds = YES;
     
     
     [self.firebase observeEventType:FEventTypeChildAdded withBlock:^(FDataSnapshot *snapshot) {
         // Add the chat message to the array.
         if (newMessagesOnTop) {
-            //[self.chat addObject:snapshot.value];
             [self.chat insertObject:snapshot.value atIndex:0]; // change here to be at bottom count - 1
         } else {
             [self.chat addObject:snapshot.value];
         }
-        
         // Reload the table view so the new message will show up.
         if (!initialAdds) {
             [self.chatTableView reloadData];
         }
     }];
-    
-    
     [self.firebase observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         // Reload the table view so that the intial messages show up
         [self.chatTableView reloadData];
@@ -63,22 +58,18 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-// This method is called when the user enters text in the text field.
-// We add the chat message to our Firebase.
+/**
+ When enter pressed message should send and clear 
+ */
 - (BOOL)textFieldShouldReturn:(UITextField*)aTextField
 {
-    NSLog(@"in text field should return");
     [aTextField resignFirstResponder];
-    
-    // This will also add the message to our local array self.chat because
-    // the FEventTypeChildAdded event will be immediately fired.
     if ([aTextField.text length] > 0) {
         [[self.firebase childByAutoId] setValue:@{@"name" : self.username, @"text": aTextField.text}];
     }
     [aTextField setText:@""];
     return NO;
 }
-
 
 #pragma mark - Table view data source
 
@@ -87,14 +78,18 @@
     // We only have one section in our table view.
     return 1;
 }
-
+/**
+ Return number of cell rows equaling number of messages
+ */
 - (NSInteger)tableView:(UITableView*)table numberOfRowsInSection:(NSInteger)section
 {
     // This is the number of chat messages.
     return [self.chat count];
 }
 
-// This method changes the height of the text boxes based on how much text there is.
+/**
+ Changes height of cell text depending on how big the message is.
+ */
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSDictionary* chatMessage = [self.chat objectAtIndex:indexPath.row];
@@ -111,7 +106,9 @@
     return height;
 }
 
-
+/**
+ Sets each cell with message text and username text
+ */
 - (UITableViewCell*)tableView:(UITableView*)table cellForRowAtIndexPath:(NSIndexPath *)index
 {
     static NSString *CellIdentifier = @"Cell";
@@ -130,8 +127,9 @@
     
     return cell;
 }
-
-// Subscribe to keyboard show/hide notifications.
+/**
+ Set keyboard show/hide notifications.
+ */
 - (void)viewWillAppear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter]
@@ -143,7 +141,9 @@
      name:UIKeyboardWillHideNotification object:nil];
 }
 
-// Unsubscribe from keyboard show/hide notifications.
+/**
+ Unsubscribe from keyboard show/hide notifications.
+ */
 - (void)viewWillDisappear:(BOOL)animated
 {
     [[NSNotificationCenter defaultCenter]
@@ -153,18 +153,25 @@
      removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
-// Setup keyboard handlers to slide the view containing the table view and
-// text field upwards when the keyboard shows, and downwards when it hides.
+/**
+ Setup keyboard handlers to slide the view containing the table view and
+ text field upwards when the keyboard shows, and downwards when it hides.
+*/
 - (void)keyboardWillShow:(NSNotification*)notification
 {
     [self moveView:[notification userInfo] up:YES];
 }
-
+/**
+ hide keyboard and move down view
+ */
 - (void)keyboardWillHide:(NSNotification*)notification
 {
     [self moveView:[notification userInfo] up:NO];
 }
 
+/**
+ move view up when keyboard opens or down to hide
+ */
 - (void)moveView:(NSDictionary*)userInfo up:(BOOL)up
 {
     CGRect keyboardEndFrame;
@@ -192,9 +199,11 @@
     [UIView commitAnimations];
 }
 
-// This method will be called when the user touches on the tableView, at
-// which point we will hide the keyboard (if open). This method is called
-// because UITouchTableView.m calls nextResponder in its touch handler.
+/**
+ This method will be called when the user touches on the tableView, at
+ which point we will hide the keyboard (if open). This method is called
+ because UITouchTableView.m calls nextResponder in its touch handler.
+ */
 - (void)touchesBegan:(NSSet*)touches withEvent:(UIEvent*)event
 {
     if ([messageTextField isFirstResponder]) {

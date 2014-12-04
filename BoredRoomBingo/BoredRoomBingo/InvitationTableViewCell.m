@@ -3,33 +3,46 @@
 //  BoredRoomBingo
 //
 //  Created by Tom Reinhart on 11/19/14.
-//  Copyright (c) 2014 Tom Reinhart. All rights reserved.
+//  Copyright (c) 2014 Tom Reinhart.
 //
+// ADAPTED FROM TUTORIAL BY ELLEN SHAPIRO
+// http://www.raywenderlich.com/62435/make-swipeable-table-view-cell-actions-without-going-nuts-scroll-views
+// MODIFIED FOR OUR SPECIFIC USE
 
 #import "InvitationTableViewCell.h"
-static CGFloat const kBounceValue = 30.0f;
+static CGFloat const kBounceValue = 30.0f; ///< Controls how far the cell will bounce
+/**
+ Controls elements of a swipeable invitation cell by using UIGestureRecognizerDelegate
+ */
 @interface InvitationTableViewCell() <UIGestureRecognizerDelegate>
 
 - (void)openCell;
-@property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer;
-@property (nonatomic, assign) CGPoint panStartPoint;
-@property (nonatomic, assign) CGFloat startingRightLayoutConstraintConstant;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint;
-@property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewLeftConstraint;
+@property (nonatomic, strong) UIPanGestureRecognizer *panRecognizer; ///< Determines when cell is panned
+@property (nonatomic, assign) CGPoint panStartPoint; ///< Value of where panning begins for cell
+@property (nonatomic, assign) CGFloat startingRightLayoutConstraintConstant; ///< Right constraint distance moved for moving cell back after panning
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewRightConstraint; ///< Value for right constraint of cell before panning
+@property (nonatomic, weak) IBOutlet NSLayoutConstraint *contentViewLeftConstraint; ///< value for left constraint of cell before panning
 
 @end
 
 
 @implementation InvitationTableViewCell
 
+/**
+ When cell loads add recognizers for gestures
+ */
 - (void)awakeFromNib {
     [super awakeFromNib];
     self.panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panThisCell:)];
     self.panRecognizer.delegate = self;
     [self.myContentView addGestureRecognizer:self.panRecognizer];
 }
-- (void)panThisCell:(UIPanGestureRecognizer *)recognizer
-{
+/**
+ Pans the Cell by using the gesture recognizer to determine what cell view should perform.
+ Note Switch Statement from Source above violates OCP below by using switch statement and control checking.
+ Could obstract class. In this case it is difficult because a new delegate and much more would be need
+ */
+- (void)panThisCell:(UIPanGestureRecognizer *)recognizer {
     switch (recognizer.state) {
         case UIGestureRecognizerStateBegan:
             self.panStartPoint = [recognizer translationInView:self.myContentView];
@@ -124,9 +137,15 @@ static CGFloat const kBounceValue = 30.0f;
             break;
     }
 }
+/**
+ Move cell to open and change constraints far left.
+ */
 - (void)openCell {
     [self setConstraintsToShowAllButtons:NO notifyDelegateDidOpen:NO];
 }
+/**
+ Make an animation delay and update constraints when cell moved.
+ */
 - (void)updateConstraintsIfNeeded:(BOOL)animated completion:(void (^)(BOOL finished))completion {
     float duration = 0;
     if (animated) {
@@ -137,9 +156,15 @@ static CGFloat const kBounceValue = 30.0f;
         [self layoutIfNeeded];
     } completion:completion];
 }
+/**
+ Get button width determined by orientation and how big cell currently is.
+ */
 - (CGFloat)buttonTotalWidth {
     return CGRectGetWidth(self.frame) - CGRectGetMinX(self.acceptButton.frame);
 }
+/**
+ Move constraints back to normal by closing cell and showing normal cell.
+ */
 - (void)resetConstraintContstantsToZero:(BOOL)animated notifyDelegateDidClose:(BOOL)notifyDelegate
 {
     if (notifyDelegate) {
@@ -164,14 +189,23 @@ static CGFloat const kBounceValue = 30.0f;
         }];
     }];
 }
+/**
+ Recognize gesture performed on the cell.
+ */
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
 {
     return YES;
 }
+/**
+ Reuse cell for repeated slides.
+ */
 - (void)prepareForReuse {
     [super prepareForReuse];
     [self resetConstraintContstantsToZero:NO notifyDelegateDidClose:NO];
 }
+/**
+ Set constraints to show all buttons.
+ */
 - (void)setConstraintsToShowAllButtons:(BOOL)animated notifyDelegateDidOpen:(BOOL)notifyDelegate
 {
     if (notifyDelegate) {
@@ -198,9 +232,11 @@ static CGFloat const kBounceValue = 30.0f;
         }];
     }];
 }
+/**
+ Set cell to be selected and animate.
+ */
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
     // Configure the view for the selected state
 }
 

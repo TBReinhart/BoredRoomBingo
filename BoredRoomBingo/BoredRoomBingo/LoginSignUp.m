@@ -64,9 +64,14 @@
 /**
  User Submits login/signup credentials.
  */
-- (IBAction)nextPressed:(UIButton *)sender {
+- (IBAction)submitPressed:(UIButton *)sender {
     // if username is hidden, that means we are just logging in.
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    hud.labelText = @"Signing In";
+    [sender setEnabled:NO];
+
     if ([self.usernameTextField isHidden]) {
+        
         [self standardLogin:self.emailTextField.text withPassword:self.passwordTextField.text withCreated:NO];
     } else { // else they are creating account.
         NSLog(@"creating account about to load names ");
@@ -74,6 +79,8 @@
         // loads all usernames, if unique calls create account
         // if create successful with call standard login
     }
+    [sender setEnabled:YES];
+    [MBProgressHUD hideHUDForView:self.view animated:YES];
 }
 /**
  Create new account.
@@ -239,6 +246,7 @@ withCompletionBlock:^(NSError *error) {
 
 /**
  catlan stackOF
+ http://stackoverflow.com/questions/800123/what-are-best-practices-for-validating-email-addresses-in-objective-c-for-ios-2/1149894#1149894
  a regular expression that regulates what user emails can create.
  WILL accept crazy emails !matt$=awesome@mail.aol.biz
 */
@@ -255,6 +263,9 @@ withCompletionBlock:^(NSError *error) {
     
     return [emailTest evaluateWithObject:candidate];
 }
+/**
+ Allows mobility to move back to login screen.
+ */
 - (IBAction)unwindToLoginScreen:(UIStoryboardSegue *)segue {
     //nothing goes here
 }

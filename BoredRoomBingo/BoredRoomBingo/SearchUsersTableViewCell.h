@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ Cell class for a user where a game creator can invite a user to the game
+ */
 @interface SearchUsersTableViewCell : UITableViewCell
-@property (strong, nonatomic) IBOutlet UILabel *usernameLabel;
-@property (strong, nonatomic) IBOutlet UIButton *addRemoveButton;
-@property (strong, nonatomic) IBOutlet UILabel *friendLabel;
-
+@property (strong, nonatomic) IBOutlet UILabel *usernameLabel; ///< Username label returned in search
+@property (strong, nonatomic) IBOutlet UIButton *addRemoveButton; ///< button to send an invitation to username in same cell
 @end

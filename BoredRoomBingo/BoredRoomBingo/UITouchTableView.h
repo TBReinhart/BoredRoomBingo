@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ Simple class to allow for touching of chat table 
+ */
 @interface UITouchTableView : UITableView
 
 @end

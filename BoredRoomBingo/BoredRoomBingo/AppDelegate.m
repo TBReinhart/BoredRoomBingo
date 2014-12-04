@@ -46,6 +46,7 @@
     }
     
     [[UILabel appearance] setFont:[UIFont fontWithName:@"MarkerFelt-Wide" size:17.0]];
+    [[UIButton appearance] setFont:[UIFont fontWithName:@"MarketFelt-Wide" size:17.0]];
     return YES;
 
 }

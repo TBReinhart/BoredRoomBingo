@@ -26,18 +26,25 @@
 @implementation InvitationsTableViewController
 
 
-
+/**
+ Set up view controller and set currently edited cells
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self loadInvitations];
     self.cellsCurrentlyEditing = [NSMutableArray array];
 }
+/**
+ Moves the cell to edit.
+ */
 - (void)cellDidOpen:(UITableViewCell *)cell
 {
     NSIndexPath *currentEditingIndexPath = [self.tableView indexPathForCell:cell];
     [self.cellsCurrentlyEditing addObject:currentEditingIndexPath];
 }
-
+/**
+ Closes the cell to disallow editing
+ */
 - (void)cellDidClose:(UITableViewCell *)cell
 {
     [self.cellsCurrentlyEditing removeObject:[self.tableView indexPathForCell:cell]];
@@ -57,6 +64,7 @@
     Firebase *gameRef = [[Firebase alloc] initWithUrl: invitationUrl];
     [gameRef observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
         if (invitations == nil) {
+            //lazy instatiation
             invitations = [[NSMutableArray alloc]init];
             gameKeys = [[NSMutableArray alloc]init];
             creators = [[NSMutableArray alloc]init];
@@ -84,11 +92,16 @@
         NSLog(@"Cancel block %@", error.description);
     }];
 }
+/**
+ Returns one section for the table view.
+ */
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
 }
-
+/**
+ Returns equal number of rows in table view as their are invitations.
+ */
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
     return [invitations count];

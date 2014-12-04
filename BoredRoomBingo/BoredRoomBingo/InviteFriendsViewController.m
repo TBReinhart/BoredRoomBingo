@@ -11,8 +11,7 @@
 #import "SearchUsersTableViewController.h"
 #import "BingoBoardViewController.h"
 
-@interface InviteFriendsViewController ()
-{
+@interface InviteFriendsViewController () {
     NSMutableArray *fullUserList;
     NSMutableDictionary *usernameToIDs;
     NSArray *searchResults;
@@ -100,6 +99,9 @@
     }
     return YES;
 }
+/**
+ Text changes to search array.
+ */
 -(IBAction)textChanges:(id)sender {
     if (fullUserList == nil) {
         [self loadAllUsers];
@@ -130,15 +132,22 @@
     [tbc setUserList:[searchResults mutableCopy] withUserIDs:userIDs];
     [tbc.tableView reloadData];
 }
-
+/**
+ Check for memory warning.
+ */
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+/**
+ Close text editing
+ */
 -(IBAction)backgroundTap:(id)sender {
     [self.view endEditing:YES];
 }
-
+/**
+ Prepare to move to game and set notifications.
+ */
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"activeGameSegue"]) {
         NSLog(@"pref for seg in invite");

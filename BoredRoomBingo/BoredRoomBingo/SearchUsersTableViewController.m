@@ -22,7 +22,9 @@
 @end
 
 @implementation SearchUsersTableViewController
-
+/**
+ 
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
     if (invitedUserList == nil) {
