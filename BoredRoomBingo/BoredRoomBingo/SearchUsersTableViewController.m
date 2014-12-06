@@ -84,7 +84,7 @@
     }
     [cell.addRemoveButton setTag:indexPath.row];
     [cell.addRemoveButton addTarget:self action:@selector(keepTrackOfInvitedUsers:) forControlEvents:UIControlEventTouchUpInside];
-    [cell.friendLabel setText:@""];
+    //[cell.friendLabel setText:@""];
     [cell.addRemoveButton setBackgroundImage:[UIImage imageNamed:@"envelope.png"] forState:UIControlStateNormal];
     cell.addRemoveButton.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
     cell.addRemoveButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
