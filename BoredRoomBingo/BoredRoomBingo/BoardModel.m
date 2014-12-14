@@ -18,16 +18,6 @@
 
 }
 /**
- Check what words on board have been used.
- */
--(void)checkUsedWords {
-    for (int rows = 0; rows < ROWS; rows++) {
-        for (int columns = 0; columns < COLUMNS; columns++) {
-            
-        }
-    }
-}
-/**
  Initialize grids of words and booleans.
  */
 -(void)setUpGrids {

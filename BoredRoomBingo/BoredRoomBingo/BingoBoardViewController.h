@@ -18,5 +18,9 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *bingoCelebrationImage;
 @property (strong, nonatomic) IBOutlet UIView *gameOverView;
+@property (strong, nonatomic) IBOutlet UIButton *checkWinnersBoardButton;
+@property (strong, nonatomic) IBOutlet UIButton *getNewBoardButton;
+@property (strong, nonatomic) IBOutlet UIButton *confirmButton;
+@property (strong, nonatomic) IBOutlet UIButton *denyButton;
 
 @end

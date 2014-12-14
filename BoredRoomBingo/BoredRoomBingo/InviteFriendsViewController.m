@@ -41,11 +41,8 @@
  Pressed the button to start the game and send out all invitations.
  */
 -(IBAction)startGamePressed:(id)sender {
-    NSString *changeActiveUrl = [NSString stringWithFormat:@"%@/active",self.gameKey];
     [self.view endEditing:YES];
     [self didMoveToParentViewController:self];
-    Firebase *ref = [[Firebase alloc] initWithUrl:changeActiveUrl];
-    [ref setValue:@"yes"];
     SearchUsersTableViewController *tbc = (SearchUsersTableViewController *)self.childViewControllers[0];
     [tbc setActiveGame:YES];
     [self performSegueWithIdentifier:@"activeGameSegue" sender:nil];

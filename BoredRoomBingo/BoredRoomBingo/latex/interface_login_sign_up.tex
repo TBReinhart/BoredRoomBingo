@@ -14,9 +14,11 @@ Inheritance diagram for Login\+Sign\+Up\+:\begin{figure}[H]
 \subsection*{Instance Methods}
 \begin{DoxyCompactItemize}
 \item 
-(void) -\/ \hyperlink{interface_login_sign_up_a648321618c03b2f173a983524db03493}{standard\+Login}
-\item 
 (B\+O\+O\+L) -\/ \hyperlink{interface_login_sign_up_ae3df154525f230ce1e5575d2d10840e2}{validate\+Email\+:}
+\item 
+(void) -\/ \hyperlink{interface_login_sign_up_a9f5f1dbe36810fd050c96b99935940b4}{standard\+Login\+:with\+Password\+:with\+Created\+:}
+\item 
+(I\+B\+Action) -\/ \hyperlink{interface_login_sign_up_a3edc0364b4ae4e6a47e798593ebea03d}{unwind\+To\+Login\+Screen\+:}
 \end{DoxyCompactItemize}
 \subsection*{Properties}
 \begin{DoxyCompactItemize}
@@ -32,28 +34,43 @@ Inheritance diagram for Login\+Sign\+Up\+:\begin{figure}[H]
 \begin{DoxyCompactList}\small\item\em The field where users enter email. \end{DoxyCompactList}\item 
 \hypertarget{interface_login_sign_up_aad42d499881b619e94e5bbab8b20ce40}{I\+B\+Outlet U\+I\+Text\+Field $\ast$ \hyperlink{interface_login_sign_up_aad42d499881b619e94e5bbab8b20ce40}{password\+Text\+Field}}\label{interface_login_sign_up_aad42d499881b619e94e5bbab8b20ce40}
 
-\begin{DoxyCompactList}\small\item\em The field where users enter his/her password. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The field where users enter his/her password. \end{DoxyCompactList}\item 
+\hypertarget{interface_login_sign_up_abee440735a89803ee5a32787941dafe6}{I\+B\+Outlet U\+I\+Text\+Field $\ast$ \hyperlink{interface_login_sign_up_abee440735a89803ee5a32787941dafe6}{username\+Text\+Field}}\label{interface_login_sign_up_abee440735a89803ee5a32787941dafe6}
+
+\begin{DoxyCompactList}\small\item\em Username prompt for first time users. \end{DoxyCompactList}\item 
+\hypertarget{interface_login_sign_up_ad834f5c1778788ef1e52a3f293428e0e}{I\+B\+Outlet U\+I\+Button $\ast$ \hyperlink{interface_login_sign_up_ad834f5c1778788ef1e52a3f293428e0e}{forgot\+Password\+Button}}\label{interface_login_sign_up_ad834f5c1778788ef1e52a3f293428e0e}
+
+\begin{DoxyCompactList}\small\item\em Button that allows users to reset password when loggin in. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 The view controller for selecting whether logging in or signing up manually or with social network. 
 
 \subsection{Method Documentation}
-\hypertarget{interface_login_sign_up_a648321618c03b2f173a983524db03493}{\index{Login\+Sign\+Up@{Login\+Sign\+Up}!standard\+Login@{standard\+Login}}
-\index{standard\+Login@{standard\+Login}!Login\+Sign\+Up@{Login\+Sign\+Up}}
-\subsubsection[{standard\+Login}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) standard\+Login 
+\hypertarget{interface_login_sign_up_a9f5f1dbe36810fd050c96b99935940b4}{\index{Login\+Sign\+Up@{Login\+Sign\+Up}!standard\+Login\+:with\+Password\+:with\+Created\+:@{standard\+Login\+:with\+Password\+:with\+Created\+:}}
+\index{standard\+Login\+:with\+Password\+:with\+Created\+:@{standard\+Login\+:with\+Password\+:with\+Created\+:}!Login\+Sign\+Up@{Login\+Sign\+Up}}
+\subsubsection[{standard\+Login\+:with\+Password\+:with\+Created\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) standard\+Login\+: 
 \begin{DoxyParamCaption}
-{}
+\item[{(N\+S\+String $\ast$)}]{email}
+\item[{withPassword:(N\+S\+String $\ast$)}]{password}
+\item[{withCreated:(B\+O\+O\+L)}]{just\+Created}
 \end{DoxyParamCaption}
-}}\label{interface_login_sign_up_a648321618c03b2f173a983524db03493}
-Do a standard login with firebase and segue when done. \hypertarget{interface_login_sign_up_ae3df154525f230ce1e5575d2d10840e2}{\index{Login\+Sign\+Up@{Login\+Sign\+Up}!validate\+Email\+:@{validate\+Email\+:}}
+}}\label{interface_login_sign_up_a9f5f1dbe36810fd050c96b99935940b4}
+Standard login. Will be called for a normal login including after account creation Will use data to set user defaults. \hypertarget{interface_login_sign_up_a3edc0364b4ae4e6a47e798593ebea03d}{\index{Login\+Sign\+Up@{Login\+Sign\+Up}!unwind\+To\+Login\+Screen\+:@{unwind\+To\+Login\+Screen\+:}}
+\index{unwind\+To\+Login\+Screen\+:@{unwind\+To\+Login\+Screen\+:}!Login\+Sign\+Up@{Login\+Sign\+Up}}
+\subsubsection[{unwind\+To\+Login\+Screen\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (I\+B\+Action) unwind\+To\+Login\+Screen\+: 
+\begin{DoxyParamCaption}
+\item[{(U\+I\+Storyboard\+Segue $\ast$)}]{segue}
+\end{DoxyParamCaption}
+}}\label{interface_login_sign_up_a3edc0364b4ae4e6a47e798593ebea03d}
+Allows mobility to move back to login screen. \hypertarget{interface_login_sign_up_ae3df154525f230ce1e5575d2d10840e2}{\index{Login\+Sign\+Up@{Login\+Sign\+Up}!validate\+Email\+:@{validate\+Email\+:}}
 \index{validate\+Email\+:@{validate\+Email\+:}!Login\+Sign\+Up@{Login\+Sign\+Up}}
 \subsubsection[{validate\+Email\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (B\+O\+O\+L) validate\+Email\+: 
 \begin{DoxyParamCaption}
 \item[{(N\+S\+String $\ast$)}]{candidate}
 \end{DoxyParamCaption}
 }}\label{interface_login_sign_up_ae3df154525f230ce1e5575d2d10840e2}
-catlan stack\+O\+F a regular expression that regulates what user emails can create. W\+I\+L\+L accept crazy emails !matt\$=\href{mailto:awesome@mail.aol.biz}{\tt awesome@mail.\+aol.\+biz} 
+catlan stack\+O\+F \href{http://stackoverflow.com/questions/800123/what-are-best-practices-for-validating-email-addresses-in-objective-c-for-ios-2/1149894#1149894}{\tt http\+://stackoverflow.\+com/questions/800123/what-\/are-\/best-\/practices-\/for-\/validating-\/email-\/addresses-\/in-\/objective-\/c-\/for-\/ios-\/2/1149894\#1149894} a regular expression that regulates what user emails can create. W\+I\+L\+L accept crazy emails !matt\$=\href{mailto:awesome@mail.aol.biz}{\tt awesome@mail.\+aol.\+biz} 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

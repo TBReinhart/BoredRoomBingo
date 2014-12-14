@@ -16,6 +16,8 @@
 {
     BoardModel *model;
     NSString *creator;
+    NSMutableArray *savedWords;
+    NSMutableArray *savedValues;
 }
 @end
 
@@ -26,12 +28,14 @@
 - (void)viewDidLoad {
     [self.gameOverView setHidden:YES];
     [super viewDidLoad];
+    [self.checkWinnersBoardButton setHidden:YES];
+    [self.confirmButton setHidden:YES];
+    [self.denyButton setHidden:YES];
     ChatViewController *chat = (ChatViewController *)self.childViewControllers[0];
     [chat reloadInputViews];
     [self loadFirebase];
     [self checkForOtherGameOvers];
     
-
 }
 /**
  Loads specific firebase with values of game.
@@ -48,12 +52,18 @@
             }
             creator = snapshot.value[@"creator"];
             [self.navigationItem setTitle:snapshot.value[@"gameName"]];
-            model = [[BoardModel alloc]initBoardModel:self.gameKey withFullList:fullList];
-            [self setUpBoardButton];
+            if (model == nil) {
+                [self setUp:fullList];
+            }
+
         }
     } withCancelBlock:^(NSError *error) {
         NSLog(@"Cancel block %@", error.description);
     }];
+}
+-(void)setUp:(NSMutableArray *)fullList {
+    model = [[BoardModel alloc]initBoardModel:self.gameKey withFullList:fullList];
+    [self setUpBoardButton];
 }
 /**
  Set up board buttons with proper text format and titles
@@ -74,6 +84,32 @@
         button.layer.cornerRadius = 10.0f;
         [button.titleLabel setTextAlignment: NSTextAlignmentCenter];
 
+    }
+}
+/**
+ Swaps betweeen the current board state and the words specified in args
+ saves old words locally
+ */
+-(void)swapBoard:(NSMutableArray *)words withValues:(NSMutableArray *)values {
+    if (savedValues == nil) {
+        savedValues = [[NSMutableArray alloc]init];
+        savedWords = [[NSMutableArray alloc]init];
+    }
+    int counter = 0;
+    NSLog(@"values in swap %@", values);
+    for (UIButton *button in self.boardButton) {
+        [savedWords addObject:button.titleLabel.text];
+        [savedValues addObject:[NSString stringWithFormat:@"%zd",!button.enabled]]; // !
+        
+        [button setTitle:[words objectAtIndex:counter] forState:UIControlStateNormal];
+        if ([[NSString stringWithFormat:@"%@",[values objectAtIndex:counter]] isEqualToString:@"0"]) {
+            [button setEnabled:YES];
+            [button setBackgroundColor:[UIColor lightGrayColor]];
+        } else {
+            [button setBackgroundColor:[UIColor orangeColor]];
+            [button setEnabled:NO];
+        }
+        counter++;
     }
 }
 - (void)didReceiveMemoryWarning {
@@ -111,31 +147,85 @@ didDismissWithButtonIndex:(NSInteger) buttonIndex
  Alert that game was won!
  */
 -(void)gameOver {
-   // self.bingoCelebrationImage.image = [UIImage imageNamed:@"bingo.png"];
     [self endGameForOthers];
     [self sendWinningNotification];
+}
+/**
+ Set user as winner in firebase
+ */
+-(void)setMeAsWinner {
+    NSString *makeMeWinnerUrl = [NSString stringWithFormat:@"%@/winner",self.gameKey];
+    Firebase *ref = [[Firebase alloc]initWithUrl:makeMeWinnerUrl];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *myUsername = [prefs stringForKey:@"username"];
+    [ref setValue:myUsername];
+}
+/**
+ Check if i'm still winner
+ */
+-(void)checkIfIAmStillWinner {
+    
+    NSString *amIWinnerUrl = [NSString stringWithFormat:@"%@",self.gameKey];
+    Firebase *ref = [[Firebase alloc]initWithUrl:amIWinnerUrl];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    NSString *myUsername = [prefs stringForKey:@"username"];
+    [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSLog(@"winner: %@", snapshot.value[@"winner"]);
+        NSLog(@"equal to my username? %zd", [snapshot.value[@"winner"] isEqualToString:myUsername]);
+        NSLog(@"winning board %zd", !snapshot.value[@"winningBoard"]);
+        if (snapshot.value[@"winner"] != [NSNull null] && [snapshot.value[@"winner"] isEqualToString:myUsername] && !snapshot.value[@"winningBoard"]) {
+            NSLog(@"daivik");
+            [self playAgainPressed:nil];
+            NSString *oldWinnerUrl = [NSString stringWithFormat:@"%@/winner",self.gameKey];
+            Firebase *oldWinner = [[Firebase alloc]initWithUrl:oldWinnerUrl];
+            [oldWinner setValue:@""];
+            [self.getNewBoardButton setHidden:NO];
+            
+        }
+    } withCancelBlock:^(NSError *error) {
+        NSLog(@"Cancel block %@", error.description);
+    }];
 }
 /**
  Send notice that the game is over.
  */
 -(void)endGameForOthers {
-    NSString *changeActiveUrl = [NSString stringWithFormat:@"%@/active",self.gameKey];
+    NSString *changeActiveUrl = [NSString stringWithFormat:@"%@/winningBoard",self.gameKey];
     Firebase *ref = [[Firebase alloc] initWithUrl:changeActiveUrl];
-    [ref setValue:@"over"];
+    NSMutableArray *labels;
+    NSMutableArray *clicked;
+    if (labels == nil) {
+        labels = [[NSMutableArray alloc]init];
+        clicked = [[NSMutableArray alloc]init];
+    } else {
+        [labels removeAllObjects];
+        [clicked removeAllObjects];
+    }
+    for (UIButton *button in self.boardButton) {
+        [labels addObject:button.titleLabel.text];
+        [clicked addObject:[NSNumber numberWithBool:!button.enabled]];
+    }
+    
+    NSDictionary *active = @{@"labels":labels, @"clicked":clicked};
+    
+    [ref setValue:active];
+    [self.getNewBoardButton setHidden:YES];
+    [self setMeAsWinner];
+    [self checkIfIAmStillWinner];
 }
 /**
  Checks for gameover. will notify others when game is over.
  */
 -(void)checkForOtherGameOvers {
-    NSString *isGameOverYetUrl = [NSString stringWithFormat:@"%@/active",self.gameKey];
+    NSString *isGameOverYetUrl = [NSString stringWithFormat:@"%@/winningBoard",self.gameKey];
     Firebase *ref = [[Firebase alloc]initWithUrl:isGameOverYetUrl];
     [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        if (snapshot.value != [NSNull null] && [snapshot.value isEqualToString:@"over"]) {
-            NSLog(@"game over!! ");
-            AudioServicesPlayAlertSound(kSystemSoundID_Vibrate);
-            //[self.gameOverView setHidden:NO];
-            //Firebase *removeRef = [[Firebase alloc]initWithUrl:[NSString stringWithFormat:@"%@",self.gameKey]];
-            //[removeRef removeValue];
+        // snapshot.value will only exist if someone has won the game, if someone has
+        // denied the game, delete it
+        if (snapshot.value != [NSNull null]) {
+            [self.checkWinnersBoardButton setHidden:NO];
+        } else {
+            [self.checkWinnersBoardButton setHidden:YES];
         }
     } withCancelBlock:^(NSError *error) {
         NSLog(@"Cancel block %@", error.description);
@@ -155,11 +245,88 @@ didDismissWithButtonIndex:(NSInteger) buttonIndex
     [push setMessage:message];
     [push sendPushInBackground];
 }
+/**
+ Send an alert to let people know game is still on
+ */
+-(void)sendGameOnNotification {
+    PFPush *push = [[PFPush alloc]init];
+    [push setChannel:creator];
+    NSString *message = [NSString stringWithFormat:@"The winner is a fraud!\n Game on!"];
+    [push setMessage:message];
+    [push sendPushInBackground];
+}
 /** send to child */
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"embeddedChat"]) {
         ChatViewController *chat = [segue destinationViewController];
         [chat setUrl:self.gameKey];
+    }
+}
+-(IBAction)backgroundTapped:(id)sender {
+    [self.view endEditing:YES];
+}
+/**
+ Check if winners board is legit
+ gives option to confirm or deny
+ */
+- (IBAction)checkWinnersBoardPressed:(UIButton *)sender {
+    NSString *winningBoardCheckUrl = [NSString stringWithFormat:@"%@/winningBoard",self.gameKey];
+    Firebase *ref = [[Firebase alloc]initWithUrl:winningBoardCheckUrl];
+    [ref observeSingleEventOfType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
+        NSMutableArray *clicked = snapshot.value[@"clicked"];
+        NSMutableArray *labels = snapshot.value[@"labels"];
+        [self swapBoard:labels withValues:clicked];
+        [self.getNewBoardButton setHidden:YES];
+        [self.confirmButton setHidden:NO];
+        [self.denyButton setHidden:NO];
+        [self.checkWinnersBoardButton setHidden:YES];
+    }];
+}
+/**
+ Deny and tell all!
+ */
+-(IBAction)denyPressed:(id)sender {
+    [self hideConfirmDeny];
+    [self.checkWinnersBoardButton setHidden:YES];
+    NSString *destroyWinnerUrl = [NSString stringWithFormat:@"%@/winningBoard",self.gameKey];
+    Firebase *ref = [[Firebase alloc]initWithUrl:destroyWinnerUrl];
+    [ref removeValue];
+    [self sendGameOnNotification];
+    
+}
+/**
+ Confirm hides
+ */
+-(IBAction)confirmPressed:(id)sender {
+    [self hideConfirmDeny];
+}
+/**
+ hide buttons and swap
+ */
+-(void)hideConfirmDeny {
+    [self.confirmButton setHidden:YES];
+    [self.denyButton setHidden:YES];
+    [self.checkWinnersBoardButton setHidden:NO];
+    [self.getNewBoardButton setHidden:NO];
+    NSLog(@"checked: %@", savedValues);
+    [self swapBoard:savedWords withValues:savedValues];
+}
+/**
+ Set up model again.
+ */
+-(IBAction)playAgainPressed:(id)sender {
+    model = nil;
+    [self loadFirebase];
+    int counter = 0;
+    for (UIButton *button in self.boardButton) {
+        if (counter == 12) {
+            [button setEnabled:NO];
+            [button setBackgroundColor:[UIColor orangeColor]];
+        } else {
+            [button setEnabled:YES];
+            [button setBackgroundColor:[UIColor lightGrayColor]];
+        }
+        counter++;
     }
 }
 @end

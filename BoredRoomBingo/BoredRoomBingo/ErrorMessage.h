@@ -7,6 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LoginError.h"
+#import "EmailTakenError.h"
+#import "InvalidEmailError.h"
+#import "UserDoesNotExistError.h"
+#import "NetworkError.h"
+#import "InvalidPasswordError.h"
+#import "DefaultError.h"
+
+
 /**
  The view controller that handles errors from Firebase.
  */

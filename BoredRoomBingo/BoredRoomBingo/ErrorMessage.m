@@ -10,41 +10,38 @@
 #import <Firebase/Firebase.h>
 @implementation ErrorMessage
 
-// an error occurred while attempting login
+
+/**
+ These errors are the only errors which can occur during the project, and
+ */
+
 -(void)errorMessages:(NSError*)error {
-    NSString *errorTitle;
-    NSString *errorMessage;
+    LoginError *newError;
     NSLog(@"error is %@", error);
     switch(error.code) {
         case FAuthenticationErrorEmailTaken:
-            errorTitle = @"Email Taken!";
-            errorMessage = @"Please enter a new email.";
+            newError = [[EmailTakenError alloc]  initEmailTakenError];
             break;
         case FAuthenticationErrorUserDoesNotExist:
             // Handle invalid user
-            errorTitle = @"User Does Not Exist!";
-            errorMessage = @"Please try again.";
+            newError = [[UserDoesNotExistError alloc] initUserDoesNotExistError];
             break;
         case FAuthenticationErrorInvalidEmail:
             // Handle invalid email
-            errorTitle = @"Invalid Email!";
-            errorMessage = @"Please try again.";
+            newError = [[InvalidEmailError alloc] initInvalidEmailError];
             break;
         case FAuthenticationErrorNetworkError:
-            errorTitle = @"Network Error!";
-            errorMessage = @"Please connect to the network, and try again.";
+            newError = [[NetworkError alloc] initNetworkError];
             break;
         case FAuthenticationErrorInvalidPassword:
             // Handle invalid password
-            errorTitle = @"Invalid Password";
-            errorMessage = @"Please try again.";
+            newError = [[InvalidPasswordError alloc] initIvalidPasswordError];
             break;
         default:
-            errorTitle = @"Learning Opportunity!";
-            errorMessage = @"Don't worry it will be fixed soon! \nFixing Problems is part of our DNA!";
+            newError = [[DefaultError alloc] initDefaultError];
             break;
     }
-    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:errorTitle message:errorMessage delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
+    UIAlertView *errorAlert = [[UIAlertView alloc] initWithTitle:[newError getErrorTitle] message:[newError getErrorData] delegate:self cancelButtonTitle:nil otherButtonTitles:nil, nil];
     [errorAlert addButtonWithTitle:@"OK"];
     [errorAlert show];
 }

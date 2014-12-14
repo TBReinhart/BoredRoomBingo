@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['gamekey',['gameKey',['../interface_bingo_board_view_controller.html#af8b4daa9486d0eb72086a86f65829cdb',1,'BingoBoardViewController']]],
-  ['groupnametextfield',['groupNameTextField',['../interface_home_screen.html#ad3ce08e7b1e5daffeb98b941b8742a19',1,'HomeScreen']]]
+  ['firebase',['firebase',['../interface_chat_view_controller.html#a3b9e9efbf61a8d78859d18324e70fba3',1,'ChatViewController']]],
+  ['forgotpasswordbutton',['forgotPasswordButton',['../interface_login_sign_up.html#ad834f5c1778788ef1e52a3f293428e0e',1,'LoginSignUp']]]
 ];

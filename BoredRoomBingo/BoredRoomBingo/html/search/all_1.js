@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['backgroundtap',['backgroundTap',['../interface_home_screen.html#a7181333f6625624349015aae1b87da0f',1,'HomeScreen']]],
+  ['backgroundtap',['backgroundTap',['../interface_game_creation_view_controller.html#a1489f19d881cf6dbac322fd31f15376b',1,'GameCreationViewController']]],
   ['backgroundtintcolor',['backgroundTintColor',['../interface_m_b_round_progress_view.html#ab111d2fa027158e7c21ad411767d193a',1,'MBRoundProgressView']]],
   ['bingoboardviewcontroller',['BingoBoardViewController',['../interface_bingo_board_view_controller.html',1,'']]],
   ['bingoboardviewcontroller_28_29',['BingoBoardViewController()',['../category_bingo_board_view_controller_07_08.html',1,'']]],

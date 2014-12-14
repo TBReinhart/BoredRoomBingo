@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unwindtohomescreen_3a',['unwindToHomeScreen:',['../interface_home_screen.html#ae069215520c7cb301ab231c3c260389c',1,'HomeScreen']]]
+  ['opencell',['openCell',['../interface_invitation_table_view_cell.html#aa27db52d8a518af54b9d981ed6dca4e1',1,'InvitationTableViewCell']]]
 ];

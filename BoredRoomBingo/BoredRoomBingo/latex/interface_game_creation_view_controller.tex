@@ -1,0 +1,83 @@
+\hypertarget{interface_game_creation_view_controller}{\section{Game\+Creation\+View\+Controller Class Reference}
+\label{interface_game_creation_view_controller}\index{Game\+Creation\+View\+Controller@{Game\+Creation\+View\+Controller}}
+}
+
+
+{\ttfamily \#import $<$Game\+Creation\+View\+Controller.\+h$>$}
+
+Inheritance diagram for Game\+Creation\+View\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=1.839080cm]{interface_game_creation_view_controller}
+\end{center}
+\end{figure}
+\subsection*{Instance Methods}
+\begin{DoxyCompactItemize}
+\item 
+(void) -\/ \hyperlink{interface_game_creation_view_controller_ac60a20e175e551de4eb69939f8c37183}{set\+List\+:}
+\item 
+(void) -\/ \hyperlink{interface_game_creation_view_controller_ab330431f8cb9b2eaa131678a676a4a2c}{add\+To\+Current\+Words\+:}
+\item 
+(I\+B\+Action) -\/ \hyperlink{interface_game_creation_view_controller_a09628866275bb5c782dc26f58208a660}{unwind\+To\+Game\+Creation\+View\+Controller\+:}
+\begin{DoxyCompactList}\small\item\em Unwind segue for future view controllers to get back to home screen. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Properties}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{interface_game_creation_view_controller_ae76e55b8fa7986f0bfa143a7c73eb43a}{I\+B\+Outlet U\+I\+Text\+Field $\ast$ \hyperlink{interface_game_creation_view_controller_ae76e55b8fa7986f0bfa143a7c73eb43a}{game\+Name\+Text\+Field}}\label{interface_game_creation_view_controller_ae76e55b8fa7986f0bfa143a7c73eb43a}
+
+\begin{DoxyCompactList}\small\item\em Group Name of Game. \end{DoxyCompactList}\item 
+\hypertarget{interface_game_creation_view_controller_a86959d481789fb9e954f07e4583ffc97}{I\+B\+Outlet U\+I\+Text\+Field $\ast$ \hyperlink{interface_game_creation_view_controller_a86959d481789fb9e954f07e4583ffc97}{add\+New\+Word\+Text\+Field}}\label{interface_game_creation_view_controller_a86959d481789fb9e954f07e4583ffc97}
+
+\begin{DoxyCompactList}\small\item\em Text field to add a new word to game. \end{DoxyCompactList}\item 
+\hypertarget{interface_game_creation_view_controller_aae49817dfde3252304366ccb77cfbe95}{I\+B\+Outlet U\+I\+Text\+Field $\ast$ \hyperlink{interface_game_creation_view_controller_aae49817dfde3252304366ccb77cfbe95}{list\+Name\+Text\+Field}}\label{interface_game_creation_view_controller_aae49817dfde3252304366ccb77cfbe95}
+
+\begin{DoxyCompactList}\small\item\em Text field to name your current list as new list. \end{DoxyCompactList}\item 
+\hypertarget{interface_game_creation_view_controller_a98550e34c1fbe667fed1d4190d780b6c}{I\+B\+Outlet U\+I\+Switch $\ast$ \hyperlink{interface_game_creation_view_controller_a98550e34c1fbe667fed1d4190d780b6c}{private\+Public\+Switch}}\label{interface_game_creation_view_controller_a98550e34c1fbe667fed1d4190d780b6c}
+
+\begin{DoxyCompactList}\small\item\em Switch to set game to public or private. \end{DoxyCompactList}\item 
+\hypertarget{interface_game_creation_view_controller_aff5cc1e6516c58c9aedc73e47a3fe35e}{N\+S\+Mutable\+Array $\ast$ \hyperlink{interface_game_creation_view_controller_aff5cc1e6516c58c9aedc73e47a3fe35e}{current\+Words}}\label{interface_game_creation_view_controller_aff5cc1e6516c58c9aedc73e47a3fe35e}
+
+\begin{DoxyCompactList}\small\item\em Array of all current words for game. \end{DoxyCompactList}\item 
+\hypertarget{interface_game_creation_view_controller_a1489f19d881cf6dbac322fd31f15376b}{I\+B\+Outlet U\+I\+Tap\+Gesture\+Recognizer $\ast$ \hyperlink{interface_game_creation_view_controller_a1489f19d881cf6dbac322fd31f15376b}{background\+Tap}}\label{interface_game_creation_view_controller_a1489f19d881cf6dbac322fd31f15376b}
+
+\begin{DoxyCompactList}\small\item\em Tap registered when clicking board used for clearing keyboard. \end{DoxyCompactList}\item 
+\hypertarget{interface_game_creation_view_controller_a1a79edba7d0261936fbaea79a3ce49cf}{N\+S\+Mutable\+Array $\ast$ \hyperlink{interface_game_creation_view_controller_a1a79edba7d0261936fbaea79a3ce49cf}{array\+With\+Words\+To\+Add}}\label{interface_game_creation_view_controller_a1a79edba7d0261936fbaea79a3ce49cf}
+
+\begin{DoxyCompactList}\small\item\em Array of words to add from a selected list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the intro screen for setting up a game which displays selecting an existing list or adding current words. 
+
+\subsection{Method Documentation}
+\hypertarget{interface_game_creation_view_controller_ab330431f8cb9b2eaa131678a676a4a2c}{\index{Game\+Creation\+View\+Controller@{Game\+Creation\+View\+Controller}!add\+To\+Current\+Words\+:@{add\+To\+Current\+Words\+:}}
+\index{add\+To\+Current\+Words\+:@{add\+To\+Current\+Words\+:}!Game\+Creation\+View\+Controller@{Game\+Creation\+View\+Controller}}
+\subsubsection[{add\+To\+Current\+Words\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) add\+To\+Current\+Words\+: 
+\begin{DoxyParamCaption}
+\item[{(N\+S\+Mutable\+Array $\ast$)}]{words\+To\+Add}
+\end{DoxyParamCaption}
+}}\label{interface_game_creation_view_controller_ab330431f8cb9b2eaa131678a676a4a2c}
+Adds words to current words from selected list in another vc. \hypertarget{interface_game_creation_view_controller_ac60a20e175e551de4eb69939f8c37183}{\index{Game\+Creation\+View\+Controller@{Game\+Creation\+View\+Controller}!set\+List\+:@{set\+List\+:}}
+\index{set\+List\+:@{set\+List\+:}!Game\+Creation\+View\+Controller@{Game\+Creation\+View\+Controller}}
+\subsubsection[{set\+List\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (void) set\+List\+: 
+\begin{DoxyParamCaption}
+\item[{(N\+S\+String $\ast$)}]{list}
+\end{DoxyParamCaption}
+}}\label{interface_game_creation_view_controller_ac60a20e175e551de4eb69939f8c37183}
+Sets selected list \hypertarget{interface_game_creation_view_controller_a09628866275bb5c782dc26f58208a660}{\index{Game\+Creation\+View\+Controller@{Game\+Creation\+View\+Controller}!unwind\+To\+Game\+Creation\+View\+Controller\+:@{unwind\+To\+Game\+Creation\+View\+Controller\+:}}
+\index{unwind\+To\+Game\+Creation\+View\+Controller\+:@{unwind\+To\+Game\+Creation\+View\+Controller\+:}!Game\+Creation\+View\+Controller@{Game\+Creation\+View\+Controller}}
+\subsubsection[{unwind\+To\+Game\+Creation\+View\+Controller\+:}]{\setlength{\rightskip}{0pt plus 5cm}-\/ (I\+B\+Action) unwind\+To\+Game\+Creation\+View\+Controller\+: 
+\begin{DoxyParamCaption}
+\item[{(U\+I\+Storyboard\+Segue $\ast$)}]{segue}
+\end{DoxyParamCaption}
+}}\label{interface_game_creation_view_controller_a09628866275bb5c782dc26f58208a660}
+
+
+Unwind segue for future view controllers to get back to home screen. 
+
+Unwind segue necessary to move back to this view controller without making a new V\+C 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Game\+Creation\+View\+Controller.\+h\item 
+Game\+Creation\+View\+Controller.\+m\end{DoxyCompactItemize}

@@ -21,6 +21,7 @@
     [super viewDidLoad];
     [self.emailView setHidden:YES];
     [self.optionsView setHidden:NO];
+    self.passwordTextField.delegate = self;
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myUsername = [prefs stringForKey:@"username"];
     NSLog(@"view did load username %@", myUsername);
@@ -44,6 +45,14 @@
     }
     [self.optionsView setHidden:YES];
     [self.emailView setHidden:NO];
+}
+/**
+ When return is pressed when typing password, will call submit button.
+ */
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    [self submitPressed:nil];
+    return NO;
 }
 /**
  Return to menu of login options.
@@ -225,7 +234,6 @@ withCompletionBlock:^(NSError *error) {
                 [usernameTaken show];
                 return;
             } else {
-                NSLog(@"unique, now creating acct");
                 [self createAccount:self.emailTextField.text withPassword:self.passwordTextField.text withUsername:self.usernameTextField.text];
                 return;
             }

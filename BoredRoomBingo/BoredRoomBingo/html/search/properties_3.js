@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['delegate',['delegate',['../interface_m_b_progress_h_u_d.html#ad6fee32939fa55fc1a341aba117aa28f',1,'MBProgressHUD']]],
+  ['delegate',['delegate',['../interface_invitation_table_view_cell.html#a5efa2723f52f38836c0486f8b605b204',1,'InvitationTableViewCell::delegate()'],['../interface_m_b_progress_h_u_d.html#ad6fee32939fa55fc1a341aba117aa28f',1,'MBProgressHUD::delegate()']]],
+  ['denybutton',['denyButton',['../interface_invitation_table_view_cell.html#a58337dbf6f856deea0d36fa827c245c6',1,'InvitationTableViewCell']]],
   ['detailslabelcolor',['detailsLabelColor',['../interface_m_b_progress_h_u_d.html#ace929217bd7673159f063d5b8e80b080',1,'MBProgressHUD']]],
   ['detailslabelfont',['detailsLabelFont',['../interface_m_b_progress_h_u_d.html#af070a363d323d8eb0285e38d398b51c2',1,'MBProgressHUD']]],
   ['detailslabeltext',['detailsLabelText',['../interface_m_b_progress_h_u_d.html#a8b7cbf551fc551c64159b7a3f648c6ac',1,'MBProgressHUD']]],

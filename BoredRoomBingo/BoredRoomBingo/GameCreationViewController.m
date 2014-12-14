@@ -141,7 +141,7 @@
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myID = [prefs stringForKey:@"userID"];
     NSDictionary *gameName = @{@"gameName":self.gameNameTextField.text,
-                               @"list":self.currentWords, @"active":@"no", @"winner":@"", @"creator":myID};
+                               @"list":self.currentWords, @"creator":myID};
     [post1Ref setValue:gameName];
     NSLog(@"post ref %@", post1Ref);
     [self performSegueWithIdentifier:@"inviteFriends" sender:nil];
@@ -150,6 +150,11 @@
  Overwrites existing list with same name or creates a new list with current words 
  */
 - (IBAction)saveListPressed:(UIButton *)sender {
+    if (![self.listNameTextField.text length] > 0) {
+        UIAlertView *notEnough = [[UIAlertView alloc]initWithTitle:@"No List Name!" message:@"You can't have a blank list name!" delegate:self cancelButtonTitle:@"Ok!" otherButtonTitles:nil, nil];
+        [notEnough show];
+        return;
+    }
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myID = [prefs stringForKey:@"userID"];
     NSString *url = [NSString stringWithFormat:@"%@users/%@/wordlists",FIREBASE_URL,myID];

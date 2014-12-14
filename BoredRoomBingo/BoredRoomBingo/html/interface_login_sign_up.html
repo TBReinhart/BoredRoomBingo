@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>Bored Room Bingo: LoginSignUp Class Reference</title>
+<title>My Project: LoginSignUp Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Bored Room Bingo
+   <div id="projectname">My Project
    </div>
   </td>
  </tr>
@@ -102,10 +102,12 @@ Inheritance diagram for LoginSignUp:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Instance Methods</h2></td></tr>
-<tr class="memitem:a648321618c03b2f173a983524db03493"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_login_sign_up.html#a648321618c03b2f173a983524db03493">standardLogin</a></td></tr>
-<tr class="separator:a648321618c03b2f173a983524db03493"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3df154525f230ce1e5575d2d10840e2"><td class="memItemLeft" align="right" valign="top">(BOOL)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_login_sign_up.html#ae3df154525f230ce1e5575d2d10840e2">validateEmail:</a></td></tr>
 <tr class="separator:ae3df154525f230ce1e5575d2d10840e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f5f1dbe36810fd050c96b99935940b4"><td class="memItemLeft" align="right" valign="top">(void)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_login_sign_up.html#a9f5f1dbe36810fd050c96b99935940b4">standardLogin:withPassword:withCreated:</a></td></tr>
+<tr class="separator:a9f5f1dbe36810fd050c96b99935940b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3edc0364b4ae4e6a47e798593ebea03d"><td class="memItemLeft" align="right" valign="top">(IBAction)&#160;</td><td class="memItemRight" valign="bottom">- <a class="el" href="interface_login_sign_up.html#a3edc0364b4ae4e6a47e798593ebea03d">unwindToLoginScreen:</a></td></tr>
+<tr class="separator:a3edc0364b4ae4e6a47e798593ebea03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
@@ -125,23 +127,65 @@ IBOutlet UITextField *&#160;</td><td class="memItemRight" valign="bottom"><a cla
 IBOutlet UITextField *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_login_sign_up.html#aad42d499881b619e94e5bbab8b20ce40">passwordTextField</a></td></tr>
 <tr class="memdesc:aad42d499881b619e94e5bbab8b20ce40"><td class="mdescLeft">&#160;</td><td class="mdescRight">The field where users enter his/her password. <br /></td></tr>
 <tr class="separator:aad42d499881b619e94e5bbab8b20ce40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abee440735a89803ee5a32787941dafe6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abee440735a89803ee5a32787941dafe6"></a>
+IBOutlet UITextField *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_login_sign_up.html#abee440735a89803ee5a32787941dafe6">usernameTextField</a></td></tr>
+<tr class="memdesc:abee440735a89803ee5a32787941dafe6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Username prompt for first time users. <br /></td></tr>
+<tr class="separator:abee440735a89803ee5a32787941dafe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad834f5c1778788ef1e52a3f293428e0e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad834f5c1778788ef1e52a3f293428e0e"></a>
+IBOutlet UIButton *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="interface_login_sign_up.html#ad834f5c1778788ef1e52a3f293428e0e">forgotPasswordButton</a></td></tr>
+<tr class="memdesc:ad834f5c1778788ef1e52a3f293428e0e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Button that allows users to reset password when loggin in. <br /></td></tr>
+<tr class="separator:ad834f5c1778788ef1e52a3f293428e0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The view controller for selecting whether logging in or signing up manually or with social network. </p>
 </div><h2 class="groupheader">Method Documentation</h2>
-<a class="anchor" id="a648321618c03b2f173a983524db03493"></a>
+<a class="anchor" id="a9f5f1dbe36810fd050c96b99935940b4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">- (void) standardLogin </td>
+          <td class="memname">- (void) standardLogin: </td>
           <td></td>
-          <td class="paramname"></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>email</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">withPassword:</td>
+          <td></td>
+          <td class="paramtype">(NSString *)&#160;</td>
+          <td class="paramname"><em>password</em></td>
+        </tr>
+        <tr>
+          <td class="paramkey">withCreated:</td>
+          <td></td>
+          <td class="paramtype">(BOOL)&#160;</td>
+          <td class="paramname"><em>justCreated</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Standard login. Will be called for a normal login including after account creation Will use data to set user defaults. </p>
+
+</div>
+</div>
+<a class="anchor" id="a3edc0364b4ae4e6a47e798593ebea03d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">- (IBAction) unwindToLoginScreen: </td>
+          <td></td>
+          <td class="paramtype">(UIStoryboardSegue *)&#160;</td>
+          <td class="paramname"><em>segue</em></td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Do a standard login with firebase and segue when done. </p>
+<p>Allows mobility to move back to login screen. </p>
 
 </div>
 </div>
@@ -158,7 +202,7 @@ IBOutlet UITextField *&#160;</td><td class="memItemRight" valign="bottom"><a cla
         </tr>
       </table>
 </div><div class="memdoc">
-<p>catlan stackOF a regular expression that regulates what user emails can create. WILL accept crazy emails !matt$=<a href="#" onclick="location.href='mai'+'lto:'+'awe'+'so'+'me@'+'ma'+'il.'+'ao'+'l.b'+'iz'; return false;">aweso<span style="display: none;">.nosp@m.</span>me@m<span style="display: none;">.nosp@m.</span>ail.a<span style="display: none;">.nosp@m.</span>ol.b<span style="display: none;">.nosp@m.</span>iz</a> </p>
+<p>catlan stackOF <a href="http://stackoverflow.com/questions/800123/what-are-best-practices-for-validating-email-addresses-in-objective-c-for-ios-2/1149894#1149894">http://stackoverflow.com/questions/800123/what-are-best-practices-for-validating-email-addresses-in-objective-c-for-ios-2/1149894#1149894</a> a regular expression that regulates what user emails can create. WILL accept crazy emails !matt$=<a href="#" onclick="location.href='mai'+'lto:'+'awe'+'so'+'me@'+'ma'+'il.'+'ao'+'l.b'+'iz'; return false;">aweso<span style="display: none;">.nosp@m.</span>me@m<span style="display: none;">.nosp@m.</span>ail.a<span style="display: none;">.nosp@m.</span>ol.b<span style="display: none;">.nosp@m.</span>iz</a> </p>
 
 </div>
 </div>
@@ -169,7 +213,7 @@ IBOutlet UITextField *&#160;</td><td class="memItemRight" valign="bottom"><a cla
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Nov 16 2014 01:28:29 for Bored Room Bingo by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Dec 12 2014 22:27:36 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>
