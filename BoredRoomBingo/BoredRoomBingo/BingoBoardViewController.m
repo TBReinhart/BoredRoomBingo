@@ -27,6 +27,7 @@
  */
 - (void)viewDidLoad {
     [self.gameOverView setHidden:YES];
+    [self setTextSize];
     [super viewDidLoad];
     [self.checkWinnersBoardButton setHidden:YES];
     [self.confirmButton setHidden:YES];
@@ -36,6 +37,17 @@
     [self loadFirebase];
     [self checkForOtherGameOvers];
     
+}
+/**
+ Sets text size to fit.
+ */
+-(void)setTextSize {
+    self.getNewBoardButton.titleLabel.numberOfLines = 1;
+    self.getNewBoardButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.getNewBoardButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
+    self.checkWinnersBoardButton.titleLabel.numberOfLines = 1;
+    self.checkWinnersBoardButton.titleLabel.adjustsFontSizeToFitWidth = YES;
+    self.checkWinnersBoardButton.titleLabel.lineBreakMode = NSLineBreakByClipping;
 }
 /**
  Loads specific firebase with values of game.
@@ -80,9 +92,13 @@
         button.titleLabel.numberOfLines = 1;
         button.titleLabel.adjustsFontSizeToFitWidth = YES;
         button.layer.borderWidth = 3.0f;
-        button.layer.borderColor = [UIColor whiteColor].CGColor;
+        button.layer.borderColor = [UIColor clearColor].CGColor;
         button.layer.cornerRadius = 10.0f;
         [button.titleLabel setTextAlignment: NSTextAlignmentCenter];
+        
+        button.titleLabel.numberOfLines = 1;
+        button.titleLabel.adjustsFontSizeToFitWidth = YES;
+        button.titleLabel.lineBreakMode = NSLineBreakByClipping;
 
     }
 }
@@ -119,8 +135,12 @@
 /**
  Disable button on click and notify model.
  */
--(IBAction)boardButtonPressed:(id)sender {
+-(IBAction)boardButtonPressed:(UIButton *)sender {
     [sender setBackgroundColor:[UIColor orangeColor]];
+
+    sender.layer.borderWidth = 3.0f;
+    sender.layer.borderColor = [UIColor clearColor].CGColor;
+    sender.layer.cornerRadius = 10.0f;
     [sender setAlpha:30];
     [sender setEnabled:NO];
     // freespace should be at index 12.

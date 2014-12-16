@@ -24,7 +24,6 @@
     self.passwordTextField.delegate = self;
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myUsername = [prefs stringForKey:@"username"];
-    NSLog(@"view did load username %@", myUsername);
     if (myUsername != nil) {
         [self performSegueWithIdentifier:@"loggedIn" sender:nil];
     }

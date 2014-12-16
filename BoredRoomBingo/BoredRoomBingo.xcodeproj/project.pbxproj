@@ -56,8 +56,16 @@
 		2FD0D77219FAB45200F19DF6 /* LoginSignUp.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD0D77119FAB45200F19DF6 /* LoginSignUp.m */; };
 		2FD2ABA41A1C5A05004FA5AE /* InvitationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2ABA31A1C5A05004FA5AE /* InvitationsTableViewController.m */; };
 		2FD2ABA81A1C632D004FA5AE /* InvitationTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FD2ABA71A1C632D004FA5AE /* InvitationTableViewCell.m */; };
-		2FDF2F0D1A3C177F00C61567 /* brb_letters.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F0C1A3C177F00C61567 /* brb_letters.jpg */; };
-		2FDF2F0F1A3C18A600C61567 /* brb_letters.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F0E1A3C18A600C61567 /* brb_letters.png */; };
+		2FDF2F191A3D476700C61567 /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F101A3D476700C61567 /* Icon-60.png */; };
+		2FDF2F1A1A3D476700C61567 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F111A3D476700C61567 /* Icon-72.png */; };
+		2FDF2F1B1A3D476700C61567 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F121A3D476700C61567 /* Icon-72@2x.png */; };
+		2FDF2F1C1A3D476700C61567 /* Icon-Small-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F131A3D476700C61567 /* Icon-Small-50.png */; };
+		2FDF2F1D1A3D476700C61567 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F141A3D476700C61567 /* Icon-Small-50@2x.png */; };
+		2FDF2F1E1A3D476700C61567 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F151A3D476700C61567 /* Icon.png */; };
+		2FDF2F1F1A3D476700C61567 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F161A3D476700C61567 /* Icon@2x.png */; };
+		2FDF2F201A3D476700C61567 /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F171A3D476700C61567 /* iTunesArtwork.png */; };
+		2FDF2F211A3D476700C61567 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F181A3D476700C61567 /* iTunesArtwork@2x.png */; };
+		2FDF2F291A3D59E900C61567 /* daub.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FDF2F281A3D59E900C61567 /* daub.png */; };
 		2FE62F661A1DBC6F00AC8066 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF0ACCA1A1D96830046FFD4 /* libz.dylib */; };
 		2FE62F671A1DBC9300AC8066 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF0ACD11A1D969D0046FFD4 /* StoreKit.framework */; };
 		2FE62F681A1DBCAA00AC8066 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF0ACCC1A1D96890046FFD4 /* MobileCoreServices.framework */; };
@@ -70,7 +78,6 @@
 		2FE62F7A1A1DBFD600AC8066 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF0ACCE1A1D968E0046FFD4 /* QuartzCore.framework */; };
 		2FEA85891A241813001E5842 /* ChatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA85881A241813001E5842 /* ChatViewController.m */; };
 		2FEA858C1A241D73001E5842 /* UITouchTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEA858B1A241D73001E5842 /* UITouchTableView.m */; };
-		2FF09B031A256F9E0071731C /* bingo.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF09B021A256F9E0071731C /* bingo.png */; };
 		2FF0ACBC1A1D85A90046FFD4 /* airplane.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0ACBB1A1D85A90046FFD4 /* airplane.png */; };
 		2FF0ACBE1A1D86920046FFD4 /* envelope.png in Resources */ = {isa = PBXBuildFile; fileRef = 2FF0ACBD1A1D86920046FFD4 /* envelope.png */; };
 		2FF0ACC51A1D966A0046FFD4 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FF0ACC41A1D966A0046FFD4 /* AudioToolbox.framework */; };
@@ -174,8 +181,16 @@
 		2FD2ABA31A1C5A05004FA5AE /* InvitationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationsTableViewController.m; sourceTree = "<group>"; };
 		2FD2ABA61A1C632D004FA5AE /* InvitationTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InvitationTableViewCell.h; sourceTree = "<group>"; };
 		2FD2ABA71A1C632D004FA5AE /* InvitationTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InvitationTableViewCell.m; sourceTree = "<group>"; };
-		2FDF2F0C1A3C177F00C61567 /* brb_letters.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = brb_letters.jpg; sourceTree = "<group>"; };
-		2FDF2F0E1A3C18A600C61567 /* brb_letters.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brb_letters.png; sourceTree = "<group>"; };
+		2FDF2F101A3D476700C61567 /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
+		2FDF2F111A3D476700C61567 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72.png"; sourceTree = "<group>"; };
+		2FDF2F121A3D476700C61567 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
+		2FDF2F131A3D476700C61567 /* Icon-Small-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50.png"; sourceTree = "<group>"; };
+		2FDF2F141A3D476700C61567 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		2FDF2F151A3D476700C61567 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		2FDF2F161A3D476700C61567 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		2FDF2F171A3D476700C61567 /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
+		2FDF2F181A3D476700C61567 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		2FDF2F281A3D59E900C61567 /* daub.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = daub.png; sourceTree = "<group>"; };
 		2FE62F6B1A1DBD3000AC8066 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		2FE62F6E1A1DBD4500AC8066 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		2FE62F711A1DBD6000AC8066 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
@@ -185,7 +200,6 @@
 		2FEA85881A241813001E5842 /* ChatViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatViewController.m; sourceTree = "<group>"; };
 		2FEA858A1A241D73001E5842 /* UITouchTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UITouchTableView.h; sourceTree = "<group>"; };
 		2FEA858B1A241D73001E5842 /* UITouchTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UITouchTableView.m; sourceTree = "<group>"; };
-		2FF09B021A256F9E0071731C /* bingo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bingo.png; sourceTree = "<group>"; };
 		2FF0ACBB1A1D85A90046FFD4 /* airplane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = airplane.png; sourceTree = "<group>"; };
 		2FF0ACBD1A1D86920046FFD4 /* envelope.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = envelope.png; sourceTree = "<group>"; };
 		2FF0ACC41A1D966A0046FFD4 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
@@ -280,6 +294,7 @@
 		2F05366319D9DBB400C14AF5 = {
 			isa = PBXGroup;
 			children = (
+				2FDF2F281A3D59E900C61567 /* daub.png */,
 				2F05366E19D9DBB400C14AF5 /* BoredRoomBingo */,
 				2FD0D74A19F7619C00F19DF6 /* ErrorChecking */,
 				2F05366F19D9DBB400C14AF5 /* Supporting Files */,
@@ -303,7 +318,6 @@
 			isa = PBXGroup;
 			children = (
 				2F05367919D9DBB400C14AF5 /* Main.storyboard */,
-				2FDF2F0C1A3C177F00C61567 /* brb_letters.jpg */,
 				2FD2ABA11A1BB5D5004FA5AE /* Home Screen */,
 				2FD2ABA51A1C6051004FA5AE /* MyInvitations */,
 				2F1B52EC1A16591B00D91BE6 /* Public Games */,
@@ -316,7 +330,6 @@
 				2FD0D77319FAB7C300F19DF6 /* login */,
 				2FC383BE19FC8E7200B5B725 /* ForgotPassword? */,
 				2F05367C19D9DBB400C14AF5 /* Images.xcassets */,
-				2FDF2F0E1A3C18A600C61567 /* brb_letters.png */,
 				2FF0ACBF1A1D92390046FFD4 /* Photos */,
 				2F05367E19D9DBB400C14AF5 /* LaunchScreen.xib */,
 			);
@@ -385,7 +398,6 @@
 				2FF5B50F1A16A10E00A3A196 /* BoardModel.m */,
 				2F423F291A1074810003DBAA /* BingoBoardViewController.h */,
 				2F423F2A1A1074810003DBAA /* BingoBoardViewController.m */,
-				2FF09B021A256F9E0071731C /* bingo.png */,
 			);
 			name = Board;
 			sourceTree = "<group>";
@@ -526,6 +538,15 @@
 		2FF0ACBF1A1D92390046FFD4 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				2FDF2F101A3D476700C61567 /* Icon-60.png */,
+				2FDF2F111A3D476700C61567 /* Icon-72.png */,
+				2FDF2F121A3D476700C61567 /* Icon-72@2x.png */,
+				2FDF2F131A3D476700C61567 /* Icon-Small-50.png */,
+				2FDF2F141A3D476700C61567 /* Icon-Small-50@2x.png */,
+				2FDF2F151A3D476700C61567 /* Icon.png */,
+				2FDF2F161A3D476700C61567 /* Icon@2x.png */,
+				2FDF2F171A3D476700C61567 /* iTunesArtwork.png */,
+				2FDF2F181A3D476700C61567 /* iTunesArtwork@2x.png */,
 				2F03794B1A2F9CC200420135 /* home_image.png */,
 				2F8372E91A19B1320035C322 /* magnifyingGlass.png */,
 				2FF0ACBD1A1D86920046FFD4 /* envelope.png */,
@@ -617,16 +638,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2FDF2F0F1A3C18A600C61567 /* brb_letters.png in Resources */,
+				2FDF2F1E1A3D476700C61567 /* Icon.png in Resources */,
+				2FDF2F1F1A3D476700C61567 /* Icon@2x.png in Resources */,
+				2FDF2F1B1A3D476700C61567 /* Icon-72@2x.png in Resources */,
+				2FDF2F1D1A3D476700C61567 /* Icon-Small-50@2x.png in Resources */,
 				2F423F2E1A1078040003DBAA /* bingoBoard.jpg in Resources */,
+				2FDF2F191A3D476700C61567 /* Icon-60.png in Resources */,
 				2F05367B19D9DBB400C14AF5 /* Main.storyboard in Resources */,
 				2F05368019D9DBB400C14AF5 /* LaunchScreen.xib in Resources */,
-				2FF09B031A256F9E0071731C /* bingo.png in Resources */,
+				2FDF2F201A3D476700C61567 /* iTunesArtwork.png in Resources */,
+				2FDF2F211A3D476700C61567 /* iTunesArtwork@2x.png in Resources */,
 				2FF0ACBC1A1D85A90046FFD4 /* airplane.png in Resources */,
+				2FDF2F291A3D59E900C61567 /* daub.png in Resources */,
 				2F05367D19D9DBB400C14AF5 /* Images.xcassets in Resources */,
 				2FF0ACBE1A1D86920046FFD4 /* envelope.png in Resources */,
+				2FDF2F1A1A3D476700C61567 /* Icon-72.png in Resources */,
 				2F8372EA1A19B1320035C322 /* magnifyingGlass.png in Resources */,
-				2FDF2F0D1A3C177F00C61567 /* brb_letters.jpg in Resources */,
+				2FDF2F1C1A3D476700C61567 /* Icon-Small-50.png in Resources */,
 				2F03794C1A2F9CC200420135 /* home_image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -799,6 +827,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -813,6 +842,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -821,6 +851,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -835,6 +866,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
