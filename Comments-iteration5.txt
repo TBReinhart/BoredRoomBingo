@@ -1,0 +1,7 @@
+Group 11,
+
+You've made a lot of progress developing your app, and are truly in alpha, which was the goal in this iteration.
+
+As you note in your iteration plan webpage, you haven't fixed the problems mentioned in your iteration 4 comments.
+
+Total Score: 94/100
