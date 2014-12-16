@@ -143,7 +143,6 @@
     NSDictionary *gameName = @{@"gameName":self.gameNameTextField.text,
                                @"list":self.currentWords, @"creator":myID};
     [post1Ref setValue:gameName];
-    NSLog(@"post ref %@", post1Ref);
     [self performSegueWithIdentifier:@"inviteFriends" sender:nil];
 }
 /**
@@ -239,7 +238,6 @@
     if ([segue.identifier isEqualToString:@"selectListSegue"]) {
         DetailArchiveWordlistTableViewController * childViewController = (DetailArchiveWordlistTableViewController *) [segue destinationViewController];
         ArchivedWordListsTableViewController *tbc = (ArchivedWordListsTableViewController *)self.childViewControllers[0];
-        NSLog(@"tbc's detail %@", tbc.listToPass);
         [childViewController setSelectedList:tbc.listToPass];
     }
     if ([segue.identifier isEqualToString:@"inviteFriends"]) {

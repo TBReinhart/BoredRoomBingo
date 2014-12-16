@@ -86,7 +86,7 @@
  */
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     // check if word already in list
-    if ([self.searchFriendsTextField.text length] > -1 ) { // TODO change to return only friends when no searching.
+    if ([self.searchFriendsTextField.text length] > -1 ) { 
         if (fullUserList == nil) {
             [self loadAllUsers];
         } else {

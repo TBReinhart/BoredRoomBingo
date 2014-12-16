@@ -21,5 +21,6 @@
 -(void)standardLogin:(NSString *)email withPassword:(NSString *)password withCreated:(BOOL)justCreated;
 @property (strong, nonatomic) IBOutlet UITextField *usernameTextField; ///< Username prompt for first time users.
 @property (strong, nonatomic) IBOutlet UIButton *forgotPasswordButton; ///< Button that allows users to reset password when loggin in.
+@property (strong, nonatomic) IBOutlet FBLoginView *myFacebookView;
 - (IBAction)unwindToLoginScreen:(UIStoryboardSegue *)segue;
 @end

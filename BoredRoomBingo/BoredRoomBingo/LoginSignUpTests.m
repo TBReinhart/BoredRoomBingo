@@ -33,12 +33,10 @@
     XCTestExpectation *expectation = [self expectationWithDescription:@"asynchronous request"];
     
     Firebase *ref = [[Firebase alloc] initWithUrl:FIREBASE_URL];
-    NSLog(@"ref is %@", ref);
     [ref authUser:@"ian@brb.com" password:@"tester"
 withCompletionBlock:^(NSError *error, FAuthData *authData) {
     
     if (error) {
-        NSLog(@"failed logging in with error: %@", error);
         XCTFail(@"Failed logging in!");
         // There was an error logging in to this account
     } else {

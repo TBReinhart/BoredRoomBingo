@@ -77,7 +77,6 @@
  */
 -(void)setNotifcations:(NSString *)key withCreator:(NSString *)creator {
     PFInstallation *currentInstallation = [PFInstallation currentInstallation];
-    NSLog(@"the creator in set notifcations %@", theCreator);
     [currentInstallation addUniqueObject:theCreator forKey:@"channels"];
     [currentInstallation saveInBackground];
 }

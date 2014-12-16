@@ -315,6 +315,7 @@
                         <outlet property="emailTextField" destination="yFu-Qe-QsM" id="GTL-CC-3JJ"/>
                         <outlet property="emailView" destination="RbN-Nm-rCG" id="U4x-6J-cZT"/>
                         <outlet property="forgotPasswordButton" destination="YP9-8d-fTC" id="rmA-jA-GCQ"/>
+                        <outlet property="myFacebookView" destination="NTq-fl-BGS" id="suK-6Z-AH9"/>
                         <outlet property="optionsView" destination="NnW-fl-hdT" id="hYd-1z-bpg"/>
                         <outlet property="passwordTextField" destination="4dF-oA-zre" id="7of-ZE-ehb"/>
                         <outlet property="usernameTextField" destination="Sky-qN-EmJ" id="WSd-7X-JHI"/>
@@ -722,7 +723,7 @@
                                     <segue destination="buo-fK-HDT" kind="embed" id="J9y-E7-ZGj"/>
                                 </connections>
                             </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBa-qn-wwJ">
+                            <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HBa-qn-wwJ">
                                 <rect key="frame" x="310" y="205" width="224" height="227"/>
                                 <color key="backgroundColor" red="0.90200063340000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -758,7 +759,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="List Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P27-PQ-2xo">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="List Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P27-PQ-2xo">
                                 <rect key="frame" x="310" y="480" width="224" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="150" id="hfA-6n-sLU"/>
@@ -766,7 +767,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2h0-Yx-uZF">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2h0-Yx-uZF">
                                 <rect key="frame" x="310" y="515" width="224" height="30"/>
                                 <state key="normal" title="Save List">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -807,7 +808,7 @@
                                     <action selector="switchChanged:" destination="E3F-LE-5uJ" eventType="valueChanged" id="EfE-gx-uMm"/>
                                 </connections>
                             </switch>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maz-oR-slf">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="maz-oR-slf">
                                 <rect key="frame" x="276" y="560" width="49" height="30"/>
                                 <state key="normal" title="Submit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -823,7 +824,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add New Word" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfe-l3-CbA">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add New Word" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qfe-l3-CbA">
                                 <rect key="frame" x="310" y="440" width="224" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="m3a-jR-OpU"/>
@@ -1869,8 +1870,8 @@
         <image name="magnifyingGlass.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zaA-uF-WIE"/>
-        <segue reference="1b3-RG-KUo"/>
+        <segue reference="ati-AQ-3HI"/>
         <segue reference="Src-o2-se0"/>
+        <segue reference="1b3-RG-KUo"/>
     </inferredMetricsTieBreakers>
 </document>

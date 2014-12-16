@@ -23,7 +23,7 @@
 
 @implementation SearchUsersTableViewController
 /**
- 
+ Set up vc to make new invitedUserList
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -33,6 +33,9 @@
         [invitedUserList removeAllObjects];
     }
 }
+/**
+ Set user list to the list of user ids and names
+ */
 -(void)setUserList:(NSMutableArray *)list withUserIDs:(NSMutableArray *)userIDs {
     if (userList == nil) {
         userList = [[NSMutableArray alloc]init];
@@ -41,6 +44,9 @@
     userList = list;
     userIDList = userIDs;
 }
+/**
+ Game is now set to active and invitations will be sent.
+ */
 -(void)setActiveGame:(BOOL)active {
     activeGame = active;
     if (activeGame) {
@@ -77,14 +83,13 @@
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"userCell";
+    static NSString *CellIdentifier = @"userCell"; // sets cell identifier. is required by xcode
     SearchUsersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[SearchUsersTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     [cell.addRemoveButton setTag:indexPath.row];
     [cell.addRemoveButton addTarget:self action:@selector(keepTrackOfInvitedUsers:) forControlEvents:UIControlEventTouchUpInside];
-    //[cell.friendLabel setText:@""];
     [cell.addRemoveButton setBackgroundImage:[UIImage imageNamed:@"envelope.png"] forState:UIControlStateNormal];
     cell.addRemoveButton.contentVerticalAlignment = UIControlContentVerticalAlignmentFill;
     cell.addRemoveButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentFill;
@@ -129,6 +134,8 @@
                         // already invited
                         return;
                     } else {
+                       // send out invitation to userid so if they change their username in the future, still goes to
+                        //right place even if changed name mid invite
                         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
                         NSString *myID = [prefs stringForKey:@"userID"];
                         Firebase *ref = [[Firebase alloc] initWithUrl:[NSString stringWithFormat:@"%@users/%@/invites",FIREBASE_URL, theirID]];

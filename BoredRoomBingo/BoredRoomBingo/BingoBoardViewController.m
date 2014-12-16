@@ -112,7 +112,6 @@
         savedWords = [[NSMutableArray alloc]init];
     }
     int counter = 0;
-    NSLog(@"values in swap %@", values);
     for (UIButton *button in self.boardButton) {
         [savedWords addObject:button.titleLabel.text];
         [savedValues addObject:[NSString stringWithFormat:@"%zd",!button.enabled]]; // !
@@ -120,7 +119,7 @@
         [button setTitle:[words objectAtIndex:counter] forState:UIControlStateNormal];
         if ([[NSString stringWithFormat:@"%@",[values objectAtIndex:counter]] isEqualToString:@"0"]) {
             [button setEnabled:YES];
-            [button setBackgroundColor:[UIColor lightGrayColor]];
+            [button setBackgroundColor:[UIColor colorWithRed:(206.0/255.0) green:(206.0/255.0) blue:(206.0/255.0) alpha:1]];
         } else {
             [button setBackgroundColor:[UIColor orangeColor]];
             [button setEnabled:NO];
@@ -190,11 +189,7 @@ didDismissWithButtonIndex:(NSInteger) buttonIndex
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     NSString *myUsername = [prefs stringForKey:@"username"];
     [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"winner: %@", snapshot.value[@"winner"]);
-        NSLog(@"equal to my username? %zd", [snapshot.value[@"winner"] isEqualToString:myUsername]);
-        NSLog(@"winning board %zd", !snapshot.value[@"winningBoard"]);
         if (snapshot.value[@"winner"] != [NSNull null] && [snapshot.value[@"winner"] isEqualToString:myUsername] && !snapshot.value[@"winningBoard"]) {
-            NSLog(@"daivik");
             [self playAgainPressed:nil];
             NSString *oldWinnerUrl = [NSString stringWithFormat:@"%@/winner",self.gameKey];
             Firebase *oldWinner = [[Firebase alloc]initWithUrl:oldWinnerUrl];
@@ -344,7 +339,7 @@ didDismissWithButtonIndex:(NSInteger) buttonIndex
             [button setBackgroundColor:[UIColor orangeColor]];
         } else {
             [button setEnabled:YES];
-            [button setBackgroundColor:[UIColor lightGrayColor]];
+            [button setBackgroundColor:[UIColor colorWithRed:(206.0/255.0) green:(206.0/255.0) blue:(206.0/255.0) alpha:1]];
         }
         counter++;
     }

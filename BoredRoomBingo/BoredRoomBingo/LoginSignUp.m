@@ -19,6 +19,7 @@
  */
 -(void)viewDidLoad {
     [super viewDidLoad];
+    [self.myFacebookView setHidden:YES];
     [self.emailView setHidden:YES];
     [self.optionsView setHidden:NO];
     self.passwordTextField.delegate = self;
@@ -82,7 +83,6 @@
         
         [self standardLogin:self.emailTextField.text withPassword:self.passwordTextField.text withCreated:NO];
     } else { // else they are creating account.
-        NSLog(@"creating account about to load names ");
         [self verifyCreateUser];
         // loads all usernames, if unique calls create account
         // if create successful with call standard login
@@ -139,7 +139,6 @@ withCompletionBlock:^(NSError *error) {
     // Get a reference to our posts
     Firebase *ref = [[Firebase alloc] initWithUrl: [NSString stringWithFormat:@"%@users",FIREBASE_URL]];
     [ref observeEventType:FEventTypeValue withBlock:^(FDataSnapshot *snapshot) {
-        NSLog(@"%@", snapshot.value);
         NSArray *myUserID = [uniqueID componentsSeparatedByCharactersInSet:
                              [NSCharacterSet characterSetWithCharactersInString:@":"]
                              ];
