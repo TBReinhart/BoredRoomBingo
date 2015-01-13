@@ -26,7 +26,7 @@
  Initialize bingo board
  */
 - (void)viewDidLoad {
-    [self.gameOverView setHidden:YES];
+//[self.gameOverView setHidden:YES];
     [self setTextSize];
     [super viewDidLoad];
     [self.checkWinnersBoardButton setHidden:YES];
@@ -83,10 +83,14 @@
 -(void)setUpBoardButton {
     NSInteger counter = 0;
     NSMutableArray *randomList = model.randomList;
+    NSLog(@"randomList %@", model.randomList);
     for (UIButton *button in self.boardButton) {
         button.tag = counter;
         NSString *title = randomList[counter];
-        [button setTitle:title forState:UIControlStateNormal];
+        [button setTitle:[NSString stringWithFormat:@"%zd",counter] forState:UIControlStateNormal];
+
+        //[button setTitle:title forState:UIControlStateNormal];
+        NSLog(@"#:%zd:%@",counter,title);
         counter++;
         button.titleLabel.minimumScaleFactor= 5./button.titleLabel.font.pointSize;
         button.titleLabel.numberOfLines = 1;
@@ -115,7 +119,6 @@
     for (UIButton *button in self.boardButton) {
         [savedWords addObject:button.titleLabel.text];
         [savedValues addObject:[NSString stringWithFormat:@"%zd",!button.enabled]]; // !
-        
         [button setTitle:[words objectAtIndex:counter] forState:UIControlStateNormal];
         if ([[NSString stringWithFormat:@"%@",[values objectAtIndex:counter]] isEqualToString:@"0"]) {
             [button setEnabled:YES];
@@ -136,7 +139,7 @@
  */
 -(IBAction)boardButtonPressed:(UIButton *)sender {
     [sender setBackgroundColor:[UIColor orangeColor]];
-
+    NSLog(@"sender tag:%zd", sender.tag);
     sender.layer.borderWidth = 3.0f;
     sender.layer.borderColor = [UIColor clearColor].CGColor;
     sender.layer.cornerRadius = 10.0f;

@@ -102,8 +102,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;-(void)standardLogin:(NSString *)email withPassword:(NSString *)password withCreated:(BOOL)justCreated;</div>
 <div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="interface_login_sign_up.html#abee440735a89803ee5a32787941dafe6">   22</a></span>&#160;<span class="keyword">@property</span> (strong, nonatomic) IBOutlet UITextField *<a class="code" href="interface_login_sign_up.html#abee440735a89803ee5a32787941dafe6">usernameTextField</a>; </div>
 <div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="interface_login_sign_up.html#ad834f5c1778788ef1e52a3f293428e0e">   23</a></span>&#160;<span class="keyword">@property</span> (strong, nonatomic) IBOutlet UIButton *<a class="code" href="interface_login_sign_up.html#ad834f5c1778788ef1e52a3f293428e0e">forgotPasswordButton</a>; </div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;- (IBAction)unwindToLoginScreen:(UIStoryboardSegue *)segue;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">@end</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">@property</span> (strong, nonatomic) IBOutlet FBLoginView *myFacebookView;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;- (IBAction)unwindToLoginScreen:(UIStoryboardSegue *)segue;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">@end</span></div>
 <div class="ttc" id="interface_login_sign_up_html_ad834f5c1778788ef1e52a3f293428e0e"><div class="ttname"><a href="interface_login_sign_up.html#ad834f5c1778788ef1e52a3f293428e0e">LoginSignUp::forgotPasswordButton</a></div><div class="ttdeci">IBOutlet UIButton * forgotPasswordButton</div><div class="ttdoc">Button that allows users to reset password when loggin in. </div><div class="ttdef"><b>Definition:</b> LoginSignUp.h:23</div></div>
 <div class="ttc" id="interface_login_sign_up_html_aad42d499881b619e94e5bbab8b20ce40"><div class="ttname"><a href="interface_login_sign_up.html#aad42d499881b619e94e5bbab8b20ce40">LoginSignUp::passwordTextField</a></div><div class="ttdeci">IBOutlet UITextField * passwordTextField</div><div class="ttdoc">The field where users enter his/her password. </div><div class="ttdef"><b>Definition:</b> LoginSignUp.h:19</div></div>
 <div class="ttc" id="interface_login_sign_up_html"><div class="ttname"><a href="interface_login_sign_up.html">LoginSignUp</a></div><div class="ttdef"><b>Definition:</b> LoginSignUp.h:14</div></div>
@@ -114,7 +115,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Dec 12 2014 22:27:36 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Dec 16 2014 15:45:08 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

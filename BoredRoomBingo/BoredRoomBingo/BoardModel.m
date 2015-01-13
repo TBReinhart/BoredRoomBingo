@@ -43,6 +43,7 @@
     }
     [self setUpGrids];
     [self.randomList insertObject:@"BORED ROOM" atIndex:12];
+    NSLog(@"full list %@", self.randomList);
     // TODO select a different way to add free to list of words
 }
 /**
